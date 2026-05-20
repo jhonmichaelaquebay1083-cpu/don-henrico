@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Don Henrico Resort</title>
+    <meta name="description"
+        content="Explore our premium services: Weddings, Birthdays, Christenings, and Private Overnight Stays.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,800;1,400&family=Marcellus&family=Work+Sans:wght@300;400;500;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Red+Hat+Text:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="page-sub">
+    <!-- ═══ NAVBAR ═══ -->
+    <header class="navbar scrolled" id="navbar">
+        <a href="index.html" class="logo">DON HENRICO</a>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="services.html" class="nav-active">Services</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="about.html">About Us</a>
+        </nav>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- ═══ OVERLAY MENU ═══ -->
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+        <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">✕</button>
+        <nav class="nav-overlay-links">
+            <a href="index.html" class="nav-overlay-link">Home</a>
+            <a href="services.html" class="nav-overlay-link">Services</a>
+            <a href="index.html#contact" class="nav-overlay-link">Contact</a>
+            <a href="about.html" class="nav-overlay-link">About Us</a>
+        </nav>
+    </div>
+
+    <div class="smooth-wrapper">
+        <main class="main-container">
+
+            <!-- ═══ SERVICES HERO ═══ -->
+            <section class="subpage-hero" id="services-hero">
+                <div class="hero-bg">
+                    <img src="assets/image 2.png" alt="Resort Cottage" loading="lazy">
+                </div>
+                <div class="hero-content">
+                    <span class="section-label center">— OUR EXPERIENCES</span>
+                    <h1 class="hero-title">Services We Provide</h1>
+                    <p class="hero-desc">Every stay is a unique story waiting to be told.</p>
+                </div>
+            </section>
+
+            <!-- ═══ SERVICES GRID ═══ -->
+            <section class="services-section" id="services-content">
+                <div class="services-inner" style="padding-top: 1rem;">
+                    <p class="services-description">
+                        Whether you're here to celebrate a milestone or simply find a peaceful place to rest, we provide
+                        the space where your moments unfold naturally—full of laughter, connection, and memories that
+                        are truly yours.
+                    </p>
+
+                    <div class="services-grid-v2">
+                        <!-- Service 1: Wedding -->
+                        <div class="service-card-v2" onclick="openServiceModal('wedding')">
+                            <div class="card-image">
+                                <img src="assets/wedding.jpg" alt="Wedding Venue" loading="lazy">
+                            </div>
+                            <div class="card-content">
+                                <span class="section-label">— PREMIUM</span>
+                                <h3>Wedding Venue</h3>
+                                <p>Breathtaking gardens and elegant halls for your love story.</p>
+                                <div class="card-footer">Explore Details</div>
+                            </div>
+                        </div>
+
+                        <!-- Service 2: Birthday -->
+                        <div class="service-card-v2" onclick="openServiceModal('birthday')">
+                            <div class="card-image">
+                                <img src="assets/bday.jpg" alt="Birthday Party" loading="lazy">
+                            </div>
+                            <div class="card-content">
+                                <span class="section-label">— CELEBRATION</span>
+                                <h3>Birthday Party</h3>
+                                <p>Versatile spaces for grand or intimate family gatherings.</p>
+                                <div class="card-footer">Explore Details</div>
+                            </div>
+                        </div>
+
+                        <!-- Service 3: Christening -->
+                        <div class="service-card-v2" onclick="openServiceModal('christening')">
+                            <div class="card-image">
+                                <img src="assets/debut.jpg" alt="Christening" loading="lazy">
+                            </div>
+                            <div class="card-content">
+                                <span class="section-label">— SACRED</span>
+                                <h3>Christening</h3>
+                                <p>Welcome new life in our serene and peaceful gardens.</p>
+                                <div class="card-footer">Explore Details</div>
+                            </div>
+                        </div>
+
+                        <!-- Service 4: Overnight Stay -->
+                        <div class="service-card-v2" onclick="openServiceModal('overnight')">
+                            <div class="card-image">
+                                <img src="assets/gallery 5.jpg" alt="Overnight Stay" loading="lazy">
+                            </div>
+                            <div class="card-content">
+                                <span class="section-label">— RETREAT</span>
+                                <h3>Overnight Stay</h3>
+                                <p>Escape the city with exclusive access to resort amenities.</p>
+                                <div class="card-footer">Explore Details</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══ SERVICE DETAIL MODAL ═══ -->
+            <div class="service-modal" id="service-modal" aria-hidden="true">
+                <div class="service-modal-backdrop" id="service-modal-backdrop"></div>
+                <div class="service-modal-card" id="service-modal-card">
+                    <button class="service-modal-close" id="service-modal-close" aria-label="Close modal">✕</button>
+                    <div class="service-modal-hero">
+                        <img id="service-modal-img" src="" alt="">
+                    </div>
+                    <div class="service-modal-body">
+                        <div class="service-modal-grid">
+                            <div class="service-modal-content">
+                                <span class="section-label" id="service-modal-label"></span>
+                                <h2 id="service-modal-title"></h2>
+                                <p id="service-modal-desc"></p>
+
+                                <h3 class="modal-subsection-title">Included Amenities</h3>
+                                <div class="amenities-accordion" id="service-modal-amenities"></div>
+                            </div>
+                            <div class="service-modal-sidebar">
+                                <div class="venue-booking-card">
+                                    <h3 class="booking-title">Reserve This Experience</h3>
+                                    <div class="venue-price">
+                                        <span class="price-from">FROM</span>
+                                        <span class="price-amount" id="service-modal-price">₱0</span>
+                                    </div>
+                                    <p class="venue-desc" id="service-modal-venue-desc"></p>
+                                    <a href="https://www.facebook.com/donhresort" target="_blank"
+                                        class="btn booking-submit">Send Inquiry</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand" style="flex: 1.5;">
+                <h2 style="margin-bottom: 0.5rem;">DON HENRICO</h2>
+                <p style="color: var(--color-gray-400); font-size: 0.95rem; line-height: 1.6;">
+                    A private venue for weddings, birthdays, christenings, overnight stays, and meaningful
+                    gatherings.<br><br>
+                    Celebrate, reconnect, and create memories in a place made for your story.
+                </p>
+            </div>
+            <div class="footer-links" style="flex: 1;">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="index.html#contact">Contact Us</a>
+            </div>
+            <div class="footer-contact" style="flex: 1;">
+                <h4>Connect</h4>
+                <a href="https://www.facebook.com/donhresort" target="_blank">Facebook Page</a>
+                <p style="color: var(--color-gray-400); margin-top: 1rem; font-size: 0.9rem;">
+                    Sanctuary awaits.
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Don Henrico. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

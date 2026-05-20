@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Henrico Resort | Your Private Escape</title>
+    <meta name="description"
+        content="Create unforgettable memories at Don Henrico Resort. Premium wedding venues, birthday celebrations, and christening events in an intimate tropical setting.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,800;1,400&family=Marcellus&family=Work+Sans:wght@300;400;500;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Red+Hat+Text:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- ═══ NAVBAR ═══ -->
+    <header class="navbar" id="navbar">
+        <a href="#" class="logo">DON HENRICO</a>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="#contact">Contact</a>
+            <a href="about.html">About Us</a>
+        </nav>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- ═══ OVERLAY MENU ═══ -->
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+        <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">✕</button>
+        <nav class="nav-overlay-links">
+            <a href="index.html" class="nav-overlay-link">Home</a>
+            <a href="services.html" class="nav-overlay-link">Services</a>
+            <a href="#contact" class="nav-overlay-link">Contact</a>
+            <a href="about.html" class="nav-overlay-link">About Us</a>
+        </nav>
+    </div>
+
+
+    <div class="smooth-wrapper">
+        <main class="main-container">
+
+
+
+            <section class="subpage-hero" id="welcome">
+                <div class="hero-bg">
+                    <video autoplay muted loop playsinline>
+                        <source src="assets/video.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="hero-content">
+                    <span class="section-label center">— DON HENRICO RESORT</span>
+                    <h1 class="hero-title">Your Private Sanctuary Awaits.</h1>
+                    <p class="hero-desc">Experience the tranquility of Don Henrico Resort — a home away from home where
+                        your stories come to life.</p>
+                    <div class="hero-services-tags" style="justify-content:center;">
+                        <span>Accommodation</span>
+                        <span>•</span>
+                        <span>Swimming</span>
+                        <span>•</span>
+                        <span>Events</span>
+                        <span>•</span>
+                        <span>Recreation</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══ SECTION 3: ABOUT HIGHLIGHT ═══ -->
+            <section class="welcome-section">
+                <div class="welcome-inner">
+                    <div class="welcome-media">
+                        <img src="assets/Group 12.png" alt="Don Henrico Resort View" loading="lazy">
+                    </div>
+                    <div class="welcome-text">
+                        <h2>Good Times Look<br>Better Here</h2>
+                        <p>Don Henrico is made for the moments that feel better with a pool, good food, and your
+                            favorite people around.</p>
+                        <p>Whether you're here for a party, a family day, or an overnight stay, this is the kind of
+                            place where guests relax fast, take photos often, and somehow always ask, <strong>"Can we
+                                stay longer?"</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══ SECTION 4: OCCASIONS ═══ -->
+            <section class="occasions-section" id="occasions">
+                <div class="occasions-inner">
+                    <div class="occasions-text">
+                        <h2>So, What’s the Occasion?</h2>
+                        <p class="occ-intro"><em>Wedding? Birthday? Christening? Or maybe the classic "we just need a
+                                break" overnight stay?</em></p>
+                        <p>Whatever brings you here, Don Henrico gives you the space to gather, swim, eat, laugh, and
+                            make the day feel like a real celebration.</p>
+                        <p>Pick the reason, invite the people, and we'll take care of the place everyone will remember.
+                        </p>
+                        <a href="services.html" class="btn btn-primary" style="margin-top:0.5rem;">Explore Services</a>
+                    </div>
+
+                    <div class="occasions-collage">
+                        <div class="occ-img occ-img-1"><img src="assets/bday.jpg" alt="Birthday"></div>
+                        <div class="occ-img occ-img-2"><img src="assets/debut.jpg" alt="Debut"></div>
+                        <div class="occ-img occ-img-3"><img src="assets/wedding.jpg" alt="Wedding"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══ SECTION 5: TRUSTED STATS ═══ -->
+            <section class="stats-section" id="stats">
+                <div class="stats-inner">
+                    <h2 class="stats-heading">Trusted by Families Who Know How to Celebrate</h2>
+                    <p class="stats-subtext">From weddings to birthdays and overnight stays, Don Henrico has been the
+                        place families return to when the moment deserves more.</p>
+                    <div class="stats-row">
+                        <div class="stat-block">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Events Hosted</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-block">
+                            <span class="stat-number">2000+</span>
+                            <span class="stat-label">Guests Welcomed</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-block">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery-section" id="gallery">
+                <div class="gallery-container">
+                    <h2 class="gallery-title">Good Times, Caught on Camera</h2>
+                    <p class="gallery-subtitle">Guests came to relax, swim, and celebrate — then accidentally filled
+                        their camera roll.</p>
+                    <div class="gallery-scatter" id="gallery-scatter">
+                        <div class="scatter-item pos-1 size-m"><img src="assets/gallery1.jpg" alt="Gallery 1"></div>
+                        <div class="scatter-item pos-2 size-s"><img src="assets/gallery2.jpg" alt="Gallery 2"></div>
+                        <div class="scatter-item pos-3 size-l"><img src="assets/gallery3.jpg" alt="Gallery 3"></div>
+                        <div class="scatter-item pos-4 size-s"><img src="assets/gallery4.jpg" alt="Gallery 4"></div>
+                        <div class="scatter-item pos-5 size-m"><img src="assets/gallery 5.jpg" alt="Gallery 5"></div>
+                        <div class="scatter-item pos-6 size-l"><img src="assets/gallery6.jpg" alt="Gallery 6"></div>
+                        <div class="scatter-item pos-7 size-m"><img src="assets/gallery7.jpg" alt="Gallery 7"></div>
+                        <div class="scatter-item pos-8 size-s"><img src="assets/gallery8.jpg" alt="Gallery 8"></div>
+                        <div class="scatter-item pos-9 size-l"><img src="assets/gallery9.jpg" alt="Gallery 9"></div>
+                        <div class="scatter-item pos-10 size-s"><img src="assets/gallery10.jpg" alt="Gallery 10"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section" id="experience">
+                <div class="cta-content">
+                    <h2 class="cta-heading">Looks Fun? Yours Could Be Next.</h2>
+                    <p class="cta-subtext">Bring the guests, pick the date, and let Don Henrico Resort handle the place
+                        they'll be talking about after.</p>
+                    <div class="cta-buttons">
+                        <a href="services.html" class="btn btn-primary">View Our Services</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">✕</button>
+        <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">‹</button>
+        <button class="lightbox-next" id="lightbox-next" aria-label="Next image">›</button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer id="contact">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h2>DON HENRICO</h2>
+                <p>
+                    A private venue for weddings, birthdays, christenings, overnight stays, and meaningful
+                    gatherings.<br><br>
+                    Celebrate, reconnect, and create memories in a place made for your story.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Connect</h4>
+                <a href="https://www.facebook.com/donhresort" target="_blank">Facebook Page</a>
+                <p class="footer-note">Sanctuary awaits.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Don Henrico. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
