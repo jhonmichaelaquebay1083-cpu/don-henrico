@@ -393,6 +393,7 @@ body.no-scroll { overflow:hidden; }
 @media (prefers-reduced-motion:reduce) {
     *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
     .fab.visible { animation:none; }
+    #loader.animate .bar { animation: none; }
 }
 
 /* ══════════════════════════════════
@@ -403,7 +404,7 @@ body.no-scroll { overflow:hidden; }
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: #1a1d24;
+    background: var(--gate-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -440,7 +441,7 @@ body.no-scroll { overflow:hidden; }
 
 .bar {
     flex: 1;
-    background: #1a1d24;
+    background: var(--gate-color);
 }
 
 /* Bars slide left when #loader has class .animate.
