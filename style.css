@@ -507,7 +507,7 @@ body.no-scroll { overflow:hidden; }
     dominant-baseline: middle;
     fill: transparent;
     stroke: #c9a96e;
-    stroke-width: 0.4;
+    stroke-width: 0.2;
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
 }
