@@ -4,6 +4,56 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+    // ─── 0. Loading Screen ───
+    (function () {
+        const loader     = document.getElementById('loader');
+        if (!loader) return; // guard: only runs on index.html
+
+        const loaderLogo = document.getElementById('loader-logo');
+        const navLogo    = document.querySelector('.navbar .logo');
+        const video      = document.querySelector('.hero-bg video');
+
+        const tl = gsap.timeline();
+
+        // Fade logo in
+        tl.to(loaderLogo, { opacity: 1, duration: 0.6, ease: 'power2.out' })
+
+        // Hold
+          .to(loaderLogo, { duration: 1.2 })
+
+        // Trigger bar CSS animations + start logo fly simultaneously
+          .add(function () {
+              loader.classList.add('animate');
+
+              // Compute positions at runtime so it works on all screen sizes
+              const from  = loaderLogo.getBoundingClientRect();
+              const to    = navLogo.getBoundingClientRect();
+              const dx    = (to.left + to.width  / 2) - (from.left + from.width  / 2);
+              const dy    = (to.top  + to.height / 2) - (from.top  + from.height / 2);
+
+              gsap.to(loaderLogo, {
+                  x: dx,
+                  y: dy,
+                  scale: 0.22,          // 100px → ~22px, matching nav logo height
+                  duration: 0.5,
+                  ease: 'power3.inOut',
+                  onComplete: function () {
+                      gsap.to(loaderLogo, { opacity: 0, duration: 0.2 });
+                  }
+              });
+          })
+
+        // Wait for last bar (bar 7 delay 0.99s + animation 0.7s = 1.69s) + logo fade (0.2s)
+        // Use 1.9s to cover both safely
+          .to({}, { duration: 1.9 })
+
+        // Remove overlay and play video
+          .add(function () {
+              loader.style.display = 'none';
+              if (video) video.play().catch(function () {}); // .catch silences autoplay policy errors
+          });
+    }());
+
     // ─── 1. Hamburger & Overlay Menu ───
     const hamburger = document.getElementById("hamburger-btn");
     const overlay = document.getElementById("nav-overlay");
