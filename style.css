@@ -440,19 +440,9 @@ body.no-scroll { overflow:hidden; }
     background: var(--gate-color);
     z-index: 1;
 }
-/* Cutout circle in each panel's inner edge. Radius 102px ≈ 6px larger
-   than the logo stroke (200px box, 47% radius = 94px). Together the two
-   semicircles form a full circle around the logo. */
-#loader-panel-left {
-    left: 0;
-    -webkit-mask-image: radial-gradient(circle 102px at 100% 50%, transparent 100px, black 103px);
-            mask-image: radial-gradient(circle 102px at 100% 50%, transparent 100px, black 103px);
-}
-#loader-panel-right {
-    right: 0;
-    -webkit-mask-image: radial-gradient(circle 102px at 0% 50%, transparent 100px, black 103px);
-            mask-image: radial-gradient(circle 102px at 0% 50%, transparent 100px, black 103px);
-}
+/* Solid panels — no cutout. Logo sits on top via z-index. */
+#loader-panel-left  { left: 0; }
+#loader-panel-right { right: 0; }
 
 /* Panels are static until JS adds .animate */
 #loader.animate #loader-panel-left  { animation: loader-split-left  8s cubic-bezier(.65,0,.35,1) forwards; }
@@ -514,7 +504,7 @@ body.no-scroll { overflow:hidden; }
 #loader.animate .loader-circle { animation: loader-draw-circle 8s cubic-bezier(.4,0,.2,1) forwards; }
 @keyframes loader-draw-circle {
     0%, 3%    { stroke-dashoffset: 295.3; }
-    30%, 100% { stroke-dashoffset: 0; }
+    18%, 100% { stroke-dashoffset: 0; }
 }
 
 /* Text strokes draw, then fill from transparent → gold */
@@ -533,21 +523,13 @@ body.no-scroll { overflow:hidden; }
 }
 #loader.animate .loader-t-line { animation: loader-draw-text 8s cubic-bezier(.4,0,.2,1) forwards; }
 @keyframes loader-draw-text {
-    0%, 32%   { stroke-dashoffset: 400; fill: transparent; }
-    54%       { stroke-dashoffset: 0;   fill: transparent; }
-    60%       { stroke-dashoffset: 0;   fill: transparent; }
-    72%, 100% { stroke-dashoffset: 0;   fill: #c9a96e; }
+    0%, 22%   { stroke-dashoffset: 400; fill: transparent; }
+    36%       { stroke-dashoffset: 0;   fill: transparent; }
+    42%       { stroke-dashoffset: 0;   fill: transparent; }
+    54%, 100% { stroke-dashoffset: 0;   fill: #c9a96e; }
 }
 
-/* Mobile — smaller logo + matching cutout */
+/* Mobile — smaller logo */
 @media (max-width: 640px) {
     #loader-logo { width: 140px; height: 140px; }
-    #loader-panel-left {
-        -webkit-mask-image: radial-gradient(circle 72px at 100% 50%, transparent 70px, black 73px);
-                mask-image: radial-gradient(circle 72px at 100% 50%, transparent 70px, black 73px);
-    }
-    #loader-panel-right {
-        -webkit-mask-image: radial-gradient(circle 72px at 0% 50%, transparent 70px, black 73px);
-                mask-image: radial-gradient(circle 72px at 0% 50%, transparent 70px, black 73px);
-    }
 }
