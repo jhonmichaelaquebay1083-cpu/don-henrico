@@ -5,67 +5,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // ─── 0. Loading Screen ───
+    // Animation is entirely CSS-driven (8s cycle, see style.css "LOADING SCREEN — v6").
+    // JS just kicks it off and cleans up at the end.
     (function () {
-        const loader     = document.getElementById('loader');
+        const loader = document.getElementById('loader');
         if (!loader) return; // guard: only runs on index.html
 
-        const loaderLogo = document.getElementById('loader-logo');
-        const navLogo    = document.querySelector('.navbar .logo');
-        const video      = document.querySelector('.hero-bg video');
+        const video = document.querySelector('.hero-bg video');
 
-        if (!loaderLogo || !navLogo) {
+        function finish() {
             loader.style.display = 'none';
-            if (video) video.play().catch(function () {});
-            return;
+            if (video) video.play().catch(function () {}); // silence autoplay-policy errors
         }
 
         if (prefersReducedMotion) {
-            loader.style.display = 'none';
-            if (video) video.play().catch(function () {});
+            finish();
             return;
         }
 
-        const tl = gsap.timeline();
+        // Trigger the CSS animation sequence
+        loader.classList.add('animate');
 
-        // Fade logo in
-        tl.to(loaderLogo, { opacity: 1, duration: 0.6, ease: 'power2.out' })
-
-        // Hold
-          .to(loaderLogo, { duration: 1.2 })
-
-        // Trigger bar CSS animations + start logo fly simultaneously
-          .add(function () {
-              loader.classList.add('animate');
-
-              // Compute positions + scale at runtime so it works at any size
-              const from  = loaderLogo.getBoundingClientRect();
-              const to    = navLogo.getBoundingClientRect();
-              const dx    = (to.left + to.width  / 2) - (from.left + from.width  / 2);
-              const dy    = (to.top  + to.height / 2) - (from.top  + from.height / 2);
-              const targetScale = to.width / from.width; // navbar circle / loader circle
-
-              gsap.to(loaderLogo, {
-                  x: dx,
-                  y: dy,
-                  scale: targetScale,
-                  duration: 0.9,
-                  delay: 0.25,          // let the first bars start wiping before logo flies
-                  ease: 'power3.inOut',
-                  onComplete: function () {
-                      gsap.to(loaderLogo, { opacity: 0, duration: 0.25 });
-                  }
-              });
-          })
-
-        // Wait for last bar (bar 7 delay 0.99s + animation 0.7s = 1.69s) + logo fade (0.2s)
-        // Use 1.9s to cover both safely
-          .to({}, { duration: 1.9 })
-
-        // Remove overlay and play video
-          .add(function () {
-              loader.style.display = 'none';
-              if (video) video.play().catch(function () {}); // .catch silences autoplay policy errors
-          });
+        // Hide loader + play video after the full 8s CSS animation completes
+        setTimeout(finish, 8000);
     }());
 
     // ─── 1. Hamburger & Overlay Menu ───

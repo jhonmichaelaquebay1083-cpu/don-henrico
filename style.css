@@ -412,68 +412,142 @@ body.no-scroll { overflow:hidden; }
 @media (prefers-reduced-motion:reduce) {
     *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
     .fab.visible { animation:none; }
-    #loader.animate .bar { animation: none; }
+    #loader { display: none; }
 }
 
 /* ══════════════════════════════════
-   LOADING SCREEN
+   LOADING SCREEN — v6
+   8s cycle: circle draws → text outlines draw → text fills → panels split → logo fades
    ══════════════════════════════════ */
 
 #loader {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: transparent; /* bars provide the dark cover; transparent so they reveal site when sliding off */
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
 }
 
-#loader-logo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 3px solid #c9a96e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    text-align: center;
-    line-height: 1.4;
-    color: #c9a96e;
-    opacity: 0;
-    position: relative;
-    z-index: 2;
-}
-
-#loader-bars {
+/* ── PANELS — split apart with circular cutout framing the logo ── */
+#loader-panel-left,
+#loader-panel-right {
     position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
+    top: 0; bottom: 0;
+    width: 50%;
+    background: var(--gate-color);
     z-index: 1;
 }
-
-.bar {
-    flex: 1;
-    background: var(--gate-color);
+/* Cutout circle in each panel's inner edge. Radius 102px ≈ 6px larger
+   than the logo stroke (200px box, 47% radius = 94px). Together the two
+   semicircles form a full circle around the logo. */
+#loader-panel-left {
+    left: 0;
+    -webkit-mask-image: radial-gradient(circle 102px at 100% 50%, transparent 100px, black 103px);
+            mask-image: radial-gradient(circle 102px at 100% 50%, transparent 100px, black 103px);
+}
+#loader-panel-right {
+    right: 0;
+    -webkit-mask-image: radial-gradient(circle 102px at 0% 50%, transparent 100px, black 103px);
+            mask-image: radial-gradient(circle 102px at 0% 50%, transparent 100px, black 103px);
 }
 
-/* Bars slide left when #loader has class .animate.
-   animation-delay truly staggers one-shot (forwards) animations. */
-#loader.animate .bar:nth-child(1) { animation: bar-left 0.7s cubic-bezier(.65,0,.35,1) forwards 0s; }
-#loader.animate .bar:nth-child(2) { animation: bar-left 0.7s cubic-bezier(.65,0,.35,1) forwards 0.165s; }
-#loader.animate .bar:nth-child(3) { animation: bar-left 0.7s cubic-bezier(.65,0,.35,1) forwards 0.33s; }
-#loader.animate .bar:nth-child(4) { animation: bar-left 0.7s cubic-bezier(.65,0,.35,1) forwards 0.495s; }
-#loader.animate .bar:nth-child(5) { animation: bar-left 0.7s cubic-bezier(.65,0,.35,1) forwards 0.66s; }
-#loader.animate .bar:nth-child(6) { animation: bar-left 0.7s cubic-bezier(.65,0,.35,1) forwards 0.825s; }
-#loader.animate .bar:nth-child(7) { animation: bar-left 0.7s cubic-bezier(.65,0,.35,1) forwards 0.99s; }
+/* Panels are static until JS adds .animate */
+#loader.animate #loader-panel-left  { animation: loader-split-left  8s cubic-bezier(.65,0,.35,1) forwards; }
+#loader.animate #loader-panel-right { animation: loader-split-right 8s cubic-bezier(.65,0,.35,1) forwards; }
 
-@keyframes bar-left {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+@keyframes loader-split-left {
+    0%, 76%   { transform: translateX(0); }
+    94%, 100% { transform: translateX(-100%); }
+}
+@keyframes loader-split-right {
+    0%, 76%   { transform: translateX(0); }
+    94%, 100% { transform: translateX(100%); }
+}
+
+/* ── LOGO CONTAINER — fades out near the end of the cycle ── */
+#loader-logo {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+}
+#loader.animate #loader-logo { animation: loader-logo-life 8s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes loader-logo-life {
+    0%, 94% { opacity: 1; }
+    100%    { opacity: 0; }
+}
+
+/* ── FROSTED GLASS interior — visible when site shows through ── */
+#loader-logo-frost {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+            backdrop-filter: blur(10px) saturate(1.2);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 20px rgba(201, 169, 110, 0.15);
+}
+
+/* ── SVG with circle outline + text — draws then fills ── */
+.loader-logo-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Circle stroke draws clockwise from top */
+.loader-circle {
+    fill: none;
+    stroke: #c9a96e;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 295.3;     /* 2 * PI * 47 */
+    stroke-dashoffset: 295.3;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+#loader.animate .loader-circle { animation: loader-draw-circle 8s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes loader-draw-circle {
+    0%, 3%    { stroke-dashoffset: 295.3; }
+    30%, 100% { stroke-dashoffset: 0; }
+}
+
+/* Text strokes draw, then fill from transparent → gold */
+.loader-t-line {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    fill: transparent;
+    stroke: #c9a96e;
+    stroke-width: 0.35;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+}
+#loader.animate .loader-t-line { animation: loader-draw-text 8s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes loader-draw-text {
+    0%, 32%   { stroke-dashoffset: 400; fill: transparent; }
+    54%       { stroke-dashoffset: 0;   fill: transparent; }
+    60%       { stroke-dashoffset: 0;   fill: transparent; }
+    72%, 100% { stroke-dashoffset: 0;   fill: #c9a96e; }
+}
+
+/* Mobile — smaller logo + matching cutout */
+@media (max-width: 640px) {
+    #loader-logo { width: 140px; height: 140px; }
+    #loader-panel-left {
+        -webkit-mask-image: radial-gradient(circle 72px at 100% 50%, transparent 70px, black 73px);
+                mask-image: radial-gradient(circle 72px at 100% 50%, transparent 70px, black 73px);
+    }
+    #loader-panel-right {
+        -webkit-mask-image: radial-gradient(circle 72px at 0% 50%, transparent 70px, black 73px);
+                mask-image: radial-gradient(circle 72px at 0% 50%, transparent 70px, black 73px);
+    }
 }
