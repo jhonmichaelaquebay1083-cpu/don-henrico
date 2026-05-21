@@ -431,18 +431,30 @@ body.no-scroll { overflow:hidden; }
     pointer-events: none;
 }
 
-/* ── PANELS — split apart with circular cutout framing the logo ── */
+/* ── PANELS — each contains its half of the logo; split apart and the logo splits with them ── */
 #loader-panel-left,
 #loader-panel-right {
     position: absolute;
     top: 0; bottom: 0;
     width: 50%;
     background: var(--gate-color);
+    overflow: hidden;          /* clips the "other half" of the logo */
     z-index: 1;
 }
-/* Solid panels — no cutout. Logo sits on top via z-index. */
 #loader-panel-left  { left: 0; }
 #loader-panel-right { right: 0; }
+
+/* Each .loader-half is a FULL-size logo container, but anchored so its
+   center sits exactly on the panel's inner edge. The panel's overflow:hidden
+   then crops away half of the logo. */
+.loader-half {
+    position: absolute;
+    top: 50%;
+    width: 280px;
+    height: 280px;
+}
+.loader-half-left  { right: 0; transform: translate(50%, -50%); }
+.loader-half-right { left: 0;  transform: translate(-50%, -50%); }
 
 /* Panels are static until JS adds .animate */
 #loader.animate #loader-panel-left  { animation: loader-split-left  8s cubic-bezier(.65,0,.35,1) forwards; }
@@ -455,30 +467,6 @@ body.no-scroll { overflow:hidden; }
 @keyframes loader-split-right {
     0%, 76%   { transform: translateX(0); }
     94%, 100% { transform: translateX(100%); }
-}
-
-/* ── LOGO CONTAINER — fades out near the end of the cycle ── */
-#loader-logo {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    z-index: 2;
-}
-#loader.animate #loader-logo { animation: loader-logo-life 8s cubic-bezier(.4,0,.2,1) forwards; }
-@keyframes loader-logo-life {
-    0%, 94% { opacity: 1; }
-    100%    { opacity: 0; }
-}
-
-/* ── FROSTED GLASS interior — visible when site shows through ── */
-#loader-logo-frost {
-    position: absolute;
-    inset: 4px;
-    border-radius: 50%;
-    -webkit-backdrop-filter: blur(10px) saturate(1.2);
-            backdrop-filter: blur(10px) saturate(1.2);
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: inset 0 0 20px rgba(201, 169, 110, 0.15);
 }
 
 /* ── SVG with circle outline + text — draws then fills ── */
@@ -529,7 +517,7 @@ body.no-scroll { overflow:hidden; }
     54%, 100% { stroke-dashoffset: 0;   fill: #c9a96e; }
 }
 
-/* Mobile — smaller logo */
+/* Mobile — smaller logo halves */
 @media (max-width: 640px) {
-    #loader-logo { width: 140px; height: 140px; }
+    .loader-half { width: 200px; height: 200px; }
 }

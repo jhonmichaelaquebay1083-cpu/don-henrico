@@ -19,17 +19,30 @@
 
 <body>
     <!-- ═══ LOADING SCREEN ═══ -->
+    <!-- Each panel contains a FULL logo SVG positioned with its center at the
+         panel's inner edge. overflow:hidden on the panel clips away the other
+         half. Result: panels look like one centered logo, but each half slides
+         off with its panel when they split. -->
     <div id="loader">
-        <div id="loader-panel-left"></div>
-        <div id="loader-panel-right"></div>
-        <div id="loader-logo">
-            <div id="loader-logo-frost"></div>
-            <svg class="loader-logo-svg" viewBox="0 0 100 100">
-                <circle class="loader-circle" cx="50" cy="50" r="47" />
-                <text class="loader-t-line" x="50" y="38">DON</text>
-                <text class="loader-t-line" x="50" y="50">HENRICO</text>
-                <text class="loader-t-line" x="50" y="62">RESORT</text>
-            </svg>
+        <div id="loader-panel-left">
+            <div class="loader-half loader-half-left">
+                <svg class="loader-logo-svg" viewBox="0 0 100 100">
+                    <circle class="loader-circle" cx="50" cy="50" r="47" />
+                    <text class="loader-t-line" x="50" y="38">DON</text>
+                    <text class="loader-t-line" x="50" y="50">HENRICO</text>
+                    <text class="loader-t-line" x="50" y="62">RESORT</text>
+                </svg>
+            </div>
+        </div>
+        <div id="loader-panel-right">
+            <div class="loader-half loader-half-right">
+                <svg class="loader-logo-svg" viewBox="0 0 100 100">
+                    <circle class="loader-circle" cx="50" cy="50" r="47" />
+                    <text class="loader-t-line" x="50" y="38">DON</text>
+                    <text class="loader-t-line" x="50" y="50">HENRICO</text>
+                    <text class="loader-t-line" x="50" y="62">RESORT</text>
+                </svg>
+            </div>
         </div>
     </div>
 
