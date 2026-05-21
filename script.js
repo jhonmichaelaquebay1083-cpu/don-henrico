@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Trigger the CSS animation sequence
         loader.classList.add('animate');
 
-        // Hide loader + play video after the full 8s CSS animation completes
-        setTimeout(finish, 8000);
+        // Hide loader + play video after the full 6.5s CSS animation completes
+        setTimeout(finish, 6500);
     }());
 
     // ─── 1. Hamburger & Overlay Menu ───

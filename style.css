@@ -456,17 +456,19 @@ body.no-scroll { overflow:hidden; }
 .loader-half-left  { right: 0; transform: translate(50%, -50%); }
 .loader-half-right { left: 0;  transform: translate(-50%, -50%); }
 
-/* Panels are static until JS adds .animate */
-#loader.animate #loader-panel-left  { animation: loader-split-left  8s cubic-bezier(.65,0,.35,1) forwards; }
-#loader.animate #loader-panel-right { animation: loader-split-right 8s cubic-bezier(.65,0,.35,1) forwards; }
+/* Panels are static until JS adds .animate. Split starts right after
+   the text finishes filling (54%) — just a tiny moment to register the
+   complete logo, then smooth split across the rest of the cycle. */
+#loader.animate #loader-panel-left  { animation: loader-split-left  6.5s cubic-bezier(.65,0,.35,1) forwards; }
+#loader.animate #loader-panel-right { animation: loader-split-right 6.5s cubic-bezier(.65,0,.35,1) forwards; }
 
 @keyframes loader-split-left {
-    0%, 76%   { transform: translateX(0); }
-    94%, 100% { transform: translateX(-100%); }
+    0%, 58%   { transform: translateX(0); }
+    96%, 100% { transform: translateX(-100%); }
 }
 @keyframes loader-split-right {
-    0%, 76%   { transform: translateX(0); }
-    94%, 100% { transform: translateX(100%); }
+    0%, 58%   { transform: translateX(0); }
+    96%, 100% { transform: translateX(100%); }
 }
 
 /* ── SVG with circle outline + text — draws then fills ── */
@@ -489,31 +491,33 @@ body.no-scroll { overflow:hidden; }
     transform: rotate(-90deg);
     transform-origin: center;
 }
-#loader.animate .loader-circle { animation: loader-draw-circle 8s cubic-bezier(.4,0,.2,1) forwards; }
+#loader.animate .loader-circle { animation: loader-draw-circle 6.5s cubic-bezier(.4,0,.2,1) forwards; }
 @keyframes loader-draw-circle {
     0%, 3%    { stroke-dashoffset: 295.3; }
-    18%, 100% { stroke-dashoffset: 0; }
+    22%, 100% { stroke-dashoffset: 0; }
 }
 
-/* Text strokes draw, then fill from transparent → gold */
+/* Text strokes draw, then fill from transparent → gold — bigger text */
 .loader-t-line {
     font-family: var(--font-heading);
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 800;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
     text-anchor: middle;
     dominant-baseline: middle;
     fill: transparent;
     stroke: #c9a96e;
-    stroke-width: 0.35;
+    stroke-width: 0.4;
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
 }
-#loader.animate .loader-t-line { animation: loader-draw-text 8s cubic-bezier(.4,0,.2,1) forwards; }
+#loader.animate .loader-t-line { animation: loader-draw-text 6.5s cubic-bezier(.4,0,.2,1) forwards; }
 @keyframes loader-draw-text {
+    /* Outline draws right when circle finishes (no gap) */
     0%, 22%   { stroke-dashoffset: 400; fill: transparent; }
-    36%       { stroke-dashoffset: 0;   fill: transparent; }
-    42%       { stroke-dashoffset: 0;   fill: transparent; }
+    /* Outline done by 39% (1.1s after circle finishes) */
+    39%       { stroke-dashoffset: 0;   fill: transparent; }
+    /* Fill starts immediately — no hollow-hold delay */
     54%, 100% { stroke-dashoffset: 0;   fill: #c9a96e; }
 }
 
