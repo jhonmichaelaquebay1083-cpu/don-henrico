@@ -13,6 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const navLogo    = document.querySelector('.navbar .logo');
         const video      = document.querySelector('.hero-bg video');
 
+        if (!loaderLogo || !navLogo) {
+            loader.style.display = 'none';
+            if (video) video.play().catch(function () {});
+            return;
+        }
+
+        if (prefersReducedMotion) {
+            loader.style.display = 'none';
+            if (video) video.play().catch(function () {});
+            return;
+        }
+
         const tl = gsap.timeline();
 
         // Fade logo in
