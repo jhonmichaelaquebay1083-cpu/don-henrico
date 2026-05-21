@@ -47,10 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   x: dx,
                   y: dy,
                   scale: 0.22,          // 100px → ~22px, matching nav logo height
-                  duration: 0.5,
+                  duration: 0.9,
+                  delay: 0.25,          // let the first bars start wiping before logo flies
                   ease: 'power3.inOut',
                   onComplete: function () {
-                      gsap.to(loaderLogo, { opacity: 0, duration: 0.2 });
+                      gsap.to(loaderLogo, { opacity: 0, duration: 0.25 });
                   }
               });
           })

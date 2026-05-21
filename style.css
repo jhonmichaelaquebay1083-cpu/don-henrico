@@ -404,7 +404,7 @@ body.no-scroll { overflow:hidden; }
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: var(--gate-color);
+    background: transparent; /* bars provide the dark cover; transparent so they reveal site when sliding off */
     display: flex;
     align-items: center;
     justify-content: center;
