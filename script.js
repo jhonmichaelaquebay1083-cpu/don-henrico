@@ -18,13 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (video) video.play().catch(function () {}); // silence autoplay-policy errors
         }
 
-        if (prefersReducedMotion) {
+        if (sessionStorage.getItem('loaderShown') || prefersReducedMotion) {
             finish();
             return;
         }
 
         // Trigger the CSS animation sequence
         loader.classList.add('animate');
+        sessionStorage.setItem('loaderShown', 'true');
 
         // Hide loader + play video after the full 6.5s CSS animation completes
         setTimeout(finish, 6500);
