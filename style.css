@@ -629,11 +629,11 @@ body.no-scroll { overflow:hidden; }
 /* ── Corner greenery — monstera leaf PNG, diagonal placement ── */
 .deco-greenery-side {
     position: absolute;
-    width: 260px;
+    width: 220px;
     height: auto;
-    opacity: 0.95;
+    opacity: 0.85;
     pointer-events: none;
-    z-index: 2;
+    z-index: -1;            /* sits above section background but BEHIND text */
     will-change: transform;
     display: block;
     object-fit: contain;
