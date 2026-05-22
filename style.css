@@ -534,7 +534,7 @@ body.no-scroll { overflow:hidden; }
 /* Apply to sections that should hold decorations */
 .deco-section {
     position: relative;
-    overflow: hidden;
+    /* no overflow:hidden — let greenery + eucalyptus extend slightly past edges */
 }
 
 /* ── Marble background — subtle warm veining ── */
@@ -629,15 +629,16 @@ body.no-scroll { overflow:hidden; }
 .deco-greenery-side {
     position: absolute;
     top: -60px;
-    width: 90px;
+    width: 100px;
     height: calc(100% + 120px);
-    opacity: 0.55;
+    opacity: 0.85;
     pointer-events: none;
-    z-index: 0;
+    z-index: 2;                /* above static content so it's visible */
     will-change: transform;
+    display: block;
 }
-.deco-greenery-side-left  { left: -25px; }
-.deco-greenery-side-right { right: -25px; transform: scaleX(-1); }
+.deco-greenery-side-left  { left: -10px; }
+.deco-greenery-side-right { right: -10px; transform: scaleX(-1); }
 
 /* Responsive — shrink decorations on smaller screens */
 @media (max-width: 768px) {
