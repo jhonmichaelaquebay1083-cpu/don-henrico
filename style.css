@@ -534,7 +534,8 @@ body.no-scroll { overflow:hidden; }
 /* Apply to sections that should hold decorations */
 .deco-section {
     position: relative;
-    /* no overflow:hidden — let greenery + eucalyptus extend slightly past edges */
+    overflow: hidden;       /* clip decorations to the section so they don't bleed into the next one */
+    isolation: isolate;     /* establish a new stacking context — leaf z-index stays inside section */
 }
 
 /* ── Marble background — subtle warm veining ── */
@@ -637,16 +638,14 @@ body.no-scroll { overflow:hidden; }
     display: block;
     object-fit: contain;
 }
-/* Top-right corner — leaf-right, positioned mostly inside section */
-.deco-greenery-tr { top: -10px; right: 0; }
-/* Bottom-left corner — leaf-left, positioned mostly inside section */
-.deco-greenery-bl { bottom: -10px; left: 0; }
+/* Top-right corner — fully inside section */
+.deco-greenery-tr { top: 0; right: 0; }
+/* Bottom-left corner — fully inside section */
+.deco-greenery-bl { bottom: 0; left: 0; }
 
-/* leaves on smaller screens — keep most of the leaf inside the section */
+/* leaves on smaller screens */
 @media (max-width: 768px) {
     .deco-greenery-side { width: 180px; opacity: 0.92; }
-    .deco-greenery-tr { top: -5px; right: 0; }
-    .deco-greenery-bl { bottom: -5px; left: 0; }
 }
 @media (max-width: 480px) {
     .deco-greenery-side { width: 130px; opacity: 0.9; }
