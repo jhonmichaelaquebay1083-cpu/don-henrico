@@ -31,21 +31,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }());
 
     // ─── 0.5. Parallax Greenery ───
-    // Side-positioned eucalyptus branches drift slower than scroll for a depth effect.
+    // Diagonal corner leaves drift slower than scroll for a depth effect.
     if (!prefersReducedMotion) {
         document.querySelectorAll('.parallax-slow').forEach(function (el) {
             var section = el.closest('section') || el.parentElement;
             if (!section) return;
+            // Top-right leaves drift one direction, bottom-left leaves the other,
+            // so the pair appears to drift apart subtly as the user scrolls past.
+            var direction = el.classList.contains('deco-greenery-bl') ? 30 : -30;
             gsap.to(el, {
-                yPercent: -18,
+                yPercent: direction,
                 ease: 'none',
                 scrollTrigger: {
                     trigger: section,
                     start: 'top bottom',
                     end: 'bottom top',
-                    scrub: true
+                    scrub: 0.5
                 }
             });
+        });
+
+        // Recompute trigger positions once images finish loading (so the parallax
+        // boundaries are correct — leaf <img>s may not have known dimensions at
+        // DOMContentLoaded time).
+        window.addEventListener('load', function () {
+            if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
         });
     }
 

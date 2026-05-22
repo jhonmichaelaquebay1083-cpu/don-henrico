@@ -625,10 +625,9 @@ body.no-scroll { overflow:hidden; }
 .section-divider .sd-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #c9a96e, transparent); }
 .section-divider .sd-diamond { width: 7px; height: 7px; transform: rotate(45deg); background: #c9a96e; }
 
-/* ── Side greenery — monstera leaf PNG ── */
+/* ── Corner greenery — monstera leaf PNG, diagonal placement ── */
 .deco-greenery-side {
     position: absolute;
-    top: 20px;
     width: 220px;
     height: auto;
     opacity: 0.95;
@@ -638,19 +637,27 @@ body.no-scroll { overflow:hidden; }
     display: block;
     object-fit: contain;
 }
-.deco-greenery-side-left  { left: -50px; }
-.deco-greenery-side-right { right: -50px; }
+/* Top-right corner — leaf-right, natural orientation */
+.deco-greenery-tr { top: -30px; right: -55px; }
+/* Bottom-left corner — leaf-left, natural orientation */
+.deco-greenery-bl { bottom: -30px; left: -55px; }
 
-/* leaves on smaller screens — keep visible, scale down */
+/* leaves on smaller screens */
 @media (max-width: 768px) {
-    .deco-greenery-side { width: 140px; opacity: 0.85; }
-    .deco-greenery-side-left  { left: -45px; }
-    .deco-greenery-side-right { right: -45px; }
+    .deco-greenery-side { width: 140px; opacity: 0.9; }
+    .deco-greenery-tr { top: -20px; right: -45px; }
+    .deco-greenery-bl { bottom: -20px; left: -45px; }
 }
 @media (max-width: 480px) {
-    .deco-greenery-side { width: 90px; opacity: 0.75; top: 10px; }
-    .deco-greenery-side-left  { left: -35px; }
-    .deco-greenery-side-right { right: -35px; }
+    .deco-greenery-side { width: 95px; opacity: 0.8; }
+    .deco-greenery-tr { top: -15px; right: -30px; }
+    .deco-greenery-bl { bottom: -15px; left: -30px; }
+}
+
+/* Center the welcome text on mobile so it doesn't look cramped */
+@media (max-width: 768px) {
+    .welcome-text { text-align: center; }
+    .welcome-text .eyebrow-line { justify-content: center; }
 }
 
 /* Responsive — shrink other decorations on smaller screens (greenery handled above) */
