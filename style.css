@@ -525,3 +525,117 @@ body.no-scroll { overflow:hidden; }
 @media (max-width: 640px) {
     .loader-half { width: 200px; height: 200px; }
 }
+
+/* ══════════════════════════════════
+   SECTION DECORATIONS — A+D+B combo
+   architectural corners + marble + eucalyptus
+   ══════════════════════════════════ */
+
+/* Apply to sections that should hold decorations */
+.deco-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Marble background — subtle warm veining ── */
+.deco-section.deco-marble {
+    background:
+        radial-gradient(ellipse at 18% 25%, rgba(201, 169, 110, 0.05), transparent 50%),
+        radial-gradient(ellipse at 82% 75%, rgba(180, 180, 180, 0.04), transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(201, 169, 110, 0.025), transparent 60%),
+        #fffdf9;
+}
+
+/* ── Architectural L-shaped corner brackets ── */
+.deco-corner {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border-color: #c9a96e;
+    opacity: 0.65;
+    pointer-events: none;
+    z-index: 1;
+}
+.deco-corner-tl { top: 32px; left: 32px; border-top: 1.5px solid #c9a96e; border-left: 1.5px solid #c9a96e; }
+.deco-corner-tr { top: 32px; right: 32px; border-top: 1.5px solid #c9a96e; border-right: 1.5px solid #c9a96e; }
+.deco-corner-bl { bottom: 32px; left: 32px; border-bottom: 1.5px solid #c9a96e; border-left: 1.5px solid #c9a96e; }
+.deco-corner-br { bottom: 32px; right: 32px; border-bottom: 1.5px solid #c9a96e; border-right: 1.5px solid #c9a96e; }
+
+/* ── Gold pin accents ── */
+.deco-pin {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #c9a96e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(201, 169, 110, 0.4);
+    pointer-events: none;
+    z-index: 1;
+}
+.deco-pin-tl { top: 28px; left: 28px; }
+.deco-pin-tr { top: 28px; right: 28px; }
+.deco-pin-bl { bottom: 28px; left: 28px; }
+.deco-pin-br { bottom: 28px; right: 28px; }
+
+/* ── Eucalyptus sprigs — sage greenery ── */
+.deco-eucalyptus {
+    position: absolute;
+    width: 180px;
+    height: 70px;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 1;
+}
+.deco-euc-tl  { top: 24px; left: -30px; transform: rotate(-8deg); }
+.deco-euc-tr  { top: 24px; right: -30px; transform: rotate(188deg); }
+.deco-euc-bl  { bottom: 24px; left: -30px; transform: rotate(8deg); }
+.deco-euc-br  { bottom: 24px; right: -30px; transform: rotate(172deg); }
+
+/* ── Eyebrow label — gold uppercase tag with flanking lines ── */
+.eyebrow-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: var(--font-label);
+    font-size: 0.7rem;
+    color: #c9a96e;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.eyebrow-line::before,
+.eyebrow-line::after {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: #c9a96e;
+}
+
+/* ── Section divider — small gold diamond between lines ── */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 220px;
+    margin: 1.25rem auto;
+}
+.section-divider .sd-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #c9a96e, transparent); }
+.section-divider .sd-diamond { width: 7px; height: 7px; transform: rotate(45deg); background: #c9a96e; }
+
+/* Responsive — shrink decorations on smaller screens */
+@media (max-width: 768px) {
+    .deco-corner { width: 36px; height: 36px; }
+    .deco-corner-tl, .deco-corner-tr { top: 18px; }
+    .deco-corner-bl, .deco-corner-br { bottom: 18px; }
+    .deco-corner-tl, .deco-corner-bl { left: 18px; }
+    .deco-corner-tr, .deco-corner-br { right: 18px; }
+    .deco-pin { width: 5px; height: 5px; }
+    .deco-eucalyptus { width: 130px; height: 50px; }
+}
+@media (max-width: 480px) {
+    /* hide brackets and eucalyptus on very small screens to avoid clutter */
+    .deco-corner, .deco-eucalyptus { display: none; }
+}
