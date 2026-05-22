@@ -30,6 +30,25 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(finish, 6500);
     }());
 
+    // ─── 0.5. Parallax Greenery ───
+    // Side-positioned eucalyptus branches drift slower than scroll for a depth effect.
+    if (!prefersReducedMotion) {
+        document.querySelectorAll('.parallax-slow').forEach(function (el) {
+            var section = el.closest('section') || el.parentElement;
+            if (!section) return;
+            gsap.to(el, {
+                yPercent: -18,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+        });
+    }
+
     // ─── 1. Hamburger & Overlay Menu ───
     const hamburger = document.getElementById("hamburger-btn");
     const overlay = document.getElementById("nav-overlay");

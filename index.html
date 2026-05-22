@@ -46,6 +46,34 @@
         </div>
     </div>
 
+    <!-- ═══ REUSABLE SVG DECORATIONS ═══ -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="deco-branch-vertical" viewBox="0 0 80 500">
+                <!-- curving stem -->
+                <path d="M40 0 Q34 60 42 120 Q50 180 36 240 Q44 300 38 360 Q34 420 42 500"
+                      stroke="#7a9080" stroke-width="1" fill="none"/>
+                <!-- alternating leaf pairs along the stem -->
+                <ellipse cx="28" cy="35"  rx="4" ry="8"  fill="#7a9080" transform="rotate(-25 28 35)"/>
+                <ellipse cx="55" cy="50"  rx="4" ry="8"  fill="#7a9080" transform="rotate(25 55 50)"/>
+                <ellipse cx="22" cy="90"  rx="5" ry="9"  fill="#7a9080" transform="rotate(-30 22 90)"/>
+                <ellipse cx="62" cy="105" rx="5" ry="9"  fill="#7a9080" transform="rotate(30 62 105)"/>
+                <ellipse cx="20" cy="150" rx="5" ry="10" fill="#7a9080" transform="rotate(-35 20 150)"/>
+                <ellipse cx="65" cy="165" rx="5" ry="10" fill="#7a9080" transform="rotate(35 65 165)"/>
+                <ellipse cx="22" cy="215" rx="5" ry="9"  fill="#7a9080" transform="rotate(-30 22 215)"/>
+                <ellipse cx="60" cy="228" rx="5" ry="9"  fill="#7a9080" transform="rotate(30 60 228)"/>
+                <ellipse cx="20" cy="280" rx="5" ry="10" fill="#7a9080" transform="rotate(-35 20 280)"/>
+                <ellipse cx="64" cy="295" rx="5" ry="10" fill="#7a9080" transform="rotate(35 64 295)"/>
+                <ellipse cx="22" cy="340" rx="5" ry="9"  fill="#7a9080" transform="rotate(-30 22 340)"/>
+                <ellipse cx="60" cy="352" rx="5" ry="9"  fill="#7a9080" transform="rotate(30 60 352)"/>
+                <ellipse cx="25" cy="400" rx="4" ry="8"  fill="#7a9080" transform="rotate(-25 25 400)"/>
+                <ellipse cx="56" cy="412" rx="4" ry="8"  fill="#7a9080" transform="rotate(25 56 412)"/>
+                <ellipse cx="28" cy="455" rx="4" ry="7"  fill="#7a9080" transform="rotate(-20 28 455)"/>
+                <ellipse cx="52" cy="465" rx="4" ry="7"  fill="#7a9080" transform="rotate(20 52 465)"/>
+            </symbol>
+        </defs>
+    </svg>
+
     <!-- ═══ NAVBAR ═══ -->
     <header class="navbar" id="navbar">
         <a href="#" class="logo">DON<br>HENRICO<br>RESORT</a>
@@ -104,6 +132,10 @@
 
             <!-- ═══ SECTION 3: ABOUT HIGHLIGHT ═══ -->
             <section class="welcome-section deco-section">
+                <!-- Side greenery (parallax) -->
+                <svg class="deco-greenery-side deco-greenery-side-right parallax-slow" viewBox="0 0 80 500" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                    <use href="#deco-branch-vertical"/>
+                </svg>
                 <!-- Eucalyptus sprigs -->
                 <svg class="deco-eucalyptus deco-euc-tl" viewBox="0 0 200 70" aria-hidden="true">
                     <path d="M0 35 Q40 32 90 35 Q140 38 195 35" stroke="#7a9080" stroke-width="0.8" fill="none"/>
@@ -168,6 +200,13 @@
 
             <!-- ═══ SECTION 5: TRUSTED STATS ═══ -->
             <section class="stats-section deco-section deco-marble" id="stats">
+                <!-- Side greenery (parallax) -->
+                <svg class="deco-greenery-side deco-greenery-side-left parallax-slow" viewBox="0 0 80 500" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                    <use href="#deco-branch-vertical"/>
+                </svg>
+                <svg class="deco-greenery-side deco-greenery-side-right parallax-slow" viewBox="0 0 80 500" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                    <use href="#deco-branch-vertical"/>
+                </svg>
                 <!-- Architectural corner brackets -->
                 <span class="deco-corner deco-corner-tl"></span>
                 <span class="deco-corner deco-corner-tr"></span>
@@ -226,6 +265,13 @@
             </section>
 
             <section class="cta-section deco-section deco-marble" id="experience">
+                <!-- Side greenery (parallax) -->
+                <svg class="deco-greenery-side deco-greenery-side-left parallax-slow" viewBox="0 0 80 500" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                    <use href="#deco-branch-vertical"/>
+                </svg>
+                <svg class="deco-greenery-side deco-greenery-side-right parallax-slow" viewBox="0 0 80 500" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+                    <use href="#deco-branch-vertical"/>
+                </svg>
                 <!-- Corner brackets + gold pins -->
                 <span class="deco-corner deco-corner-tl"></span>
                 <span class="deco-corner deco-corner-tr"></span>

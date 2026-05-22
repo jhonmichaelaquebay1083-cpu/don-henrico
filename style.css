@@ -625,6 +625,20 @@ body.no-scroll { overflow:hidden; }
 .section-divider .sd-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #c9a96e, transparent); }
 .section-divider .sd-diamond { width: 7px; height: 7px; transform: rotate(45deg); background: #c9a96e; }
 
+/* ── Side greenery — tall vertical eucalyptus branch ── */
+.deco-greenery-side {
+    position: absolute;
+    top: -60px;
+    width: 90px;
+    height: calc(100% + 120px);
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+}
+.deco-greenery-side-left  { left: -25px; }
+.deco-greenery-side-right { right: -25px; transform: scaleX(-1); }
+
 /* Responsive — shrink decorations on smaller screens */
 @media (max-width: 768px) {
     .deco-corner { width: 36px; height: 36px; }
@@ -634,8 +648,11 @@ body.no-scroll { overflow:hidden; }
     .deco-corner-tr, .deco-corner-br { right: 18px; }
     .deco-pin { width: 5px; height: 5px; }
     .deco-eucalyptus { width: 130px; height: 50px; }
+    .deco-greenery-side { width: 55px; opacity: 0.45; }
+    .deco-greenery-side-left  { left: -15px; }
+    .deco-greenery-side-right { right: -15px; }
 }
 @media (max-width: 480px) {
     /* hide brackets and eucalyptus on very small screens to avoid clutter */
-    .deco-corner, .deco-eucalyptus { display: none; }
+    .deco-corner, .deco-eucalyptus, .deco-greenery-side { display: none; }
 }
