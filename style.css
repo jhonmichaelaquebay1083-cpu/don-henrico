@@ -638,17 +638,22 @@ body.no-scroll { overflow:hidden; }
     display: block;
     object-fit: contain;
 }
-/* Top-right corner — fully inside section */
-.deco-greenery-tr { top: 0; right: 0; }
-/* Bottom-left corner — fully inside section */
-.deco-greenery-bl { bottom: 0; left: 0; }
+/* Top-right corner — pushed up so the leaf peeks from the top edge,
+   not extending down into the section's text area. */
+.deco-greenery-tr { top: -90px; right: 0; }
+/* Bottom-left corner — pushed down for symmetry. */
+.deco-greenery-bl { bottom: -90px; left: 0; }
 
 /* leaves on smaller screens */
 @media (max-width: 768px) {
-    .deco-greenery-side { width: 180px; opacity: 0.92; }
+    .deco-greenery-side { width: 160px; opacity: 0.85; }
+    .deco-greenery-tr { top: -70px; }
+    .deco-greenery-bl { bottom: -70px; }
 }
 @media (max-width: 480px) {
-    .deco-greenery-side { width: 130px; opacity: 0.9; }
+    .deco-greenery-side { width: 110px; opacity: 0.8; }
+    .deco-greenery-tr { top: -50px; }
+    .deco-greenery-bl { bottom: -50px; }
 }
 
 /* Center the welcome text on mobile so it doesn't look cramped */
