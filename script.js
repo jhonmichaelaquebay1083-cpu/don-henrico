@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.parallax-slow').forEach(function (el) {
             var section = el.closest('section') || el.parentElement;
             if (!section) return;
-            // Top-right leaves drift one direction, bottom-left leaves the other,
-            // so the pair appears to drift apart subtly as the user scrolls past.
-            var direction = el.classList.contains('deco-greenery-bl') ? 30 : -30;
+            // Top-right leaves drift up, bottom-left leaves drift down, so the
+            // pair appears to drift apart noticeably as the user scrolls past.
+            var direction = el.classList.contains('deco-greenery-bl') ? 80 : -80;
             gsap.to(el, {
                 yPercent: direction,
                 ease: 'none',
