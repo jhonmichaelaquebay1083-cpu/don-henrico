@@ -625,22 +625,35 @@ body.no-scroll { overflow:hidden; }
 .section-divider .sd-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #c9a96e, transparent); }
 .section-divider .sd-diamond { width: 7px; height: 7px; transform: rotate(45deg); background: #c9a96e; }
 
-/* ── Side greenery — tall vertical eucalyptus branch ── */
+/* ── Side greenery — monstera leaf PNG ── */
 .deco-greenery-side {
     position: absolute;
-    top: -60px;
-    width: 100px;
-    height: calc(100% + 120px);
-    opacity: 0.85;
+    top: 20px;
+    width: 220px;
+    height: auto;
+    opacity: 0.95;
     pointer-events: none;
-    z-index: 2;                /* above static content so it's visible */
+    z-index: 2;
     will-change: transform;
     display: block;
+    object-fit: contain;
 }
-.deco-greenery-side-left  { left: -10px; }
-.deco-greenery-side-right { right: -10px; transform: scaleX(-1); }
+.deco-greenery-side-left  { left: -50px; }
+.deco-greenery-side-right { right: -50px; }
 
-/* Responsive — shrink decorations on smaller screens */
+/* leaves on smaller screens — keep visible, scale down */
+@media (max-width: 768px) {
+    .deco-greenery-side { width: 140px; opacity: 0.85; }
+    .deco-greenery-side-left  { left: -45px; }
+    .deco-greenery-side-right { right: -45px; }
+}
+@media (max-width: 480px) {
+    .deco-greenery-side { width: 90px; opacity: 0.75; top: 10px; }
+    .deco-greenery-side-left  { left: -35px; }
+    .deco-greenery-side-right { right: -35px; }
+}
+
+/* Responsive — shrink other decorations on smaller screens (greenery handled above) */
 @media (max-width: 768px) {
     .deco-corner { width: 36px; height: 36px; }
     .deco-corner-tl, .deco-corner-tr { top: 18px; }
@@ -649,11 +662,8 @@ body.no-scroll { overflow:hidden; }
     .deco-corner-tr, .deco-corner-br { right: 18px; }
     .deco-pin { width: 5px; height: 5px; }
     .deco-eucalyptus { width: 130px; height: 50px; }
-    .deco-greenery-side { width: 55px; opacity: 0.45; }
-    .deco-greenery-side-left  { left: -15px; }
-    .deco-greenery-side-right { right: -15px; }
 }
 @media (max-width: 480px) {
-    /* hide brackets and eucalyptus on very small screens to avoid clutter */
-    .deco-corner, .deco-eucalyptus, .deco-greenery-side { display: none; }
+    /* hide brackets and eucalyptus on very small screens — keep the leaves */
+    .deco-corner, .deco-eucalyptus { display: none; }
 }
