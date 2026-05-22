@@ -689,3 +689,26 @@ body.no-scroll { overflow:hidden; }
     /* hide brackets and eucalyptus on very small screens — keep the leaves */
     .deco-corner, .deco-eucalyptus { display: none; }
 }
+
+/* ── Page Transition Animation ── */
+body {
+    animation: fadeInPage 0.8s ease-out forwards;
+}
+
+@keyframes fadeInPage {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ── Location Section ── */
+.location-section { padding: 6rem 0; background: var(--bg-card); }
+.location-inner { max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+.location-text h2 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.1; }
+.location-text p { color: var(--text-body); font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+.contact-details p { margin-bottom: 1rem; color: var(--text-dark); }
+.contact-details strong { color: var(--primary); font-family: var(--font-label); letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem; }
+.location-map iframe { width: 100%; height: 400px; border: 0; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+@media (min-width: 1024px) {
+    .location-inner { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
