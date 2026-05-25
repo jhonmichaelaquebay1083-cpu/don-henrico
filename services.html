@@ -132,99 +132,99 @@
                 </div>
             </section>
 
-            <!-- ═══ SERVICE DETAIL MODAL ═══ -->
+            <!-- ═══ SERVICE DETAIL MODAL — two views: details ↔ inquiry+payment ═══ -->
             <div class="service-modal" id="service-modal" aria-hidden="true">
                 <div class="service-modal-backdrop" id="service-modal-backdrop"></div>
                 <div class="service-modal-card" id="service-modal-card">
                     <button class="service-modal-close" id="service-modal-close" aria-label="Close modal">✕</button>
-                    <div class="service-modal-hero">
-                        <img id="service-modal-img" src="" alt="">
-                    </div>
-                    <div class="service-modal-body">
-                        <div class="service-modal-grid">
-                            <div class="service-modal-content">
-                                <span class="section-label" id="service-modal-label"></span>
-                                <h2 id="service-modal-title"></h2>
-                                <p id="service-modal-desc"></p>
 
-                                <h3 class="modal-subsection-title">Included Amenities</h3>
-                                <div class="amenities-accordion" id="service-modal-amenities"></div>
-                            </div>
-                            <div class="service-modal-sidebar">
-                                <div class="venue-booking-card">
-                                    <h3 class="booking-title">Reserve This Experience</h3>
-                                    <div class="venue-price">
-                                        <span class="price-from">FROM</span>
-                                        <span class="price-amount" id="service-modal-price">₱0</span>
+                    <!-- ── VIEW 1: Service details (shown by default) ── -->
+                    <div class="modal-view modal-view-active" id="modal-view-details">
+                        <div class="service-modal-hero">
+                            <img id="service-modal-img" src="" alt="">
+                        </div>
+                        <div class="service-modal-body">
+                            <div class="service-modal-grid">
+                                <div class="service-modal-content">
+                                    <span class="section-label" id="service-modal-label"></span>
+                                    <h2 id="service-modal-title"></h2>
+                                    <p id="service-modal-desc"></p>
+
+                                    <h3 class="modal-subsection-title">Included Amenities</h3>
+                                    <div class="amenities-accordion" id="service-modal-amenities"></div>
+                                </div>
+                                <div class="service-modal-sidebar">
+                                    <div class="venue-booking-card">
+                                        <h3 class="booking-title">Reserve This Experience</h3>
+                                        <div class="venue-price">
+                                            <span class="price-from">FROM</span>
+                                            <span class="price-amount" id="service-modal-price">₱0</span>
+                                        </div>
+                                        <p class="venue-desc" id="service-modal-venue-desc"></p>
+                                        <button type="button" class="btn booking-submit"
+                                            onclick="showInquiryView()">
+                                            Send Inquiry
+                                        </button>
                                     </div>
-                                    <p class="venue-desc" id="service-modal-venue-desc"></p>
-                                    <button type="button" class="btn booking-submit"
-                                        onclick="closeServiceModal(); setTimeout(function(){document.getElementById('inquiry').scrollIntoView({behavior:'smooth'});}, 250);">
-                                        Send Inquiry
-                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- ═══ INQUIRY FORM — placeholder for GHL iframe ═══ -->
-            <section class="inquiry-section deco-section" id="inquiry">
-                <!-- Diagonal greenery (parallax) -->
-                <img src="assets/leaf-right.png" alt="" class="deco-greenery-side deco-greenery-tr parallax-slow" aria-hidden="true">
-                <img src="assets/leaf-left.png"  alt="" class="deco-greenery-side deco-greenery-bl parallax-slow" aria-hidden="true">
-
-                <div class="inquiry-inner">
-                    <div style="text-align:center;">
-                        <span class="eyebrow-line">— Get in Touch —</span>
-                    </div>
-                    <h2 class="inquiry-heading">Send Us an Inquiry</h2>
-                    <p class="inquiry-subtitle">Fill out the form below and our team will get back to you within 24 hours.</p>
-
-                    <div class="inquiry-form-wrapper">
-                        <!-- TODO: Replace this placeholder with the GHL form iframe.
-                             Example: <iframe src="https://api.leadconnectorhq.com/widget/form/FORM_ID"
-                                              width="100%" height="600" frameborder="0"
-                                              style="border:none;"></iframe>
-                        -->
-                        <div class="form-placeholder">
-                            <span class="placeholder-icon">📋</span>
-                            <p class="placeholder-title">GHL Form Embed Here</p>
-                            <p class="placeholder-note">Swap this block for your &lt;iframe&gt;</p>
+                    <!-- ── VIEW 2: Inquiry form + GCash QR (hidden by default) ── -->
+                    <div class="modal-view" id="modal-view-inquiry">
+                        <div class="inquiry-modal-header">
+                            <button class="modal-back-btn" type="button" onclick="showDetailsView()" aria-label="Back to details">
+                                ← Back
+                            </button>
+                            <h2 class="inquiry-modal-title">Send Inquiry</h2>
+                            <p class="inquiry-modal-sub">Fill the form, then send your deposit via GCash.</p>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            <!-- ═══ PAYMENT — GCash QR placeholder ═══ -->
-            <section class="payment-section deco-section deco-marble" id="payment">
-                <span class="deco-corner deco-corner-tl"></span>
-                <span class="deco-corner deco-corner-tr"></span>
-                <span class="deco-corner deco-corner-bl"></span>
-                <span class="deco-corner deco-corner-br"></span>
+                        <div class="inquiry-modal-body">
+                            <!-- ── INQUIRY FORM BLOCK ── -->
+                            <div class="inquiry-block">
+                                <span class="eyebrow-line">— Step 1 · Inquire —</span>
+                                <h3 class="inquiry-block-heading">Inquiry Form</h3>
 
-                <div class="payment-inner">
-                    <div style="text-align:center;">
-                        <span class="eyebrow-line">— Secure Your Booking —</span>
-                    </div>
-                    <h2 class="payment-heading">Pay via GCash</h2>
-                    <p class="payment-subtitle">Scan the QR code below to make your deposit. Send a screenshot of your payment proof to confirm your booking.</p>
+                                <div class="inquiry-form-wrapper">
+                                    <!-- TODO: Replace this placeholder with your GHL form iframe.
+                                         Example:
+                                         <iframe src="https://api.leadconnectorhq.com/widget/form/FORM_ID"
+                                                 width="100%" height="600" frameborder="0"
+                                                 style="border:none;"></iframe>
+                                    -->
+                                    <div class="form-placeholder">
+                                        <span class="placeholder-icon">📋</span>
+                                        <p class="placeholder-title">GHL Form Embed Here</p>
+                                        <p class="placeholder-note">Swap this block for your &lt;iframe&gt;</p>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="payment-qr-wrapper">
-                        <!-- TODO: Replace .qr-placeholder with the actual GCash QR image.
-                             Example: <img src="assets/gcash-qr.png" alt="GCash QR" class="qr-image">
-                        -->
-                        <div class="qr-placeholder">
-                            <div class="qr-mock">QR CODE<br>HERE</div>
-                        </div>
-                        <div class="payment-info">
-                            <p class="payment-account">Account Name: <strong>Don Henrico Resort</strong></p>
-                            <p class="payment-number">0935 260 4955</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                            <!-- ── PAYMENT BLOCK ── -->
+                            <div class="payment-block">
+                                <span class="eyebrow-line">— Step 2 · Pay —</span>
+                                <h3 class="payment-block-heading">Pay via GCash</h3>
+                                <p class="payment-block-text">Scan the QR code to send your deposit. Reply with a screenshot of your payment proof to confirm your booking.</p>
+
+                                <div class="payment-qr-wrapper">
+                                    <!-- TODO: Replace .qr-placeholder with the actual GCash QR image.
+                                         Example: <img src="assets/gcash-qr.png" alt="GCash QR" class="qr-image">
+                                    -->
+                                    <div class="qr-placeholder">
+                                        <div class="qr-mock">QR CODE<br>HERE</div>
+                                    </div>
+                                    <div class="payment-info">
+                                        <p class="payment-account">Account: <strong>Don Henrico Resort</strong></p>
+                                        <p class="payment-number">0935 260 4955</p>
+                                    </div>
+                                </div><!-- /.payment-qr-wrapper -->
+                            </div><!-- /.payment-block -->
+                        </div><!-- /.inquiry-modal-body -->
+                    </div><!-- /#modal-view-inquiry -->
+                </div><!-- /.service-modal-card -->
+            </div><!-- /.service-modal -->
 
         </main>
     </div>

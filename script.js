@@ -412,8 +412,37 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("no-scroll");
     }
-    window.openServiceModal = openServiceModal;
-    window.closeServiceModal = closeServiceModal;
+    // View switching inside the service modal (details ↔ inquiry+payment)
+    function showInquiryView() {
+        var details = document.getElementById('modal-view-details');
+        var inquiry = document.getElementById('modal-view-inquiry');
+        if (!details || !inquiry) return;
+        details.classList.remove('modal-view-active');
+        inquiry.classList.add('modal-view-active');
+        if (modalCard) modalCard.scrollTop = 0;
+    }
+    function showDetailsView() {
+        var details = document.getElementById('modal-view-details');
+        var inquiry = document.getElementById('modal-view-inquiry');
+        if (!details || !inquiry) return;
+        inquiry.classList.remove('modal-view-active');
+        details.classList.add('modal-view-active');
+        if (modalCard) modalCard.scrollTop = 0;
+    }
+
+    // Reset the modal to the details view every time it opens / closes
+    function resetModalView() {
+        var details = document.getElementById('modal-view-details');
+        var inquiry = document.getElementById('modal-view-inquiry');
+        if (!details || !inquiry) return;
+        details.classList.add('modal-view-active');
+        inquiry.classList.remove('modal-view-active');
+    }
+
+    window.openServiceModal = function (k) { resetModalView(); openServiceModal(k); };
+    window.closeServiceModal = function () { closeServiceModal(); resetModalView(); };
+    window.showInquiryView = showInquiryView;
+    window.showDetailsView = showDetailsView;
 
     document.querySelectorAll(".service-card").forEach(card => {
         card.addEventListener("click", () => {
