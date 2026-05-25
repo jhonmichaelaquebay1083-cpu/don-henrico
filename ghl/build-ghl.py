@@ -83,10 +83,49 @@ GHL_BREAKOUT_CSS = """
     max-width: 100vw !important;
     margin-left: calc(50% - 50vw) !important;
     margin-right: calc(50% - 50vw) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     position: relative;
     overflow-x: hidden;
 }
 """
+
+
+# JS shim prepended to the inlined script. Body manipulations (class adds for
+# scroll-lock, subpage detection) need to target the wrapper, not GHL's <body>.
+JS_EMBED_ROOT_PRELUDE = """
+// ── dh-embed-root scope shim ──
+// Body class manipulations target the wrapper instead of GHL's <body>.
+var __dhEmbedRoot = document.querySelector('.dh-embed-root') || document.body;
+"""
+
+
+def scope_js_to_embed_root(js: str) -> str:
+    """Redirect document.body references to the embed wrapper."""
+    js = re.sub(r'\bdocument\.body\b', '__dhEmbedRoot', js)
+    return JS_EMBED_ROOT_PRELUDE + "\n" + js
+
+
+def scope_css_to_embed_root(css: str) -> str:
+    """Rewrite body/html selectors to .dh-embed-root.
+
+    The project's CSS targets <body> directly (background colours, font,
+    page-load animation, scroll lock, etc). Pasted into GHL, those rules
+    leak onto GHL's own <body> and repaint the host page — most visibly,
+    `body { background: #fff }` makes the area around the embed white.
+
+    This rewrites every body/html selector so it only matches our wrapper
+    instead of GHL's <body>.
+    """
+    # 1. Compound selectors first: "html, body" or "body, html" → ".dh-embed-root"
+    css = re.sub(r'\bhtml\s*,\s*body\b', '.dh-embed-root', css)
+    css = re.sub(r'\bbody\s*,\s*html\b', '.dh-embed-root', css)
+    # 2. Standalone "body" with word boundaries → ".dh-embed-root"
+    #    Negative lookbehind avoids matching inside class names / attributes.
+    css = re.sub(r'(?<![\w.\-#])body(?![\w-])', '.dh-embed-root', css)
+    # 3. Standalone "html" → ".dh-embed-root" (rare, but match for safety)
+    css = re.sub(r'(?<![\w.\-#])html(?![\w-])', '.dh-embed-root', css)
+    return css
 
 
 def strip_document_wrapper(html: str, body_class: str) -> str:
@@ -130,6 +169,13 @@ def strip_document_wrapper(html: str, body_class: str) -> str:
 def main() -> None:
     css = (ROOT / "style.css").read_text(encoding="utf-8")
     js  = (ROOT / "script.js").read_text(encoding="utf-8")
+
+    # Scope body/html rules so they don't leak onto GHL's own document.
+    css = scope_css_to_embed_root(css)
+
+    # Redirect document.body references so JS class manipulations target the
+    # embed wrapper (e.g. .no-scroll, .page-sub checks).
+    js = scope_js_to_embed_root(js)
 
     for src_name, out_name, body_class in PAGES:
         html = (ROOT / src_name).read_text(encoding="utf-8")

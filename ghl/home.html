@@ -11,6 +11,8 @@
     max-width: 100vw !important;
     margin-left: calc(50% - 50vw) !important;
     margin-right: calc(50% - 50vw) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
     position: relative;
     overflow-x: hidden;
 }
@@ -34,10 +36,10 @@
     --edge: clamp(16px, 5%, 80px);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-html, body { max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 70px; }
-body { font-family: var(--font-body); background: var(--bg-dark); color: var(--text-dark); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: 16px; position: relative; }
-body.page-sub { background: #fff; }
+.dh-embed-root { max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+.dh-embed-root { scroll-behavior: smooth; scroll-padding-top: 70px; }
+.dh-embed-root { font-family: var(--font-body); background: var(--bg-dark); color: var(--text-dark); line-height: 1.7; -webkit-font-smoothing: antialiased; font-size: 16px; position: relative; }
+.dh-embed-root.page-sub { background: #fff; }
 
 /* â”€â”€â”€ Buttons â”€â”€â”€ */
 /* ——— Buttons ——— */
@@ -82,7 +84,7 @@ body.page-sub { background: #fff; }
     transition: transform 0.3s, color 0.4s, border-color 0.4s;
 }
 .logo:hover { transform: scale(1.05); }
-body:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
+.dh-embed-root:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
 .desktop-nav { display:none; gap:2.5rem; align-items:center; }
 .desktop-nav a { font-family:var(--font-nav); color:var(--text-body); text-decoration:none; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; transition:color 0.3s; }
 .desktop-nav a:hover:not(.btn) { color:var(--primary); }
@@ -372,7 +374,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
 .footer-note { color:var(--color-gray-400); margin-top:1rem; font-size:0.9rem; }
 .footer-bottom { text-align:center; padding:1.2rem var(--edge); border-top:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.4); font-size:0.8rem; }
 
-body.no-scroll { overflow:hidden; }
+.dh-embed-root.no-scroll { overflow:hidden; }
 
 @media (hover:hover) {
     .masonry-item:hover img { transform:scale(1.05); }
@@ -741,7 +743,7 @@ body.no-scroll { overflow:hidden; }
     line-height: 1.5;
 }
 
-/* Single-column body used by the form, payment, and thanks views */
+/* Single-column .dh-embed-root used by the form, payment, and thanks views */
 .step-modal-body {
     padding: 2rem;
     display: flex;
@@ -1100,7 +1102,7 @@ body.no-scroll { overflow:hidden; }
 }
 
 /* ── Page Transition Animation ── */
-body {
+.dh-embed-root {
     animation: fadeInPage 0.8s ease-out forwards;
 }
 
@@ -1408,6 +1410,11 @@ body {
     </footer>
 
     <script>
+
+// ── dh-embed-root scope shim ──
+// Body class manipulations target the wrapper instead of GHL's <body>.
+var __dhEmbedRoot = document.querySelector('.dh-embed-root') || document.body;
+
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1481,7 +1488,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.setAttribute("aria-expanded", "true");
         overlay.classList.add("active");
         overlay.setAttribute("aria-hidden", "false");
-        document.body.classList.add("no-scroll");
+        __dhEmbedRoot.classList.add("no-scroll");
     }
 
     function closeMenu() {
@@ -1489,7 +1496,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hamburger.setAttribute("aria-expanded", "false");
         overlay.classList.remove("active");
         overlay.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("no-scroll");
+        __dhEmbedRoot.classList.remove("no-scroll");
     }
 
     hamburger.addEventListener("click", () => {
@@ -1517,7 +1524,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ─── 2. Navbar visibility ───
     const navbar = document.querySelector(".navbar");
-    const isSubpage = document.body.classList.contains("page-sub");
+    const isSubpage = __dhEmbedRoot.classList.contains("page-sub");
 
     gsap.set(navbar, { y: 0, opacity: 1 });
 
@@ -1814,13 +1821,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         modal.classList.add("active");
         modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("no-scroll");
+        __dhEmbedRoot.classList.add("no-scroll");
     }
 
     function closeServiceModal() {
         modal.classList.remove("active");
         modal.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("no-scroll");
+        __dhEmbedRoot.classList.remove("no-scroll");
     }
     // View switching inside the service modal (details → form → payment → thanks)
     function showView(viewId) {
@@ -1907,13 +1914,13 @@ document.addEventListener("DOMContentLoaded", () => {
         lightboxImg.alt = scatterItems[lightboxIndex]?.alt || "";
         lightbox.classList.add("active");
         lightbox.setAttribute("aria-hidden", "false");
-        document.body.classList.add("no-scroll");
+        __dhEmbedRoot.classList.add("no-scroll");
     }
 
     function closeLightbox() {
         lightbox.classList.remove("active");
         lightbox.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("no-scroll");
+        __dhEmbedRoot.classList.remove("no-scroll");
     }
 
     function nextImage() {
