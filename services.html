@@ -155,12 +155,22 @@
                                 </div>
                                 <div class="service-modal-sidebar">
                                     <div class="venue-booking-card">
-                                        <h3 class="booking-title">Reserve This Experience</h3>
-                                        <div class="venue-price">
-                                            <span class="price-from">FROM</span>
-                                            <span class="price-amount" id="service-modal-price">₱0</span>
+                                        <h3 class="booking-title">Choose Your Package</h3>
+
+                                        <!-- Tabs — one per package, populated by JS -->
+                                        <div class="pkg-tabs" id="service-modal-tabs" role="tablist"></div>
+
+                                        <!-- Active package details — re-rendered when tab changes -->
+                                        <div class="pkg-detail">
+                                            <div class="venue-price">
+                                                <span class="price-from">FROM</span>
+                                                <span class="price-amount" id="service-modal-price">₱0</span>
+                                            </div>
+                                            <div class="pkg-meta" id="service-modal-meta"></div>
+                                            <p class="venue-desc" id="service-modal-venue-desc"></p>
+                                            <ul class="pkg-inclusions" id="service-modal-inclusions"></ul>
                                         </div>
-                                        <p class="venue-desc" id="service-modal-venue-desc"></p>
+
                                         <button type="button" class="btn booking-submit"
                                             onclick="showInquiryView()">
                                             Send Inquiry

@@ -286,13 +286,36 @@ document.addEventListener("DOMContentLoaded", () => {
             label: "— Premium Venue",
             title: "Wedding Venue",
             desc: "Celebrate your love story in our breathtaking wedding venue. With lush gardens, an elegant function hall, and stunning poolside backdrops, every moment of your special day will be picture-perfect.",
-            features: ["Function Hall (100+ Guests)", "Garden Ceremony Setup", "Bridal Suite", "Sound & Lighting System", "Catering Partnerships", "Overnight Accommodation"],
-            price: "₱20,000",
-            venueDesc: "An all-inclusive luxurious hall and garden space tailored for grand romantic celebrations.",
             amenities: [
                 { title: "Layout & Furnishings", items: ["Function Hall", "Bridal Suite", "Tables & Chairs", "Stage & Podium", "Garden Seating"] },
                 { title: "Entertainment", items: ["Sound System", "LED Projector", "Photography Spots"] },
                 { title: "Dining & Catering", items: ["Kitchen Access", "Catering Partners", "Buffet Setup"] }
+            ],
+            packages: [
+                {
+                    name: "Intimate",
+                    price: "₱25,000",
+                    duration: "Half Day",
+                    guests: "Up to 30 pax",
+                    desc: "A garden ceremony for an intimate celebration with closest family.",
+                    inclusions: ["Garden Setup", "Tables & Chairs", "Bridal Suite Access", "Sound System", "Welcome Drinks"]
+                },
+                {
+                    name: "Classic",
+                    price: "₱45,000",
+                    duration: "Full Day",
+                    guests: "Up to 60 pax",
+                    desc: "Function hall + garden ceremony with full reception setup.",
+                    inclusions: ["Function Hall", "Garden Ceremony Setup", "Stage & Podium", "Sound & Lighting", "Bridal Suite", "Photography Spots"]
+                },
+                {
+                    name: "Grand",
+                    price: "₱80,000",
+                    duration: "Overnight",
+                    guests: "100+ pax",
+                    desc: "Exclusive use of the full estate with overnight accommodation for the couple and entourage.",
+                    inclusions: ["Full Estate Access", "Function Hall", "All Gardens", "Overnight Rooms (entourage)", "Catering Coordination", "Dedicated Coordinator"]
+                }
             ]
         },
         birthday: {
@@ -300,13 +323,36 @@ document.addEventListener("DOMContentLoaded", () => {
             label: "— Fun & Celebration",
             title: "Birthday Party",
             desc: "Make birthdays truly special at Don Henrico. From intimate family gatherings to grand celebrations, our versatile spaces and entertainment amenities create the perfect party atmosphere.",
-            features: ["Pool Party Setup", "Karaoke & Sound System", "Buffet Area", "Game Zone", "Custom Decorations", "Photography Spots"],
-            price: "₱15,000",
-            venueDesc: "A vibrant poolside setting perfect for lively parties and memorable gatherings.",
             amenities: [
                 { title: "Entertainment", items: ["Pool Access", "Karaoke Setup", "Sound System", "Game Area"] },
                 { title: "Comforts", items: ["Air Conditioning", "Free Wi-Fi", "Charging Stations", "Shower Area"] },
                 { title: "Dining", items: ["Kitchen Access", "Bar Counter", "Dining Sets"] }
+            ],
+            packages: [
+                {
+                    name: "Day Bash",
+                    price: "₱15,000",
+                    duration: "6 Hours",
+                    guests: "Up to 30 pax",
+                    desc: "Daytime poolside party with grill and karaoke.",
+                    inclusions: ["Pool Access", "Karaoke Setup", "BBQ Grill", "Tables & Chairs", "Shower Area"]
+                },
+                {
+                    name: "Full Day",
+                    price: "₱28,000",
+                    duration: "12 Hours",
+                    guests: "Up to 50 pax",
+                    desc: "Extended celebration with hall, pool, and full entertainment.",
+                    inclusions: ["Pool + Hall Access", "Sound + Karaoke", "Game Area", "Buffet Setup", "Custom Decorations Allowed", "Photography Spots"]
+                },
+                {
+                    name: "Overnight",
+                    price: "₱45,000",
+                    duration: "24 Hours",
+                    guests: "Up to 50 pax",
+                    desc: "Day-to-night celebration with accommodation for the inner circle.",
+                    inclusions: ["Full Resort Access", "Pool (Day + Night)", "Function Hall", "Overnight Rooms (10 pax)", "Karaoke + Bar", "BBQ Grill"]
+                }
             ]
         },
         christening: {
@@ -314,13 +360,28 @@ document.addEventListener("DOMContentLoaded", () => {
             label: "— Sacred Moments",
             title: "Christening",
             desc: "Welcome new life in a serene and beautiful setting. Our peaceful gardens and intimate spaces provide the perfect backdrop for christenings and baptismal celebrations.",
-            features: ["Intimate Garden Setup", "Reception Area", "Dining Package Options", "Photo-ready Landscapes", "Guest Parking", "Children-friendly Spaces"],
-            price: "₱12,000",
-            venueDesc: "A peaceful and intimate garden setup ideal for welcoming the newest family member.",
             amenities: [
                 { title: "Layout & Furnishings", items: ["Outdoor Gazebo", "Tables & Chairs", "Garden Seating"] },
                 { title: "Comforts", items: ["Free Wi-Fi", "Air Conditioning", "Children-friendly Spaces"] },
                 { title: "Safety", items: ["24/7 Security", "Secure Parking", "First Aid Kit"] }
+            ],
+            packages: [
+                {
+                    name: "Garden",
+                    price: "₱12,000",
+                    duration: "Half Day",
+                    guests: "Up to 30 pax",
+                    desc: "Intimate outdoor christening with garden seating and gazebo.",
+                    inclusions: ["Outdoor Gazebo", "Garden Seating", "Tables & Chairs", "Photography Spots", "Children-friendly Area"]
+                },
+                {
+                    name: "Garden + Reception",
+                    price: "₱22,000",
+                    duration: "Full Day",
+                    guests: "Up to 50 pax",
+                    desc: "Garden ceremony followed by an indoor reception in the function hall.",
+                    inclusions: ["Outdoor Gazebo", "Function Hall (reception)", "Tables, Chairs, Linens", "Sound System", "Kitchen Access", "Dedicated Coordinator"]
+                }
             ]
         },
         overnight: {
@@ -328,13 +389,36 @@ document.addEventListener("DOMContentLoaded", () => {
             label: "— Private Retreat",
             title: "Overnight Stay",
             desc: "Escape the city and enjoy a peaceful overnight stay with family and friends. Our comfortable accommodations and exclusive access to resort amenities ensure a relaxing getaway.",
-            features: ["Exclusive Resort Access", "Air-conditioned Rooms", "Night Swimming", "Kitchen & Grill Use", "Free Wi-Fi", "Secure Parking"],
-            price: "₱25,000",
-            venueDesc: "A complete private resort experience for families and groups wanting an extended stay.",
             amenities: [
                 { title: "Comforts", items: ["Air-conditioned Rooms", "Clean Restrooms", "Shower Area", "Free Wi-Fi"] },
                 { title: "Entertainment", items: ["Pool Access (Day & Night)", "Karaoke", "Billiards"] },
                 { title: "Kitchen & Dining", items: ["Gas Stove", "Refrigerator", "BBQ Grill", "Dining Tables"] }
+            ],
+            packages: [
+                {
+                    name: "Cozy Suite",
+                    price: "₱15,000",
+                    duration: "Overnight (24 hrs)",
+                    guests: "Up to 4 pax",
+                    desc: "One private air-conditioned room with full resort amenity access.",
+                    inclusions: ["1 AC Room", "Pool Access (Day + Night)", "BBQ Grill", "Kitchen Use", "Free Wi-Fi"]
+                },
+                {
+                    name: "Family Villa",
+                    price: "₱25,000",
+                    duration: "Overnight (24 hrs)",
+                    guests: "Up to 8 pax",
+                    desc: "Three rooms for family or close groups, perfect for weekend getaways.",
+                    inclusions: ["3 AC Rooms", "Pool Access (Day + Night)", "BBQ Grill + Kitchen", "Karaoke", "Billiards", "Free Parking"]
+                },
+                {
+                    name: "Group Getaway",
+                    price: "₱40,000",
+                    duration: "Overnight (24 hrs)",
+                    guests: "Up to 16 pax",
+                    desc: "Full villa exclusivity — best for company retreats and big groups.",
+                    inclusions: ["Full Villa (all rooms)", "Exclusive Resort Use", "Pool (Day + Night)", "Karaoke + Billiards", "Kitchen + BBQ", "Dedicated Caretaker"]
+                }
             ]
         }
     };
@@ -343,6 +427,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalCard = document.getElementById("service-modal-card");
     const modalClose = document.getElementById("service-modal-close");
     const modalBackdrop = document.getElementById("service-modal-backdrop");
+
+    // Helper — remove all child nodes (safer than innerHTML = "")
+    function emptyNode(el) {
+        while (el.firstChild) el.removeChild(el.firstChild);
+    }
+
+    // Render a single package into the sidebar detail area.
+    function renderPackage(pkg) {
+        const priceEl     = document.getElementById("service-modal-price");
+        const venueDescEl = document.getElementById("service-modal-venue-desc");
+        const metaEl      = document.getElementById("service-modal-meta");
+        const inclEl      = document.getElementById("service-modal-inclusions");
+        if (priceEl)     priceEl.textContent = pkg.price;
+        if (venueDescEl) venueDescEl.textContent = pkg.desc;
+        if (metaEl) {
+            emptyNode(metaEl);
+            if (pkg.duration) {
+                const dur = document.createElement("span");
+                dur.textContent = pkg.duration;
+                metaEl.appendChild(dur);
+            }
+            if (pkg.guests) {
+                const g = document.createElement("span");
+                g.textContent = pkg.guests;
+                metaEl.appendChild(g);
+            }
+        }
+        if (inclEl) {
+            emptyNode(inclEl);
+            (pkg.inclusions || []).forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                inclEl.appendChild(li);
+            });
+        }
+    }
 
     function openServiceModal(serviceKey) {
         const data = serviceData[serviceKey];
@@ -354,21 +474,25 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("service-modal-title").textContent = data.title;
         document.getElementById("service-modal-desc").textContent = data.desc;
 
-        // Setup Pricing & Booking side
-        const priceEl = document.getElementById("service-modal-price");
-        const venueDescEl = document.getElementById("service-modal-venue-desc");
-        if (priceEl) priceEl.textContent = data.price;
-        if (venueDescEl) venueDescEl.textContent = data.venueDesc;
-
-        // Features
-        const featuresList = document.getElementById("service-modal-features");
-        if (featuresList) {
-            featuresList.innerHTML = "";
-            data.features.forEach(f => {
-                const li = document.createElement("li");
-                li.textContent = f;
-                featuresList.appendChild(li);
+        // Render package tabs + show first package by default
+        const tabsEl = document.getElementById("service-modal-tabs");
+        const packages = data.packages || [];
+        if (tabsEl) {
+            emptyNode(tabsEl);
+            packages.forEach((pkg, i) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "pkg-tab" + (i === 0 ? " active" : "");
+                btn.setAttribute("role", "tab");
+                btn.textContent = pkg.name;
+                btn.addEventListener("click", function () {
+                    tabsEl.querySelectorAll(".pkg-tab").forEach(t => t.classList.remove("active"));
+                    btn.classList.add("active");
+                    renderPackage(pkg);
+                });
+                tabsEl.appendChild(btn);
             });
+            if (packages[0]) renderPackage(packages[0]);
         }
 
         // Amenities Accordion

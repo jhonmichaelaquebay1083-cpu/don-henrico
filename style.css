@@ -225,7 +225,84 @@ body:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
 
 /* Booking Card */
 .venue-booking-card { background:rgba(50,184,184,0.06); border:1px solid rgba(50,184,184,0.15); border-radius:12px; padding:2rem 1.5rem; }
-.venue-price { display:flex; align-items:baseline; gap:0.3rem; margin-bottom:1.5rem; }
+.venue-price { display:flex; align-items:baseline; gap:0.3rem; margin-bottom:0.75rem; }
+
+/* ── Package tabs (modal sidebar) ── */
+.pkg-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 0.25rem;
+}
+.pkg-tab {
+    flex: 1 1 auto;
+    background: transparent;
+    border: none;
+    padding: 0.55rem 0.6rem;
+    font-family: var(--font-label);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    min-width: 0;
+}
+.pkg-tab:hover { color: #c9a96e; }
+.pkg-tab.active {
+    color: #c9a96e;
+    border-bottom-color: #c9a96e;
+}
+
+/* ── Package detail meta + inclusions ── */
+.pkg-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    margin: 0 0 1rem;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.pkg-meta span {
+    display: inline-flex;
+    align-items: center;
+}
+.pkg-meta span:not(:last-child)::after {
+    content: '·';
+    margin-left: 0.75rem;
+    color: #c9a96e;
+    font-weight: 700;
+}
+.pkg-inclusions {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 1.5rem;
+}
+.pkg-inclusions li {
+    padding: 0.35rem 0;
+    color: var(--text-body);
+    font-size: 0.88rem;
+    line-height: 1.4;
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+}
+.pkg-inclusions li::before {
+    content: '✓';
+    color: #c9a96e;
+    font-weight: 700;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
 .price-from { font-family:var(--font-label); font-size:0.75rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); }
 .price-amount { font-family:var(--font-accent); font-size:2.5rem; font-weight:700; color:var(--text-dark); }
 .price-per { font-family:var(--font-accent); font-size:0.9rem; color:var(--text-muted); }
