@@ -413,6 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.remove("no-scroll");
     }
     window.openServiceModal = openServiceModal;
+    window.closeServiceModal = closeServiceModal;
 
     document.querySelectorAll(".service-card").forEach(card => {
         card.addEventListener("click", () => {
