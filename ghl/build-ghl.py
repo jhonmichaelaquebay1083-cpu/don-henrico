@@ -72,6 +72,22 @@ PAGES = [
     ("about.html",    "about.html",    "page-sub"),
 ]
 
+# CSS injected at the top of the inlined <style> block. Forces the embed to
+# break out of GHL's column container and span the full viewport width.
+# Without this, the content sits inside GHL's max-width section and the host
+# section's background bleeds through on the left/right.
+GHL_BREAKOUT_CSS = """
+/* ── GHL full-bleed breakout ── */
+.dh-embed-root {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    position: relative;
+    overflow-x: hidden;
+}
+"""
+
 
 def strip_document_wrapper(html: str, body_class: str) -> str:
     """Strip <!DOCTYPE>, <html>, <head>, <body> tags.
@@ -100,11 +116,12 @@ def strip_document_wrapper(html: str, body_class: str) -> str:
     head = re.sub(r'<meta\s+name="description"[^>]*>\s*', '', head, flags=re.IGNORECASE)
     head = re.sub(r'<title>.*?</title>\s*', '', head, flags=re.IGNORECASE | re.DOTALL)
 
-    # 5. Wrap body content so class-scoped CSS (e.g. .page-sub .navbar) still
-    #    applies even though we lost the <body class="..."> wrapper.
+    # 5. Wrap body in .dh-embed-root so it breaks out of GHL's column.
+    #    Combine with any per-page body class (e.g. .page-sub) so class-scoped
+    #    CSS still applies even though we lost the <body class="..."> wrapper.
     body = body.strip()
-    if body_class:
-        body = f'<div class="{body_class}">\n{body}\n</div>'
+    classes = " ".join(c for c in ("dh-embed-root", body_class) if c)
+    body = f'<div class="{classes}">\n{body}\n</div>'
 
     # 6. Combine: head leftovers (fonts, GSAP, inline <style>) + body content.
     return f'{head.strip()}\n{body}'
@@ -119,7 +136,8 @@ def main() -> None:
 
         # Inline CSS — replace <link rel="stylesheet" href="style.css">
         # (use a lambda so backslashes in the replacement aren't treated as regex backrefs)
-        css_repl = f"<style>\n{css}\n</style>"
+        # Prepend the GHL breakout CSS so .dh-embed-root rule is defined.
+        css_repl = f"<style>\n{GHL_BREAKOUT_CSS}\n{css}\n</style>"
         html = re.sub(
             r'<link\s+rel="stylesheet"\s+href="style\.css"\s*/?>',
             lambda _m: css_repl,
