@@ -7,11 +7,12 @@
     --text-dark: #1A1A1A;
     --text-body: #221414;
     --text-muted: #7a7a7a;
-    --font-heading: 'EB Garamond', serif;
-    --font-body: 'Work Sans', sans-serif;
-    --font-nav: 'Marcellus', serif;
-    --font-accent: 'Jost', sans-serif;
-    --font-label: 'Red Hat Text', sans-serif;
+    /* Two-family system inspired by emilkowal.ski — editorial serif + clean sans */
+    --font-heading: 'Fraunces', 'Times New Roman', serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-nav:     'Inter', sans-serif;
+    --font-accent:  'Inter', sans-serif;
+    --font-label:   'Inter', sans-serif;
     --gate-color: #1a1d24;
     --overlay-bg: rgba(26,29,36,0.97);
     --edge: clamp(16px, 5%, 80px);
