@@ -726,9 +726,18 @@ body.no-scroll { overflow:hidden; }
 
 .inquiry-modal-body {
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr;       /* mobile: stacked */
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Desktop: form on the left, payment on the right — one unified view */
+@media (min-width: 760px) {
+    .inquiry-modal-body {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 2.5rem;
+    }
 }
 
 .inquiry-block,
@@ -740,7 +749,7 @@ body.no-scroll { overflow:hidden; }
     font-family: var(--font-heading);
     font-size: clamp(1.2rem, 2.6vw, 1.5rem);
     color: var(--text-dark);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     font-weight: 700;
 }
 .payment-block-text {
