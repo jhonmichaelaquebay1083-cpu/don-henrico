@@ -1130,11 +1130,11 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
 <div class="dh-embed-root page-sub">
 <!-- ═══ NAVBAR ═══ -->
     <header class="navbar scrolled" id="navbar">
-        <a href="/" class="logo">DON<br>HENRICO<br>RESORT</a>
+        <a href="/home-page-372535" class="logo">DON<br>HENRICO<br>RESORT</a>
         <nav class="desktop-nav">
-            <a href="/">Home</a>
+            <a href="/home-page-372535">Home</a>
             <a href="/services-page">Services</a>
-            <a href="/about-us" class="nav-active">About Us</a>
+            <a href="/about-page" class="nav-active">About Us</a>
         </nav>
         <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
             <span></span>
@@ -1147,9 +1147,9 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
         <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">✕</button>
         <nav class="nav-overlay-links">
-            <a href="/" class="nav-overlay-link">Home</a>
+            <a href="/home-page-372535" class="nav-overlay-link">Home</a>
             <a href="/services-page" class="nav-overlay-link">Services</a>
-            <a href="/about-us" class="nav-overlay-link">About Us</a>
+            <a href="/about-page" class="nav-overlay-link">About Us</a>
         </nav>
     </div>
 
@@ -1247,8 +1247,8 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
             </div>
             <div class="footer-links" style="flex: 1;">
                 <h4>Quick Links</h4>
-                <a href="/">Home</a>
-                <a href="/about-us">About Us</a>
+                <a href="/home-page-372535">Home</a>
+                <a href="/about-page">About Us</a>
                 <a href="/services-page">Services</a>
             </div>
             <div class="footer-contact" style="flex: 1;">
@@ -1269,6 +1269,33 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
 // ── dh-embed-root scope shim ──
 // Body class manipulations target the wrapper instead of GHL's <body>.
 var __dhEmbedRoot = document.querySelector('.dh-embed-root') || document.body;
+
+// ── GHL preview mode link rewriter ──
+// In GHL preview, URLs look like /preview/<site-id>/<page-slug>. Absolute hrefs
+// like /services-page break because they drop the preview prefix. This snippet
+// detects the preview prefix from the current URL and prepends it to every
+// internal absolute link. On the published site the prefix isn't present, so
+// links pass through unchanged.
+(function () {
+    function rewriteLinks() {
+        var match = window.location.pathname.match(/^\/preview\/[^\/]+/);
+        if (!match) return;
+        var prefix = match[0];
+        var links = document.querySelectorAll('a[href^="/"]');
+        for (var i = 0; i < links.length; i++) {
+            var href = links[i].getAttribute('href');
+            if (!href || href.indexOf(prefix) === 0) continue;
+            if (href.charAt(1) === '#' || href.charAt(0) === '#') continue;
+            if (href === '/') { links[i].setAttribute('href', prefix); }
+            else { links[i].setAttribute('href', prefix + href); }
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', rewriteLinks);
+    } else {
+        rewriteLinks();
+    }
+}());
 
 gsap.registerPlugin(ScrollTrigger);
 

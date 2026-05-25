@@ -80,9 +80,9 @@ PAGES = [
 #   "services.html": "/services-page",
 #   "about.html":    "/about-us",
 PAGE_URL_MAP = {
-    "index.html":    "/",
+    "index.html":    "/home-page-372535",
     "services.html": "/services-page",
-    "about.html":    "/about-us",
+    "about.html":    "/about-page",
 }
 
 # CSS injected at the top of the inlined <style> block. Forces the embed to
@@ -106,10 +106,41 @@ GHL_BREAKOUT_CSS = """
 
 # JS shim prepended to the inlined script. Body manipulations (class adds for
 # scroll-lock, subpage detection) need to target the wrapper, not GHL's <body>.
+# Also auto-detects GHL preview mode (/preview/<site-id>/...) and rewrites
+# every absolute /slug link to /preview/<site-id>/slug so navigation works
+# without publishing. When the site is published, the prefix isn't there and
+# the links resolve normally.
 JS_EMBED_ROOT_PRELUDE = """
 // ── dh-embed-root scope shim ──
 // Body class manipulations target the wrapper instead of GHL's <body>.
 var __dhEmbedRoot = document.querySelector('.dh-embed-root') || document.body;
+
+// ── GHL preview mode link rewriter ──
+// In GHL preview, URLs look like /preview/<site-id>/<page-slug>. Absolute hrefs
+// like /services-page break because they drop the preview prefix. This snippet
+// detects the preview prefix from the current URL and prepends it to every
+// internal absolute link. On the published site the prefix isn't present, so
+// links pass through unchanged.
+(function () {
+    function rewriteLinks() {
+        var match = window.location.pathname.match(/^\\/preview\\/[^\\/]+/);
+        if (!match) return;
+        var prefix = match[0];
+        var links = document.querySelectorAll('a[href^="/"]');
+        for (var i = 0; i < links.length; i++) {
+            var href = links[i].getAttribute('href');
+            if (!href || href.indexOf(prefix) === 0) continue;
+            if (href.charAt(1) === '#' || href.charAt(0) === '#') continue;
+            if (href === '/') { links[i].setAttribute('href', prefix); }
+            else { links[i].setAttribute('href', prefix + href); }
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', rewriteLinks);
+    } else {
+        rewriteLinks();
+    }
+}());
 """
 
 
