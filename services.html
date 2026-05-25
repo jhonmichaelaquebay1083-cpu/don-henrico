@@ -188,16 +188,42 @@
                                 <h3 class="inquiry-block-heading">Inquiry Form</h3>
 
                                 <div class="inquiry-form-wrapper">
-                                    <!-- TODO: Replace this placeholder with your GHL form iframe.
-                                         Example:
-                                         <iframe src="https://api.leadconnectorhq.com/widget/form/FORM_ID"
-                                                 width="100%" height="600" frameborder="0"
-                                                 style="border:none;"></iframe>
-                                    -->
-                                    <div class="form-placeholder">
-                                        <span class="placeholder-icon">📋</span>
-                                        <p class="placeholder-title">GHL Form Embed Here</p>
-                                        <p class="placeholder-note">Swap this block for your &lt;iframe&gt;</p>
+                                    <form class="inquiry-form" id="inquiry-form" novalidate>
+                                        <div class="form-row">
+                                            <label for="inq-name">Full Name</label>
+                                            <input type="text" id="inq-name" name="name" required placeholder="Juan Dela Cruz" autocomplete="name">
+                                        </div>
+
+                                        <div class="form-row">
+                                            <label for="inq-phone">Phone Number</label>
+                                            <input type="tel" id="inq-phone" name="phone" required placeholder="0917 123 4567" autocomplete="tel">
+                                        </div>
+
+                                        <div class="form-row">
+                                            <label for="inq-date">Arrival Date</label>
+                                            <input type="date" id="inq-date" name="date" required>
+                                        </div>
+
+                                        <div class="form-row form-row-split">
+                                            <div>
+                                                <label for="inq-adults">Adults (8 yrs &amp; above)</label>
+                                                <input type="number" id="inq-adults" name="adults" min="1" value="1" required>
+                                            </div>
+                                            <div>
+                                                <label for="inq-children">Children (under 7)</label>
+                                                <input type="number" id="inq-children" name="children" min="0" value="0">
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="form-submit-btn">Submit Inquiry</button>
+                                    </form>
+
+                                    <!-- Success state, hidden until form submits -->
+                                    <div class="form-success" id="form-success" hidden>
+                                        <div class="success-icon">✓</div>
+                                        <h4>Thank you!</h4>
+                                        <p>Your inquiry has been received. Our team will get back to you within 24 hours.</p>
+                                        <p class="success-note">Please proceed to Step 2 below to send your deposit.</p>
                                     </div>
                                 </div>
                             </div>
@@ -209,12 +235,7 @@
                                 <p class="payment-block-text">Scan the QR code to send your deposit. Reply with a screenshot of your payment proof to confirm your booking.</p>
 
                                 <div class="payment-qr-wrapper">
-                                    <!-- TODO: Replace .qr-placeholder with the actual GCash QR image.
-                                         Example: <img src="assets/gcash-qr.png" alt="GCash QR" class="qr-image">
-                                    -->
-                                    <div class="qr-placeholder">
-                                        <div class="qr-mock">QR CODE<br>HERE</div>
-                                    </div>
+                                    <img src="assets/gcash-qr.png" alt="Don Henrico GCash QR" class="qr-image">
                                     <div class="payment-info">
                                         <p class="payment-account">Account: <strong>Don Henrico Resort</strong></p>
                                         <p class="payment-number">0935 260 4955</p>

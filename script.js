@@ -444,6 +444,52 @@ document.addEventListener("DOMContentLoaded", () => {
     window.showInquiryView = showInquiryView;
     window.showDetailsView = showDetailsView;
 
+    // ─── Inquiry form submission ───
+    var inquiryForm    = document.getElementById('inquiry-form');
+    var formSuccess    = document.getElementById('form-success');
+    if (inquiryForm && formSuccess) {
+        inquiryForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!inquiryForm.checkValidity()) {
+                inquiryForm.reportValidity();
+                return;
+            }
+            // Build payload (for future hook-up to email / backend / CRM)
+            var data = {
+                name:     inquiryForm.elements['name'].value.trim(),
+                phone:    inquiryForm.elements['phone'].value.trim(),
+                date:     inquiryForm.elements['date'].value,
+                adults:   inquiryForm.elements['adults'].value,
+                children: inquiryForm.elements['children'].value,
+                service:  document.getElementById('service-modal-title')
+                            ? document.getElementById('service-modal-title').textContent : ''
+            };
+            // Replace this log with a fetch() to your backend or CRM later
+            console.log('Inquiry submitted:', data);
+
+            // Swap form → success state
+            inquiryForm.hidden = true;
+            formSuccess.hidden = false;
+
+            // Scroll modal so the payment block is visible next
+            setTimeout(function () {
+                var paymentBlock = document.querySelector('.payment-block');
+                if (paymentBlock && paymentBlock.scrollIntoView) {
+                    paymentBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        });
+
+        // Reset form when modal closes so a fresh inquiry can be started next time
+        var origCloseFn = window.closeServiceModal;
+        window.closeServiceModal = function () {
+            origCloseFn();
+            inquiryForm.hidden = false;
+            formSuccess.hidden = true;
+            inquiryForm.reset();
+        };
+    }
+
     document.querySelectorAll(".service-card").forEach(card => {
         card.addEventListener("click", () => {
             openServiceModal(card.dataset.service);
