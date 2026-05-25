@@ -72,6 +72,19 @@ PAGES = [
     ("about.html",    "about.html",    "page-sub"),
 ]
 
+# Internal page links — set each to the matching GHL page URL/slug.
+# These get swapped in the navbar, overlay menu, footer, and CTA buttons
+# across all 3 generated files. Anchor hashes (e.g. "#contact") are preserved.
+# Examples:
+#   "index.html":    "/",               # GHL home page
+#   "services.html": "/services-page",
+#   "about.html":    "/about-us",
+PAGE_URL_MAP = {
+    "index.html":    "/",
+    "services.html": "/services-page",
+    "about.html":    "/about-us",
+}
+
 # CSS injected at the top of the inlined <style> block. Forces the embed to
 # break out of GHL's column container and span the full viewport width.
 # Without this, the content sits inside GHL's max-width section and the host
@@ -213,6 +226,19 @@ def main() -> None:
                 lambda m: f'{m.group("attr")}="{ASSET_BASE}',
                 html,
             )
+
+        # Rewrite internal page links (index.html / services.html / about.html)
+        # to the matching GHL slug. Anchor hashes are preserved:
+        #   href="index.html#contact" → href="/#contact"
+        for source_page, ghl_url in PAGE_URL_MAP.items():
+            # href="page.html#anchor"
+            html = re.sub(
+                rf'href="{re.escape(source_page)}#([^"]+)"',
+                lambda m, u=ghl_url: f'href="{u.rstrip("/")}/#{m.group(1)}"' if u != "/" else f'href="/#{m.group(1)}"',
+                html,
+            )
+            # href="page.html"
+            html = html.replace(f'href="{source_page}"', f'href="{ghl_url}"')
 
         # 3. Strip document wrappers so the result drops cleanly into GHL.
         html = strip_document_wrapper(html, body_class)
