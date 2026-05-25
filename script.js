@@ -412,83 +412,29 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("no-scroll");
     }
-    // View switching inside the service modal (details ↔ inquiry+payment)
-    function showInquiryView() {
-        var details = document.getElementById('modal-view-details');
-        var inquiry = document.getElementById('modal-view-inquiry');
-        if (!details || !inquiry) return;
-        details.classList.remove('modal-view-active');
-        inquiry.classList.add('modal-view-active');
+    // View switching inside the service modal (details → form → payment → thanks)
+    function showView(viewId) {
+        var views = document.querySelectorAll('.modal-view');
+        views.forEach(function (v) { v.classList.remove('modal-view-active'); });
+        var target = document.getElementById(viewId);
+        if (target) target.classList.add('modal-view-active');
         if (modalCard) modalCard.scrollTop = 0;
     }
-    function showDetailsView() {
-        var details = document.getElementById('modal-view-details');
-        var inquiry = document.getElementById('modal-view-inquiry');
-        if (!details || !inquiry) return;
-        inquiry.classList.remove('modal-view-active');
-        details.classList.add('modal-view-active');
-        if (modalCard) modalCard.scrollTop = 0;
-    }
+    function showDetailsView()      { showView('modal-view-details'); }
+    function showInquiryFormView()  { showView('modal-view-form'); }
+    function showPaymentView()      { showView('modal-view-payment'); }
+    function showThanksView()       { showView('modal-view-thanks'); }
 
     // Reset the modal to the details view every time it opens / closes
-    function resetModalView() {
-        var details = document.getElementById('modal-view-details');
-        var inquiry = document.getElementById('modal-view-inquiry');
-        if (!details || !inquiry) return;
-        details.classList.add('modal-view-active');
-        inquiry.classList.remove('modal-view-active');
-    }
+    function resetModalView() { showView('modal-view-details'); }
 
-    window.openServiceModal = function (k) { resetModalView(); openServiceModal(k); };
-    window.closeServiceModal = function () { closeServiceModal(); resetModalView(); };
-    window.showInquiryView = showInquiryView;
-    window.showDetailsView = showDetailsView;
-
-    // ─── Inquiry form submission ───
-    var inquiryForm    = document.getElementById('inquiry-form');
-    var formSuccess    = document.getElementById('form-success');
-    if (inquiryForm && formSuccess) {
-        inquiryForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (!inquiryForm.checkValidity()) {
-                inquiryForm.reportValidity();
-                return;
-            }
-            // Build payload (for future hook-up to email / backend / CRM)
-            var data = {
-                name:     inquiryForm.elements['name'].value.trim(),
-                phone:    inquiryForm.elements['phone'].value.trim(),
-                date:     inquiryForm.elements['date'].value,
-                adults:   inquiryForm.elements['adults'].value,
-                children: inquiryForm.elements['children'].value,
-                service:  document.getElementById('service-modal-title')
-                            ? document.getElementById('service-modal-title').textContent : ''
-            };
-            // Replace this log with a fetch() to your backend or CRM later
-            console.log('Inquiry submitted:', data);
-
-            // Swap form → success state
-            inquiryForm.hidden = true;
-            formSuccess.hidden = false;
-
-            // Scroll modal so the payment block is visible next
-            setTimeout(function () {
-                var paymentBlock = document.querySelector('.payment-block');
-                if (paymentBlock && paymentBlock.scrollIntoView) {
-                    paymentBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100);
-        });
-
-        // Reset form when modal closes so a fresh inquiry can be started next time
-        var origCloseFn = window.closeServiceModal;
-        window.closeServiceModal = function () {
-            origCloseFn();
-            inquiryForm.hidden = false;
-            formSuccess.hidden = true;
-            inquiryForm.reset();
-        };
-    }
+    window.openServiceModal     = function (k) { resetModalView(); openServiceModal(k); };
+    window.closeServiceModal    = function () { closeServiceModal(); resetModalView(); };
+    window.showDetailsView      = showDetailsView;
+    window.showInquiryView      = showInquiryFormView;   // back-compat: button still calls showInquiryView()
+    window.showInquiryFormView  = showInquiryFormView;
+    window.showPaymentView      = showPaymentView;
+    window.showThanksView       = showThanksView;
 
     document.querySelectorAll(".service-card").forEach(card => {
         card.addEventListener("click", () => {

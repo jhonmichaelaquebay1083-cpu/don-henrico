@@ -171,76 +171,70 @@
                         </div>
                     </div>
 
-                    <!-- ── VIEW 2: Inquiry form + GCash QR (hidden by default) ── -->
-                    <div class="modal-view" id="modal-view-inquiry">
+                    <!-- ── VIEW 2: GHL inquiry form (iframe) ── -->
+                    <div class="modal-view" id="modal-view-form">
                         <div class="inquiry-modal-header">
-                            <button class="modal-back-btn" type="button" onclick="showDetailsView()" aria-label="Back to details">
-                                ← Back
-                            </button>
-                            <h2 class="inquiry-modal-title">Send Inquiry</h2>
-                            <p class="inquiry-modal-sub">Fill the form, then send your deposit via GCash.</p>
+                            <button class="modal-back-btn" type="button" onclick="showDetailsView()" aria-label="Back to details">← Back</button>
+                            <h2 class="inquiry-modal-title">Send Your Inquiry</h2>
+                            <p class="inquiry-modal-sub">Fill out the form below — we'll get back to you within 24 hours.</p>
                         </div>
-
-                        <div class="inquiry-modal-body">
-                            <!-- ── INQUIRY FORM BLOCK ── -->
-                            <div class="inquiry-block">
-                                <h3 class="inquiry-block-heading">Your Details</h3>
-
-                                <div class="inquiry-form-wrapper">
-                                    <form class="inquiry-form" id="inquiry-form" novalidate>
-                                        <div class="form-row">
-                                            <label for="inq-name">Full Name</label>
-                                            <input type="text" id="inq-name" name="name" required placeholder="Juan Dela Cruz" autocomplete="name">
-                                        </div>
-
-                                        <div class="form-row">
-                                            <label for="inq-phone">Phone Number</label>
-                                            <input type="tel" id="inq-phone" name="phone" required placeholder="0917 123 4567" autocomplete="tel">
-                                        </div>
-
-                                        <div class="form-row">
-                                            <label for="inq-date">Arrival Date</label>
-                                            <input type="date" id="inq-date" name="date" required>
-                                        </div>
-
-                                        <div class="form-row form-row-split">
-                                            <div>
-                                                <label for="inq-adults">Adults (8 yrs &amp; above)</label>
-                                                <input type="number" id="inq-adults" name="adults" min="1" value="1" required>
-                                            </div>
-                                            <div>
-                                                <label for="inq-children">Children (under 7)</label>
-                                                <input type="number" id="inq-children" name="children" min="0" value="0">
-                                            </div>
-                                        </div>
-
-                                        <button type="submit" class="form-submit-btn">Submit Inquiry</button>
-                                    </form>
-
-                                    <!-- Success state, hidden until form submits -->
-                                    <div class="form-success" id="form-success" hidden>
-                                        <div class="success-icon">✓</div>
-                                        <h4>Thank you!</h4>
-                                        <p>Your inquiry has been received. Our team will get back to you within 24 hours.</p>
-                                    </div>
-                                </div>
+                        <div class="step-modal-body">
+                            <div class="iframe-wrapper">
+                                <iframe src="https://api.leadconnectorhq.com/widget/form/n1a7Wa3qYWQpgbtksKTg"
+                                    style="width:100%;height:100%;border:none;border-radius:8px"
+                                    id="inline-n1a7Wa3qYWQpgbtksKTg"
+                                    data-layout="{'id':'INLINE'}"
+                                    data-trigger-type="alwaysShow"
+                                    data-trigger-value=""
+                                    data-activation-type="alwaysActivated"
+                                    data-activation-value=""
+                                    data-deactivation-type="neverDeactivate"
+                                    data-deactivation-value=""
+                                    data-form-name="Form 15"
+                                    data-height="434"
+                                    data-layout-iframe-id="inline-n1a7Wa3qYWQpgbtksKTg"
+                                    data-form-id="n1a7Wa3qYWQpgbtksKTg"
+                                    title="Form 15"></iframe>
                             </div>
+                            <button type="button" class="form-submit-btn" onclick="showPaymentView()">
+                                Continue to Payment →
+                            </button>
+                        </div>
+                    </div>
 
-                            <!-- ── PAYMENT BLOCK ── -->
+                    <!-- ── VIEW 3: GCash payment ── -->
+                    <div class="modal-view" id="modal-view-payment">
+                        <div class="inquiry-modal-header">
+                            <button class="modal-back-btn" type="button" onclick="showInquiryFormView()" aria-label="Back to form">← Back</button>
+                            <h2 class="inquiry-modal-title">Pay via GCash</h2>
+                            <p class="inquiry-modal-sub">Scan the QR to send your deposit. Save your payment screenshot — our team will ask for it.</p>
+                        </div>
+                        <div class="step-modal-body">
                             <div class="payment-block">
-                                <h3 class="payment-block-heading">Pay via GCash</h3>
-                                <p class="payment-block-text">Scan the QR to send your deposit, then submit the form with a screenshot of your payment proof.</p>
-
                                 <div class="payment-qr-wrapper">
                                     <img src="assets/gcash-qr.png" alt="Don Henrico GCash QR" class="qr-image">
                                     <div class="payment-info">
                                         <p class="payment-account">Account: <strong>Don Henrico Resort</strong></p>
                                         <p class="payment-number">0935 260 4955</p>
                                     </div>
-                                </div><!-- /.payment-qr-wrapper -->
-                            </div><!-- /.payment-block -->
-                        </div><!-- /.inquiry-modal-body -->
-                    </div><!-- /#modal-view-inquiry -->
+                                </div>
+                            </div>
+                            <button type="button" class="form-submit-btn" onclick="showThanksView()">
+                                I've Sent My Payment →
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ── VIEW 4: Thank you ── -->
+                    <div class="modal-view" id="modal-view-thanks">
+                        <div class="thank-you-wrapper">
+                            <div class="success-icon big">✓</div>
+                            <h2 class="thank-you-heading">Thank You!</h2>
+                            <p class="thank-you-text">Your inquiry and payment have been received. Our team will confirm your booking shortly.</p>
+                            <p class="thank-you-note">Please keep your payment screenshot ready in case our team requests it.</p>
+                            <button type="button" class="form-submit-btn" onclick="closeServiceModal()">Done</button>
+                        </div>
+                    </div>
                 </div><!-- /.service-modal-card -->
             </div><!-- /.service-modal -->
 
@@ -278,6 +272,8 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- GHL form embed helper (auto-resizes the iframe) -->
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 
 </html>

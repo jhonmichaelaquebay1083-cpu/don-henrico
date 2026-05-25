@@ -724,21 +724,70 @@ body.no-scroll { overflow:hidden; }
     line-height: 1.5;
 }
 
-.inquiry-modal-body {
+/* Single-column body used by the form, payment, and thanks views */
+.step-modal-body {
     padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;       /* mobile: stacked */
-    gap: 2rem;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
 }
 
-/* Desktop: form on the left, payment on the right — one unified view */
-@media (min-width: 760px) {
-    .inquiry-modal-body {
-        grid-template-columns: 1.3fr 1fr;
-        gap: 2.5rem;
-    }
+/* GHL iframe wrapper — fixed min-height so the form is comfortably visible */
+.iframe-wrapper {
+    width: 100%;
+    min-height: 520px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fafafa;
 }
+.iframe-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 520px;
+    border: none;
+    border-radius: 8px;
+}
+@media (max-width: 640px) {
+    .iframe-wrapper, .iframe-wrapper iframe { min-height: 600px; height: 600px; }
+}
+
+/* Thank-you screen */
+.thank-you-wrapper {
+    padding: 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.thank-you-wrapper .success-icon.big {
+    width: 80px;
+    height: 80px;
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+}
+.thank-you-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--text-dark);
+    font-weight: 800;
+    line-height: 1.2;
+}
+.thank-you-text {
+    color: var(--text-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 460px;
+}
+.thank-you-note {
+    color: #c9a96e;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    max-width: 460px;
+}
+.thank-you-wrapper .form-submit-btn { margin-top: 1.5rem; min-width: 200px; }
 
 .inquiry-block,
 .payment-block {
