@@ -24,7 +24,6 @@
         <nav class="desktop-nav">
             <a href="index.html">Home</a>
             <a href="services.html" class="nav-active">Services</a>
-            <a href="index.html#contact">Contact</a>
             <a href="about.html">About Us</a>
         </nav>
         <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
@@ -40,7 +39,6 @@
         <nav class="nav-overlay-links">
             <a href="index.html" class="nav-overlay-link">Home</a>
             <a href="services.html" class="nav-overlay-link">Services</a>
-            <a href="index.html#contact" class="nav-overlay-link">Contact</a>
             <a href="about.html" class="nav-overlay-link">About Us</a>
         </nav>
     </div>
@@ -63,8 +61,10 @@
             <!-- ═══ SERVICES GRID ═══ -->
             <section class="services-section deco-section" id="services-content">
                 <!-- Diagonal greenery (parallax) -->
-                <img src="assets/leaf-right.png" alt="" class="deco-greenery-side deco-greenery-tr parallax-slow" aria-hidden="true">
-                <img src="assets/leaf-left.png"  alt="" class="deco-greenery-side deco-greenery-bl parallax-slow" aria-hidden="true">
+                <img src="assets/leaf-right.png" alt="" class="deco-greenery-side deco-greenery-tr parallax-slow"
+                    aria-hidden="true">
+                <img src="assets/leaf-left.png" alt="" class="deco-greenery-side deco-greenery-bl parallax-slow"
+                    aria-hidden="true">
 
                 <div class="services-inner" style="padding-top: 1rem;">
                     <div style="text-align:center;">
@@ -158,14 +158,73 @@
                                         <span class="price-amount" id="service-modal-price">₱0</span>
                                     </div>
                                     <p class="venue-desc" id="service-modal-venue-desc"></p>
-                                    <a href="https://www.facebook.com/donhresort" target="_blank"
-                                        class="btn booking-submit">Send Inquiry</a>
+                                    <button type="button" class="btn booking-submit"
+                                        onclick="closeServiceModal(); setTimeout(function(){document.getElementById('inquiry').scrollIntoView({behavior:'smooth'});}, 250);">
+                                        Send Inquiry
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- ═══ INQUIRY FORM — placeholder for GHL iframe ═══ -->
+            <section class="inquiry-section deco-section" id="inquiry">
+                <!-- Diagonal greenery (parallax) -->
+                <img src="assets/leaf-right.png" alt="" class="deco-greenery-side deco-greenery-tr parallax-slow" aria-hidden="true">
+                <img src="assets/leaf-left.png"  alt="" class="deco-greenery-side deco-greenery-bl parallax-slow" aria-hidden="true">
+
+                <div class="inquiry-inner">
+                    <div style="text-align:center;">
+                        <span class="eyebrow-line">— Get in Touch —</span>
+                    </div>
+                    <h2 class="inquiry-heading">Send Us an Inquiry</h2>
+                    <p class="inquiry-subtitle">Fill out the form below and our team will get back to you within 24 hours.</p>
+
+                    <div class="inquiry-form-wrapper">
+                        <!-- TODO: Replace this placeholder with the GHL form iframe.
+                             Example: <iframe src="https://api.leadconnectorhq.com/widget/form/FORM_ID"
+                                              width="100%" height="600" frameborder="0"
+                                              style="border:none;"></iframe>
+                        -->
+                        <div class="form-placeholder">
+                            <span class="placeholder-icon">📋</span>
+                            <p class="placeholder-title">GHL Form Embed Here</p>
+                            <p class="placeholder-note">Swap this block for your &lt;iframe&gt;</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══ PAYMENT — GCash QR placeholder ═══ -->
+            <section class="payment-section deco-section deco-marble" id="payment">
+                <span class="deco-corner deco-corner-tl"></span>
+                <span class="deco-corner deco-corner-tr"></span>
+                <span class="deco-corner deco-corner-bl"></span>
+                <span class="deco-corner deco-corner-br"></span>
+
+                <div class="payment-inner">
+                    <div style="text-align:center;">
+                        <span class="eyebrow-line">— Secure Your Booking —</span>
+                    </div>
+                    <h2 class="payment-heading">Pay via GCash</h2>
+                    <p class="payment-subtitle">Scan the QR code below to make your deposit. Send a screenshot of your payment proof to confirm your booking.</p>
+
+                    <div class="payment-qr-wrapper">
+                        <!-- TODO: Replace .qr-placeholder with the actual GCash QR image.
+                             Example: <img src="assets/gcash-qr.png" alt="GCash QR" class="qr-image">
+                        -->
+                        <div class="qr-placeholder">
+                            <div class="qr-mock">QR CODE<br>HERE</div>
+                        </div>
+                        <div class="payment-info">
+                            <p class="payment-account">Account Name: <strong>Don Henrico Resort</strong></p>
+                            <p class="payment-number">0935 260 4955</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </main>
     </div>
@@ -186,7 +245,6 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
-                <a href="index.html#contact">Contact Us</a>
             </div>
             <div class="footer-contact" style="flex: 1;">
                 <h4>Connect</h4>

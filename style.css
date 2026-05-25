@@ -675,6 +675,167 @@ body.no-scroll { overflow:hidden; }
     .welcome-text .eyebrow-line { justify-content: center; }
 }
 
+/* ══════════════════════════════════
+   INQUIRY SECTION — placeholder for GHL iframe
+   ══════════════════════════════════ */
+.inquiry-section {
+    padding: 5rem 0;
+    background: #fff;
+}
+.inquiry-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--edge);
+    text-align: center;
+}
+.inquiry-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+.inquiry-subtitle {
+    color: var(--text-body);
+    font-size: clamp(0.92rem, 2vw, 1.05rem);
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+.inquiry-form-wrapper {
+    background: #fafafa;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 3rem 1.5rem;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* The placeholder block — remove this entire div when the GHL iframe is dropped in */
+.form-placeholder {
+    text-align: center;
+    color: #888;
+    font-family: var(--font-body);
+}
+.form-placeholder .placeholder-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+.form-placeholder .placeholder-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+.form-placeholder .placeholder-note {
+    font-size: 0.78rem;
+    font-family: 'Courier New', monospace;
+    color: #a5a5a5;
+    margin-top: 1rem;
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+    border: 1px dashed #ddd;
+}
+
+/* ══════════════════════════════════
+   PAYMENT SECTION — placeholder for GCash QR
+   ══════════════════════════════════ */
+.payment-section {
+    padding: 5rem 0;
+}
+.payment-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--edge);
+    text-align: center;
+}
+.payment-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+.payment-subtitle {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+.payment-qr-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+/* The QR placeholder — replace with <img class="qr-image"> later */
+.qr-placeholder {
+    width: 240px;
+    height: 240px;
+    background: #fff;
+    border: 2px dashed #c9a96e;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.qr-mock {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(26, 29, 36, 0.04);
+    background-image:
+        linear-gradient(45deg, #1a1d24 25%, transparent 25%, transparent 75%, #1a1d24 75%),
+        linear-gradient(45deg, #1a1d24 25%, transparent 25%, transparent 75%, #1a1d24 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c9a96e;
+    font-family: var(--font-label);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.4;
+    text-shadow: 0 0 6px rgba(255,255,255,0.9);
+}
+/* When the real QR drops in, use: <img src="..." alt="GCash QR" class="qr-image"> */
+.qr-image {
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.payment-info {
+    text-align: center;
+}
+.payment-account {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+.payment-account strong {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+.payment-number {
+    color: #c9a96e;
+    font-size: 1.15rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    font-family: var(--font-accent);
+}
+
 /* Responsive — shrink other decorations on smaller screens (greenery handled above) */
 @media (max-width: 768px) {
     .deco-corner { width: 36px; height: 36px; }
