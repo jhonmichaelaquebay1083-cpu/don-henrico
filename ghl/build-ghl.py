@@ -39,43 +39,82 @@ ASSET_BASE = "assets/"
 #
 ASSET_MAP = {
     # Logo/decorative
-    "assets/leaf-left.png":   "",
-    "assets/leaf-right.png":  "",
-    "assets/gcash-qr.png":    "",
+    "assets/leaf-left.png":   "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a149952e05851175c8067fd.png",
+    "assets/leaf-right.png":  "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499537c135509c88772b1.png",
+    "assets/gcash-qr.png":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994e1f1059c428fb1a7d.jpg",
 
     # Home page
-    "assets/video.mp4":       "",
-    "assets/Group 12.png":    "",
-    "assets/bday.jpg":        "",
-    "assets/debut.jpg":       "",
-    "assets/wedding.jpg":     "",
-    "assets/gallery1.jpg":    "",
-    "assets/gallery2.jpg":    "",
-    "assets/gallery3.jpg":    "",
-    "assets/gallery4.jpg":    "",
-    "assets/gallery 5.jpg":   "",
-    "assets/gallery6.jpg":    "",
-    "assets/gallery7.jpg":    "",
-    "assets/gallery8.jpg":    "",
-    "assets/gallery9.jpg":    "",
-    "assets/gallery10.jpg":   "",
+    "assets/video.mp4":       "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499534c82f7be921c2bca.mp4",
+    "assets/Group 12.png":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994fe05851175c80679d.png",
+    "assets/bday.jpg":        "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487e7c5a2f715a4490.jpg",
+    "assets/debut.jpg":       "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487c135509c88771c5.jpg",
+    "assets/wedding.jpg":     "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499533c3aed7c63c1cadc.jpg",
+    "assets/gallery1.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994be05851175c806745.jpg",
+    "assets/gallery2.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994b3c3aed7c63c1ca4f.jpg",
+    "assets/gallery3.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994b9b6d07a704ae3113.jpg",
+    "assets/gallery4.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994b4c82f7be921c2b1c.jpg",
+    "assets/gallery 5.jpg":   "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487c135509c88771c6.jpg",
+    "assets/gallery6.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994ce05851175c80675b.jpg",
+    "assets/gallery7.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994d4c82f7be921c2b38.jpg",
+    "assets/gallery8.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994ee05851175c80677b.jpg",
+    "assets/gallery9.jpg":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994e4c82f7be921c2b58.jpg",
+    "assets/gallery10.jpg":   "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994b9b6d07a704ae3111.jpg",
 
     # About page
-    "assets/image 6.png":     "",
-    "assets/image 2.png":     "",
+    "assets/image 6.png":     "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499517c135509c8877286.png",
+    "assets/image 2.png":     "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499507e7c5a2f715a4544.png",
 }
 
 PAGES = [
-    ("index.html",    "home.html"),
-    ("services.html", "services.html"),
-    ("about.html",    "about.html"),
+    # (source filename, output filename, optional body wrapper class)
+    ("index.html",    "home.html",     ""),
+    ("services.html", "services.html", "page-sub"),
+    ("about.html",    "about.html",    "page-sub"),
 ]
+
+
+def strip_document_wrapper(html: str, body_class: str) -> str:
+    """Strip <!DOCTYPE>, <html>, <head>, <body> tags.
+
+    GHL custom HTML elements live inside their own page, so duplicate
+    document wrappers cause conflicts. We keep everything that was inside
+    <head> AND <body>, concatenated, and (for sub-pages) wrap the body in
+    a <div> with the original body class so the .page-sub CSS still scopes
+    correctly.
+    """
+    # 1. Drop the doctype.
+    html = re.sub(r'<!DOCTYPE[^>]*>\s*', '', html, flags=re.IGNORECASE)
+
+    # 2. Pull out everything between <head>...</head>.
+    head_match = re.search(r'<head[^>]*>(.*?)</head>', html, flags=re.DOTALL | re.IGNORECASE)
+    head = head_match.group(1) if head_match else ''
+
+    # 3. Pull out everything between <body>...</body>.
+    body_match = re.search(r'<body[^>]*>(.*?)</body>', html, flags=re.DOTALL | re.IGNORECASE)
+    body = body_match.group(1) if body_match else ''
+
+    # 4. Strip head contents that GHL provides on its own page and
+    #    that can collide with the host doc.
+    head = re.sub(r'<meta\s+charset[^>]*>\s*', '', head, flags=re.IGNORECASE)
+    head = re.sub(r'<meta\s+name="viewport"[^>]*>\s*', '', head, flags=re.IGNORECASE)
+    head = re.sub(r'<meta\s+name="description"[^>]*>\s*', '', head, flags=re.IGNORECASE)
+    head = re.sub(r'<title>.*?</title>\s*', '', head, flags=re.IGNORECASE | re.DOTALL)
+
+    # 5. Wrap body content so class-scoped CSS (e.g. .page-sub .navbar) still
+    #    applies even though we lost the <body class="..."> wrapper.
+    body = body.strip()
+    if body_class:
+        body = f'<div class="{body_class}">\n{body}\n</div>'
+
+    # 6. Combine: head leftovers (fonts, GSAP, inline <style>) + body content.
+    return f'{head.strip()}\n{body}'
+
 
 def main() -> None:
     css = (ROOT / "style.css").read_text(encoding="utf-8")
     js  = (ROOT / "script.js").read_text(encoding="utf-8")
 
-    for src_name, out_name in PAGES:
+    for src_name, out_name, body_class in PAGES:
         html = (ROOT / src_name).read_text(encoding="utf-8")
 
         # Inline CSS — replace <link rel="stylesheet" href="style.css">
@@ -110,6 +149,9 @@ def main() -> None:
                 lambda m: f'{m.group("attr")}="{ASSET_BASE}',
                 html,
             )
+
+        # 3. Strip document wrappers so the result drops cleanly into GHL.
+        html = strip_document_wrapper(html, body_class)
 
         out_path = GHL_DIR / out_name
         out_path.write_text(html, encoding="utf-8")
