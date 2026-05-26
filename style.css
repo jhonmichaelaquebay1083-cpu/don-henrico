@@ -13,7 +13,7 @@
     --font-nav:     'Cormorant Garamond', serif;
     --font-accent:  'Lora', serif;
     --font-label:   'Inter', -apple-system, sans-serif;
-    --gate-color: #1a1d24;
+    --gate-color: #0a1c15;
     --overlay-bg: rgba(26,29,36,0.97);
     --edge: clamp(16px, 5%, 80px);
 }
@@ -537,8 +537,8 @@ body.no-scroll { overflow:hidden; }
 .loader-half {
     position: absolute;
     top: 50%;
-    width: 280px;
-    height: 280px;
+    width: 420px;
+    height: 420px;
 }
 .loader-half-left  { right: 0; transform: translate(50%, -50%); }
 .loader-half-right { left: 0;  transform: translate(-50%, -50%); }
@@ -574,8 +574,9 @@ body.no-scroll { overflow:hidden; }
 
 /* Mobile — smaller logo halves */
 @media (max-width: 640px) {
-    .loader-half { width: 200px; height: 200px; }
+    .loader-half { width: 300px; height: 300px; }
 }
+
 
 /* ══════════════════════════════════
    SECTION DECORATIONS — A+D+B combo
