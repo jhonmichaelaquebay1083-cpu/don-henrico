@@ -577,55 +577,18 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
     96%, 100% { transform: translateX(100%); }
 }
 
-/* ── Gold ring framing the SVG logo — draws clockwise like the loader template ── */
-.loader-frame-circle {
+/* ── SVG logo — fills the panel, self-animates via embedded <style> ── */
+/* The logo-loader.svg file has its own <style> block that strokes the
+   border outline, then text outline, then fills the text with gold.
+   The animation starts automatically when the SVG loads, so the panel
+   just needs to display it. */
+.loader-svg-logo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
-    pointer-events: none;
-    overflow: visible;
-}
-.loader-circle {
-    fill: none;
-    stroke: #c9a96e;
-    stroke-width: 0.6;          /* in viewBox units (100) — renders thin at 280px */
-    stroke-linecap: round;
-    stroke-dasharray: 301.6;    /* 2 * PI * 48 */
-    stroke-dashoffset: 301.6;
-    transform: rotate(-90deg);
-    transform-origin: center;
-}
-#loader.animate .loader-circle {
-    animation: loader-draw-circle 6.5s cubic-bezier(.4,0,.2,1) forwards;
-}
-@keyframes loader-draw-circle {
-    0%, 3%    { stroke-dashoffset: 301.6; }
-    22%, 100% { stroke-dashoffset: 0; }
-}
-
-/* ── SVG logo image — iris-reveals from center after the ring is drawn ── */
-.loader-svg-logo {
-    position: absolute;
-    inset: 8%;                  /* sits inside the gold ring with breathing room */
-    width: 84%;
-    height: 84%;
     object-fit: contain;
-    opacity: 0;
-    clip-path: circle(0% at 50% 50%);
-    will-change: clip-path, opacity;
     z-index: 1;
-}
-#loader.animate .loader-svg-logo {
-    animation: loader-logo-iris 6.5s cubic-bezier(.4,0,.2,1) forwards;
-}
-@keyframes loader-logo-iris {
-    /* 0-22%: hidden while the gold ring draws */
-    0%, 22%  { opacity: 0; clip-path: circle(0% at 50% 50%); }
-    /* 25-50%: iris opens from center, logo emerges through */
-    25%      { opacity: 1; }
-    50%, 100%{ opacity: 1; clip-path: circle(80% at 50% 50%); }
 }
 
 /* Mobile — smaller logo halves */
