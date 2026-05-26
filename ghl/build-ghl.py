@@ -39,6 +39,7 @@ ASSET_BASE = "assets/"
 #
 ASSET_MAP = {
     # Logo/decorative
+    "assets/logo.svg":        "",   # paste GHL media URL after upload
     "assets/leaf-left.png":   "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a149952e05851175c8067fd.png",
     "assets/leaf-right.png":  "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499537c135509c88772b1.png",
     "assets/gcash-qr.png":    "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994e1f1059c428fb1a7d.jpg",

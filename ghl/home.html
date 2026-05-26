@@ -577,54 +577,28 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
     96%, 100% { transform: translateX(100%); }
 }
 
-/* ── SVG with circle outline + text — draws then fills ── */
-.loader-logo-svg {
+/* ── SVG logo image — emerges from focus (fade + scale + un-blur) ── */
+.loader-svg-logo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    overflow: visible;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.92);
+    filter: blur(8px);
+    will-change: opacity, transform, filter;
 }
-
-/* Circle stroke draws clockwise from top */
-.loader-circle {
-    fill: none;
-    stroke: #c9a96e;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-dasharray: 295.3;     /* 2 * PI * 47 */
-    stroke-dashoffset: 295.3;
-    transform: rotate(-90deg);
-    transform-origin: center;
+#loader.animate .loader-svg-logo {
+    animation: loader-logo-emerge 6.5s cubic-bezier(.4,0,.2,1) forwards;
 }
-#loader.animate .loader-circle { animation: loader-draw-circle 6.5s cubic-bezier(.4,0,.2,1) forwards; }
-@keyframes loader-draw-circle {
-    0%, 3%    { stroke-dashoffset: 295.3; }
-    22%, 100% { stroke-dashoffset: 0; }
-}
-
-/* Text strokes draw, then fill from transparent → gold — bigger text */
-.loader-t-line {
-    font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-anchor: middle;
-    dominant-baseline: middle;
-    fill: transparent;
-    stroke: #c9a96e;
-    stroke-width: 0.2;
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-}
-#loader.animate .loader-t-line { animation: loader-draw-text 6.5s cubic-bezier(.4,0,.2,1) forwards; }
-@keyframes loader-draw-text {
-    /* Outline draws right when circle finishes (no gap) */
-    0%, 22%   { stroke-dashoffset: 400; fill: transparent; }
-    /* Outline done by 39% (1.1s after circle finishes) */
-    39%       { stroke-dashoffset: 0;   fill: transparent; }
-    /* Fill starts immediately — no hollow-hold delay */
-    54%, 100% { stroke-dashoffset: 0;   fill: #c9a96e; }
+@keyframes loader-logo-emerge {
+    /* 0-3%: still hidden (matches the previous circle-draw start) */
+    0%, 3%   { opacity: 0;   transform: scale(0.92); filter: blur(8px); }
+    /* 3-30%: emerges into focus — fade + zoom + un-blur */
+    30%      { opacity: 1;   transform: scale(1);    filter: blur(0); }
+    /* 30-100%: stays sharp the whole time (panels handle the exit) */
+    100%     { opacity: 1;   transform: scale(1);    filter: blur(0); }
 }
 
 /* Mobile — smaller logo halves */
@@ -1215,22 +1189,12 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
     <div id="loader">
         <div id="loader-panel-left">
             <div class="loader-half loader-half-left">
-                <svg class="loader-logo-svg" viewBox="0 0 100 100">
-                    <circle class="loader-circle" cx="50" cy="50" r="47" />
-                    <text class="loader-t-line" x="50" y="36">DON</text>
-                    <text class="loader-t-line" x="50" y="50">HENRICO</text>
-                    <text class="loader-t-line" x="50" y="64">RESORT</text>
-                </svg>
+                <img src="assets/logo.svg" alt="Don Henrico Resort" class="loader-svg-logo">
             </div>
         </div>
         <div id="loader-panel-right">
             <div class="loader-half loader-half-right">
-                <svg class="loader-logo-svg" viewBox="0 0 100 100">
-                    <circle class="loader-circle" cx="50" cy="50" r="47" />
-                    <text class="loader-t-line" x="50" y="36">DON</text>
-                    <text class="loader-t-line" x="50" y="50">HENRICO</text>
-                    <text class="loader-t-line" x="50" y="64">RESORT</text>
-                </svg>
+                <img src="assets/logo.svg" alt="" class="loader-svg-logo" aria-hidden="true">
             </div>
         </div>
     </div>
