@@ -537,8 +537,8 @@ body.no-scroll { overflow:hidden; }
 .loader-half {
     position: absolute;
     top: 50%;
-    width: 420px;
-    height: 420px;
+    width: 360px;
+    height: 360px;
 }
 .loader-half-left  { right: 0; transform: translate(50%, -50%); }
 .loader-half-right { left: 0;  transform: translate(-50%, -50%); }
@@ -572,9 +572,12 @@ body.no-scroll { overflow:hidden; }
     z-index: 1;
 }
 
-/* Mobile — smaller logo halves */
-@media (max-width: 640px) {
-    .loader-half { width: 300px; height: 300px; }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .loader-half { width: 280px; height: 280px; }
+}
+@media (max-width: 480px) {
+    .loader-half { width: 200px; height: 200px; }
 }
 
 
