@@ -240,6 +240,11 @@
     .service-card-v2 p { font-size: 0.95rem; }
     .values-grid { grid-template-columns: repeat(3, 1fr); }
 }
+/* Center orphan card (5th in a 2-col or 4-col grid) */
+.services-grid-v2 .service-card-v2:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+@media (min-width: 1024px) {
+    .services-grid-v2 .service-card-v2:last-child:nth-child(odd) { max-width: 25%; }
+}
 
 /* ─── Modal Specific Components (Booking & Amenities) ─── */
 .service-modal-grid { display:grid; grid-template-columns:1fr; gap:2rem; }
@@ -1250,7 +1255,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                 </div>
                 <div class="hero-content">
                     <span class="section-label center">— DON HENRICO RESORT</span>
-                    <h1 class="hero-title">Give Your Guests Something Better Than &ldquo;See You There&rdquo;</h1>
+                    <h1 class="hero-title">Eat, Drink, and Merry</h1>
                     <p class="hero-desc">Make them excited to show up &mdash; a private venue made for celebrations, bonding, swimming, and memories worth posting.</p>
                     <div class="hero-services-tags" style="justify-content:center;">
                         <span>Accommodation</span>
@@ -1782,37 +1787,29 @@ document.addEventListener("DOMContentLoaded", () => {
         wedding: {
             img: "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499533c3aed7c63c1cadc.jpg",
             label: "— Premium Venue",
-            title: "Wedding Venue",
+            title: "Wedding & Event Venue",
             desc: "Celebrate your love story in our breathtaking wedding venue. With lush gardens, an elegant function hall, and stunning poolside backdrops, every moment of your special day will be picture-perfect.",
             amenities: [
-                { title: "Layout & Furnishings", items: ["Function Hall", "Bridal Suite", "Tables & Chairs", "Stage & Podium", "Garden Seating"] },
-                { title: "Entertainment", items: ["Sound System", "LED Projector", "Photography Spots"] },
-                { title: "Dining & Catering", items: ["Kitchen Access", "Catering Partners", "Buffet Setup"] }
+                { title: "Layout & Furnishings", items: ["Function Hall", "4 Villas (downstairs only)", "1 Private Room", "Tables with elegant white cloth & topper", "Monobloc chairs with white cover & ribbons", "Simple couch for the celebrant"] },
+                { title: "Entertainment & Décor", items: ["Sound System", "Basic stage decoration", "Pool decoration", "Entrance decoration", "FREE swimming"] },
+                { title: "Dining & Service", items: ["Food (5 main course, rice, drinks, dessert, water)", "Full silverware, glassware & folded table napkins", "3–4 waiters/waitresses"] }
             ],
             packages: [
                 {
-                    name: "Intimate",
-                    price: "₱25,000",
-                    duration: "Half Day",
-                    guests: "Up to 30 pax",
-                    desc: "A garden ceremony for an intimate celebration with closest family.",
-                    inclusions: ["Garden Setup", "Tables & Chairs", "Bridal Suite Access", "Sound System", "Welcome Drinks"]
+                    name: "50 Guests",
+                    price: "₱65,000",
+                    duration: "8-hour celebration",
+                    guests: "50 pax",
+                    desc: "Exclusive use of the whole resort with full catering and décor for 50 guests.",
+                    inclusions: ["Whole Resort (Function Hall, 4 villas downstairs, 1 private room)", "Food for 50 guests (5 courses)", "3–4 waiters/waitresses", "Stage, pool & entrance decoration", "Sound System", "Tables with elegant white cloth & topper", "Full silverware, glassware & napkins", "50 chairs with white cover & ribbons", "Simple couch for the celebrant", "FREE swimming"]
                 },
                 {
-                    name: "Classic",
-                    price: "₱45,000",
-                    duration: "Full Day",
-                    guests: "Up to 60 pax",
-                    desc: "Function hall + garden ceremony with full reception setup.",
-                    inclusions: ["Function Hall", "Garden Ceremony Setup", "Stage & Podium", "Sound & Lighting", "Bridal Suite", "Photography Spots"]
-                },
-                {
-                    name: "Grand",
+                    name: "100 Guests",
                     price: "₱80,000",
-                    duration: "Overnight",
-                    guests: "100+ pax",
-                    desc: "Exclusive use of the full estate with overnight accommodation for the couple and entourage.",
-                    inclusions: ["Full Estate Access", "Function Hall", "All Gardens", "Overnight Rooms (entourage)", "Catering Coordination", "Dedicated Coordinator"]
+                    duration: "8-hour celebration",
+                    guests: "100 pax",
+                    desc: "Grand celebration with exclusive resort access, full catering and décor for 100 guests.",
+                    inclusions: ["Whole Resort (Function Hall, 4 villas downstairs, 1 private room)", "Food for 100 guests (5 courses)", "3–4 waiters/waitresses", "Stage, pool & entrance decoration", "Sound System", "Tables with elegant white cloth & topper", "Full silverware, glassware & napkins", "100 chairs with white cover & ribbons", "Simple couch for the celebrant", "FREE swimming"]
                 }
             ]
         },
@@ -1822,34 +1819,26 @@ document.addEventListener("DOMContentLoaded", () => {
             title: "Birthday Party",
             desc: "Make birthdays truly special at Don Henrico. From intimate family gatherings to grand celebrations, our versatile spaces and entertainment amenities create the perfect party atmosphere.",
             amenities: [
-                { title: "Entertainment", items: ["Pool Access", "Karaoke Setup", "Sound System", "Game Area"] },
-                { title: "Comforts", items: ["Air Conditioning", "Free Wi-Fi", "Charging Stations", "Shower Area"] },
-                { title: "Dining", items: ["Kitchen Access", "Bar Counter", "Dining Sets"] }
+                { title: "Entertainment", items: ["Sound system / Videoke", "Pool Access", "Game Area"] },
+                { title: "Comforts", items: ["1 Airconditioned room", "All villas downstairs only", "Tables & chairs with cover"] },
+                { title: "Dining", items: ["Food (5 courses)", "Dessert", "Unlimited drinks (juice, water)", "Utensils", "Food attendant"] }
             ],
             packages: [
                 {
-                    name: "Day Bash",
-                    price: "₱15,000",
-                    duration: "6 Hours",
-                    guests: "Up to 30 pax",
-                    desc: "Daytime poolside party with grill and karaoke.",
-                    inclusions: ["Pool Access", "Karaoke Setup", "BBQ Grill", "Tables & Chairs", "Shower Area"]
-                },
-                {
-                    name: "Full Day",
-                    price: "₱28,000",
-                    duration: "12 Hours",
-                    guests: "Up to 50 pax",
-                    desc: "Extended celebration with hall, pool, and full entertainment.",
-                    inclusions: ["Pool + Hall Access", "Sound + Karaoke", "Game Area", "Buffet Setup", "Custom Decorations Allowed", "Photography Spots"]
-                },
-                {
-                    name: "Overnight",
+                    name: "50 Guests",
                     price: "₱45,000",
-                    duration: "24 Hours",
-                    guests: "Up to 50 pax",
-                    desc: "Day-to-night celebration with accommodation for the inner circle.",
-                    inclusions: ["Full Resort Access", "Pool (Day + Night)", "Function Hall", "Overnight Rooms (10 pax)", "Karaoke + Bar", "BBQ Grill"]
+                    duration: "8-hour party",
+                    guests: "50 pax",
+                    desc: "A full birthday celebration with themed décor, food, and entertainment for 50 guests.",
+                    inclusions: ["8-hour party", "Themed party decoration", "Sound system / Videoke", "Food (5 courses)", "Dessert", "Tables & chairs with cover", "Utensils", "Unlimited drinks (juice, water)", "Food attendant", "1 airconditioned room", "All villas downstairs only"]
+                },
+                {
+                    name: "100 Guests",
+                    price: "₱65,000",
+                    duration: "8-hour party",
+                    guests: "100 pax",
+                    desc: "A grand birthday celebration with themed décor, food, and entertainment for 100 guests.",
+                    inclusions: ["8-hour party", "Themed party decoration", "Sound system / Videoke", "Food (5 courses)", "Dessert", "Tables & chairs with cover", "Utensils", "Unlimited drinks (juice, water)", "Food attendant", "1 airconditioned room", "All villas downstairs only"]
                 }
             ]
         },
@@ -1885,37 +1874,82 @@ document.addEventListener("DOMContentLoaded", () => {
         overnight: {
             img: "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487c135509c88771c6.jpg",
             label: "— Private Retreat",
-            title: "Overnight Stay",
-            desc: "Escape the city and enjoy a peaceful overnight stay with family and friends. Our comfortable accommodations and exclusive access to resort amenities ensure a relaxing getaway.",
+            title: "Villa & Overnight Stay",
+            desc: "Escape the city and enjoy a peaceful stay with family and friends. Choose from single villa rentals to exclusive full-resort access with all amenities included.",
             amenities: [
-                { title: "Comforts", items: ["Air-conditioned Rooms", "Clean Restrooms", "Shower Area", "Free Wi-Fi"] },
-                { title: "Entertainment", items: ["Pool Access (Day & Night)", "Karaoke", "Billiards"] },
-                { title: "Kitchen & Dining", items: ["Gas Stove", "Refrigerator", "BBQ Grill", "Dining Tables"] }
+                { title: "Comforts", items: ["Air-conditioned Rooms", "Private CR per villa", "4 Common CR with shower", "3 Outdoor showers", "Free Wi-Fi"] },
+                { title: "Entertainment", items: ["Pool Access", "Function Hall", "Sound system / Videoke"] },
+                { title: "Essentials", items: ["CCTV secured cameras", "Parking", "Bring your own towels"] }
             ],
             packages: [
                 {
-                    name: "Cozy Suite",
+                    name: "Single Villa (Day)",
+                    price: "₱3,500",
+                    duration: "10 AM – 8 AM (22 hrs)",
+                    guests: "3 pax",
+                    desc: "One villa (up and downstairs) with airconditioned room — perfect for a quick daytime getaway.",
+                    inclusions: ["1 villa up & downstairs (aircon)", "3 persons", "Wi-Fi zone", "Parking", "CCTV secured cameras", "Bring your own towels"]
+                },
+                {
+                    name: "Single Villa (Night)",
+                    price: "₱2,500",
+                    duration: "4 PM – 8 AM",
+                    guests: "3 pax",
+                    desc: "Overnight single villa stay with airconditioned room.",
+                    inclusions: ["1 villa up & downstairs (aircon)", "3 persons", "Wi-Fi zone", "Parking", "CCTV secured cameras", "Bring your own towels"]
+                },
+                {
+                    name: "Exclusive (Day)",
                     price: "₱15,000",
-                    duration: "Overnight (24 hrs)",
-                    guests: "Up to 4 pax",
-                    desc: "One private air-conditioned room with full resort amenity access.",
-                    inclusions: ["1 AC Room", "Pool Access (Day + Night)", "BBQ Grill", "Kitchen Use", "Free Wi-Fi"]
+                    duration: "10 AM – 8 AM (22 hrs)",
+                    guests: "16–20 pax",
+                    desc: "Full exclusive resort access with 4 villas, function hall, and all amenities.",
+                    inclusions: ["4 villas (3–4 guests upstairs/room)", "Private CR per villa + aircon", "4 common CR with shower", "3 outdoor showers", "Function Hall with sound system/videoke", "Bring your own towels"]
                 },
                 {
-                    name: "Family Villa",
-                    price: "₱25,000",
-                    duration: "Overnight (24 hrs)",
-                    guests: "Up to 8 pax",
-                    desc: "Three rooms for family or close groups, perfect for weekend getaways.",
-                    inclusions: ["3 AC Rooms", "Pool Access (Day + Night)", "BBQ Grill + Kitchen", "Karaoke", "Billiards", "Free Parking"]
+                    name: "Exclusive (Night)",
+                    price: "₱12,000",
+                    duration: "5 PM – 8 AM",
+                    guests: "16–20 pax",
+                    desc: "Exclusive overnight resort access with all 4 villas and function hall.",
+                    inclusions: ["4 villas (3–4 guests upstairs/room)", "Private CR per villa + aircon", "4 common CR with shower", "3 outdoor showers", "Function Hall with sound system/videoke", "Bring your own towels"]
+                }
+            ]
+        },
+        rates: {
+            img: "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994b9b6d07a704ae3113.jpg",
+            label: "— Walk-in Rates",
+            title: "Entrance & Rental Rates",
+            desc: "Planning a day swim, night swim, or need a venue? Check our entrance fees and rental rates for villas and the function hall.",
+            amenities: [
+                { title: "Pool & Facilities", items: ["Swimming Pool", "Free Wi-Fi", "Shower Area", "Parking", "CCTV secured"] },
+                { title: "Villa Features", items: ["Air-conditioned Rooms", "Private CR per villa", "Up & Downstairs access"] },
+                { title: "Function Hall", items: ["Spacious event space", "Sound system available", "Tables & Chairs"] }
+            ],
+            packages: [
+                {
+                    name: "Day Swim",
+                    price: "₱120 – ₱140",
+                    duration: "8 AM – 4 PM",
+                    guests: "Per person",
+                    desc: "Walk-in day swimming rates. Adults (10 yrs & above): ₱140. Kids (4–9 yrs): ₱120. Free Wi-Fi included.",
+                    inclusions: ["Adult: ₱140 (10 yrs old & above)", "Kids: ₱120 (4–9 years old)", "Pool access", "Free Wi-Fi"]
                 },
                 {
-                    name: "Group Getaway",
-                    price: "₱40,000",
-                    duration: "Overnight (24 hrs)",
-                    guests: "Up to 16 pax",
-                    desc: "Full villa exclusivity — best for company retreats and big groups.",
-                    inclusions: ["Full Villa (all rooms)", "Exclusive Resort Use", "Pool (Day + Night)", "Karaoke + Billiards", "Kitchen + BBQ", "Dedicated Caretaker"]
+                    name: "Night Swim",
+                    price: "₱130 – ₱150",
+                    duration: "Evening",
+                    guests: "Per person",
+                    desc: "Walk-in night swimming rates. Adults (10 yrs & above): ₱150. Kids (4–9 yrs): ₱130. Free Wi-Fi included.",
+                    inclusions: ["Adult: ₱150 (10 yrs old & above)", "Kids: ₱130 (4–9 years old)", "Pool access", "Free Wi-Fi"]
+                },
+                {
+                    name: "Villa & Hall",
+                    price: "₱700 – ₱3,000",
+                    duration: "Per use",
+                    guests: "Varies",
+                    desc: "Rent individual villas or the function hall for your event or stay.",
+                    inclusions: ["Villa with Aircon (Up & Down): ₱1,200", "Small Villa (Downstairs only): ₱700", "Function Hall: ₱3,000"]
                 }
             ]
         }

@@ -221,6 +221,11 @@ body:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
     .service-card-v2 p { font-size: 0.95rem; }
     .values-grid { grid-template-columns: repeat(3, 1fr); }
 }
+/* Center orphan card (5th in a 2-col or 4-col grid) */
+.services-grid-v2 .service-card-v2:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+@media (min-width: 1024px) {
+    .services-grid-v2 .service-card-v2:last-child:nth-child(odd) { max-width: 25%; }
+}
 
 /* ─── Modal Specific Components (Booking & Amenities) ─── */
 .service-modal-grid { display:grid; grid-template-columns:1fr; gap:2rem; }
