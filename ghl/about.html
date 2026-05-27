@@ -32,7 +32,7 @@
     --font-nav:     'Cormorant Garamond', serif;
     --font-accent:  'Lora', serif;
     --font-label:   'Inter', -apple-system, sans-serif;
-    --gate-color: #1a1d24;
+    --gate-color: #0a1c15;
     --overlay-bg: rgba(26,29,36,0.97);
     --edge: clamp(16px, 5%, 80px);
 }
@@ -65,26 +65,27 @@
 .page-sub .navbar .btn,
 .navbar.scrolled .btn { border-color:var(--primary); color:#fff; background:var(--primary); }
 /* Navbar circle logo — same shape as loader logo so the fly transition lands seamlessly */
+/* Navbar logo — wraps an <img class="logo-img"> with the actual logo file */
 .logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1.5px solid #c9a96e;
-    color: #c9a96e;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-heading);
-    font-size: 4.5px;
-    font-weight: 800;
-    letter-spacing: 0.3px;
-    line-height: 1.2;
-    text-align: center;
+    width: 52px;
+    height: 52px;
     text-decoration: none;
     flex-shrink: 0;
-    transition: transform 0.3s, color 0.4s, border-color 0.4s;
+    transition: transform 0.3s;
+}
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 .logo:hover { transform: scale(1.05); }
+@media (max-width: 768px) {
+    .logo { width: 44px; height: 44px; }
+}
 .dh-embed-root:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
 .desktop-nav { display:none; gap:2.5rem; align-items:center; }
 .desktop-nav a { font-family:var(--font-nav); color:var(--text-body); text-decoration:none; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; transition:color 0.3s; }
@@ -556,8 +557,8 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
 .loader-half {
     position: absolute;
     top: 50%;
-    width: 280px;
-    height: 280px;
+    width: 360px;
+    height: 360px;
 }
 .loader-half-left  { right: 0; transform: translate(50%, -50%); }
 .loader-half-right { left: 0;  transform: translate(-50%, -50%); }
@@ -577,24 +578,42 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
     96%, 100% { transform: translateX(100%); }
 }
 
-/* ── SVG logo — fills the panel, self-animates via embedded <style> ── */
-/* The logo-loader.svg file has its own <style> block that strokes the
-   border outline, then text outline, then fills the text with gold.
-   The animation starts automatically when the SVG loads, so the panel
-   just needs to display it. */
+/* ── Logo — iris-reveals from center then holds ── */
 .loader-svg-logo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: contain;
+    opacity: 0;
+    clip-path: circle(0% at 50% 50%);
+    will-change: clip-path, opacity;
     z-index: 1;
 }
-
-/* Mobile — smaller logo halves */
-@media (max-width: 640px) {
-    .loader-half { width: 200px; height: 200px; }
+#loader.animate .loader-svg-logo {
+    animation: loader-logo-iris 6.5s cubic-bezier(.4,0,.2,1) forwards;
 }
+@keyframes loader-logo-iris {
+    /* 0-3%: hidden */
+    0%, 3%   { opacity: 0; clip-path: circle(0% at 50% 50%); }
+    /* 3-35%: iris opens from center, fading in */
+    8%       { opacity: 1; }
+    35%      { opacity: 1; clip-path: circle(75% at 50% 50%); }
+    /* hold until panels split */
+    100%     { opacity: 1; clip-path: circle(75% at 50% 50%); }
+}
+
+/* Responsive adjustments — keep loader logo prominent on smaller screens */
+@media (max-width: 768px) {
+    .loader-half { width: 340px; height: 340px; }
+}
+@media (max-width: 480px) {
+    .loader-half { width: 300px; height: 300px; }
+}
+@media (max-width: 360px) {
+    .loader-half { width: 260px; height: 260px; }
+}
+
 
 /* ══════════════════════════════════
    SECTION DECORATIONS — A+D+B combo
@@ -1173,7 +1192,9 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
 <div class="dh-embed-root page-sub">
 <!-- ═══ NAVBAR ═══ -->
     <header class="navbar scrolled" id="navbar">
-        <a href="/home-page-372535" class="logo">DON<br>HENRICO<br>RESORT</a>
+        <a href="/home-page-372535" class="logo" aria-label="Don Henrico Resort home">
+            <img src="assets/logo.png" alt="Don Henrico Resort" class="logo-img">
+        </a>
         <nav class="desktop-nav">
             <a href="/home-page-372535">Home</a>
             <a href="/services-page">Services</a>
