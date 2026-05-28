@@ -556,11 +556,11 @@ body.no-scroll { overflow:hidden; }
 #loader.animate #loader-panel-right { animation: loader-split-right 6.5s cubic-bezier(.65,0,.35,1) forwards; }
 
 @keyframes loader-split-left {
-    0%, 58%   { transform: translateX(0); }
+    0%, 64%   { transform: translateX(0); }
     96%, 100% { transform: translateX(-100%); }
 }
 @keyframes loader-split-right {
-    0%, 58%   { transform: translateX(0); }
+    0%, 64%   { transform: translateX(0); }
     96%, 100% { transform: translateX(100%); }
 }
 
