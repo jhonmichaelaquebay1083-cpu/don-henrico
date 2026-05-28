@@ -531,15 +531,13 @@ body.no-scroll { overflow:hidden; }
     top: 0; bottom: 0;
     width: 50%;
     background: var(--gate-color);
-    overflow: hidden;          /* clips the "other half" of the logo */
+    overflow: hidden;
     z-index: 1;
+    will-change: transform;
 }
 #loader-panel-left  { left: 0; }
 #loader-panel-right { right: 0; }
 
-/* Each .loader-half is a FULL-size logo container, but anchored so its
-   center sits exactly on the panel's inner edge. The panel's overflow:hidden
-   then crops away half of the logo. */
 .loader-half {
     position: absolute;
     top: 50%;
@@ -549,9 +547,6 @@ body.no-scroll { overflow:hidden; }
 .loader-half-left  { right: 0; transform: translate(50%, -50%); }
 .loader-half-right { left: 0;  transform: translate(-50%, -50%); }
 
-/* Panels are static until JS adds .animate. Split starts right after
-   the text finishes filling (54%) — just a tiny moment to register the
-   complete logo, then smooth split across the rest of the cycle. */
 #loader.animate #loader-panel-left  { animation: loader-split-left  6.5s cubic-bezier(.65,0,.35,1) forwards; }
 #loader.animate #loader-panel-right { animation: loader-split-right 6.5s cubic-bezier(.65,0,.35,1) forwards; }
 
@@ -570,7 +565,6 @@ body.no-scroll { overflow:hidden; }
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
     opacity: 0;
     clip-path: circle(0% at 50% 50%);
     will-change: clip-path, opacity;
@@ -580,16 +574,13 @@ body.no-scroll { overflow:hidden; }
     animation: loader-logo-iris 6.5s cubic-bezier(.4,0,.2,1) forwards;
 }
 @keyframes loader-logo-iris {
-    /* 0-3%: hidden */
     0%, 3%   { opacity: 0; clip-path: circle(0% at 50% 50%); }
-    /* 3-35%: iris opens from center, fading in */
     8%       { opacity: 1; }
     35%      { opacity: 1; clip-path: circle(75% at 50% 50%); }
-    /* hold until panels split */
     100%     { opacity: 1; clip-path: circle(75% at 50% 50%); }
 }
 
-/* Responsive adjustments — keep loader logo prominent on smaller screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .loader-half { width: 340px; height: 340px; }
 }
