@@ -201,10 +201,11 @@ body:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
 .services-description { text-align:center; max-width: 650px; margin: 0 auto 5rem; color: var(--text-body); line-height: 1.8; font-size: 1.15rem; font-family: var(--font-heading); }
 
 /* ─── Services Grid V2 ─── */
-.services-grid-v2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); }
+/* mobile-first: single column so card text never cramps */
+.services-grid-v2 { display:grid; grid-template-columns: 1fr; gap: 1rem; max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); }
 .service-card-v2 { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: all 0.4s ease; cursor: pointer; border: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; }
 .service-card-v2:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-color: var(--primary); }
-.service-card-v2 .card-image { height: 120px; overflow: hidden; }
+.service-card-v2 .card-image { height: 160px; overflow: hidden; }
 .service-card-v2 .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
 .service-card-v2:hover .card-image img { transform: scale(1.08); }
 .service-card-v2 .card-content { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; }
@@ -214,17 +215,22 @@ body:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
 .service-card-v2 .card-footer::after { content: '→'; transition: transform 0.3s; }
 .service-card-v2:hover .card-footer::after { transform: translateX(4px); }
 
+/* ≥600px: 2 columns */
+@media (min-width: 600px) {
+    .services-grid-v2 { grid-template-columns: repeat(2, 1fr); }
+    /* orphan 5th card: center at half-width */
+    .services-grid-v2 .service-card-v2:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+}
+
+/* ≥1024px: 4 columns */
 @media (min-width: 1024px) {
     .services-grid-v2 { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
     .service-card-v2 .card-image { height: 200px; }
     .service-card-v2 h3 { font-size: 1.4rem; }
     .service-card-v2 p { font-size: 0.95rem; }
     .values-grid { grid-template-columns: repeat(3, 1fr); }
-}
-/* Center orphan card (5th in a 2-col or 4-col grid) */
-.services-grid-v2 .service-card-v2:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
-@media (min-width: 1024px) {
-    .services-grid-v2 .service-card-v2:last-child:nth-child(odd) { max-width: 25%; }
+    /* orphan 5th card: center at 25% width */
+    .services-grid-v2 .service-card-v2:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 25%; justify-self: center; }
 }
 
 /* ─── Modal Specific Components (Booking & Amenities) ─── */
@@ -232,7 +238,10 @@ body:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
 .modal-subsection-title { font-family:var(--font-heading); font-size:1.4rem; font-weight:700; color:var(--text-dark); margin:2rem 0 1rem; padding-bottom:0.5rem; border-bottom:1px solid rgba(0,0,0,.08); }
 
 /* Booking Card */
-.venue-booking-card { background:rgba(50,184,184,0.06); border:1px solid rgba(50,184,184,0.15); border-radius:12px; padding:2rem 1.5rem; }
+.venue-booking-card { background:#fff; border:1.5px solid rgba(201,169,110,0.3); border-radius:16px; padding:2rem; position:sticky; top:1rem; }
+/* CTA button group inside modal card */
+.modal-cta-group { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.25rem; }
+.modal-cta-group .btn { flex:1; min-width:140px; text-align:center; }
 .venue-price { display:flex; align-items:baseline; gap:0.3rem; margin-bottom:0.75rem; }
 
 /* ── Package tabs (modal sidebar) ── */
@@ -321,6 +330,8 @@ body:not(.page-sub) .navbar:not(.scrolled) .hamburger span { background: #fff; }
 .form-group input, .form-group select { width:100%; padding:0.8rem 1rem; border:1px solid rgba(0,0,0,.12); border-radius:6px; font-family:var(--font-body); font-size:0.95rem; background:#fff; color:var(--text-dark); min-height:48px; box-sizing:border-box; }
 .form-group input:focus, .form-group select:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-glow); }
 .booking-submit { width:100%; text-align:center; }
+/* When inside a flex cta-group, let the group control sizing */
+.modal-cta-group .booking-submit { width:auto; }
 .booking-note { font-family:var(--font-accent); font-size:0.8rem; color:var(--text-muted); font-style:italic; text-align:center; margin-top:0.5rem; }
 
 /* ─── Stats ─── */
@@ -489,7 +500,7 @@ body.no-scroll { overflow:hidden; }
     .service-card-layout { height:300px; }
     .service-modal-card { max-width:900px; }
     .service-modal-hero { height:350px; }
-    .service-modal-grid { grid-template-columns: 3fr 2fr; gap: 3rem; }
+    .service-modal-grid { grid-template-columns: 2fr 3fr; gap: 2.5rem; }
     .stats-section { padding:6rem 0; }
     .stat-divider { height:70px; }
     .cta-section { padding:10rem 0; }

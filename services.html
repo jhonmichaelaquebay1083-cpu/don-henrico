@@ -164,9 +164,6 @@
                                     <span class="section-label" id="service-modal-label"></span>
                                     <h2 id="service-modal-title"></h2>
                                     <p id="service-modal-desc"></p>
-
-                                    <h3 class="modal-subsection-title">Included Amenities</h3>
-                                    <div class="amenities-accordion" id="service-modal-amenities"></div>
                                 </div>
                                 <div class="service-modal-sidebar">
                                     <div class="venue-booking-card">
@@ -186,10 +183,14 @@
                                             <ul class="pkg-inclusions" id="service-modal-inclusions"></ul>
                                         </div>
 
-                                        <button type="button" class="btn booking-submit"
-                                            onclick="showInquiryView()">
-                                            Send Inquiry
-                                        </button>
+                                        <div class="modal-cta-group">
+                                            <a id="service-modal-book-btn" href="#" target="_blank" class="btn btn-primary booking-submit">
+                                                Book This Package
+                                            </a>
+                                            <button type="button" class="btn btn-outline booking-submit" onclick="showInquiryView()">
+                                                Send Inquiry
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

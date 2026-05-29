@@ -298,7 +298,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "8-hour celebration",
                     guests: "50 pax",
                     desc: "Exclusive use of the whole resort with full catering and décor for 50 guests.",
-                    inclusions: ["Whole Resort (Function Hall, 4 villas downstairs, 1 private room)", "Food for 50 guests (5 courses)", "3–4 waiters/waitresses", "Stage, pool & entrance decoration", "Sound System", "Tables with elegant white cloth & topper", "Full silverware, glassware & napkins", "50 chairs with white cover & ribbons", "Simple couch for the celebrant", "FREE swimming"]
+                    inclusions: ["Whole Resort (Function Hall, 4 villas downstairs, 1 private room)", "Food for 50 guests (5 courses)", "3–4 waiters/waitresses", "Stage, pool & entrance decoration", "Sound System", "Tables with elegant white cloth & topper", "Full silverware, glassware & napkins", "50 chairs with white cover & ribbons", "Simple couch for the celebrant", "FREE swimming"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "100 Guests",
@@ -306,7 +307,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "8-hour celebration",
                     guests: "100 pax",
                     desc: "Grand celebration with exclusive resort access, full catering and décor for 100 guests.",
-                    inclusions: ["Whole Resort (Function Hall, 4 villas downstairs, 1 private room)", "Food for 100 guests (5 courses)", "3–4 waiters/waitresses", "Stage, pool & entrance decoration", "Sound System", "Tables with elegant white cloth & topper", "Full silverware, glassware & napkins", "100 chairs with white cover & ribbons", "Simple couch for the celebrant", "FREE swimming"]
+                    inclusions: ["Whole Resort (Function Hall, 4 villas downstairs, 1 private room)", "Food for 100 guests (5 courses)", "3–4 waiters/waitresses", "Stage, pool & entrance decoration", "Sound System", "Tables with elegant white cloth & topper", "Full silverware, glassware & napkins", "100 chairs with white cover & ribbons", "Simple couch for the celebrant", "FREE swimming"],
+                    paymentUrl: "#"
                 }
             ]
         },
@@ -327,7 +329,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "8-hour party",
                     guests: "50 pax",
                     desc: "A full birthday celebration with themed décor, food, and entertainment for 50 guests.",
-                    inclusions: ["8-hour party", "Themed party decoration", "Sound system / Videoke", "Food (5 courses)", "Dessert", "Tables & chairs with cover", "Utensils", "Unlimited drinks (juice, water)", "Food attendant", "1 airconditioned room", "All villas downstairs only"]
+                    inclusions: ["8-hour party", "Themed party decoration", "Sound system / Videoke", "Food (5 courses)", "Dessert", "Tables & chairs with cover", "Utensils", "Unlimited drinks (juice, water)", "Food attendant", "1 airconditioned room", "All villas downstairs only"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "100 Guests",
@@ -335,7 +338,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "8-hour party",
                     guests: "100 pax",
                     desc: "A grand birthday celebration with themed décor, food, and entertainment for 100 guests.",
-                    inclusions: ["8-hour party", "Themed party decoration", "Sound system / Videoke", "Food (5 courses)", "Dessert", "Tables & chairs with cover", "Utensils", "Unlimited drinks (juice, water)", "Food attendant", "1 airconditioned room", "All villas downstairs only"]
+                    inclusions: ["8-hour party", "Themed party decoration", "Sound system / Videoke", "Food (5 courses)", "Dessert", "Tables & chairs with cover", "Utensils", "Unlimited drinks (juice, water)", "Food attendant", "1 airconditioned room", "All villas downstairs only"],
+                    paymentUrl: "#"
                 }
             ]
         },
@@ -356,7 +360,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "Half Day",
                     guests: "Up to 30 pax",
                     desc: "Intimate outdoor christening with garden seating and gazebo.",
-                    inclusions: ["Outdoor Gazebo", "Garden Seating", "Tables & Chairs", "Photography Spots", "Children-friendly Area"]
+                    inclusions: ["Outdoor Gazebo", "Garden Seating", "Tables & Chairs", "Photography Spots", "Children-friendly Area"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "Garden + Reception",
@@ -364,7 +369,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "Full Day",
                     guests: "Up to 50 pax",
                     desc: "Garden ceremony followed by an indoor reception in the function hall.",
-                    inclusions: ["Outdoor Gazebo", "Function Hall (reception)", "Tables, Chairs, Linens", "Sound System", "Kitchen Access", "Dedicated Coordinator"]
+                    inclusions: ["Outdoor Gazebo", "Function Hall (reception)", "Tables, Chairs, Linens", "Sound System", "Kitchen Access", "Dedicated Coordinator"],
+                    paymentUrl: "#"
                 }
             ]
         },
@@ -385,7 +391,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "10 AM – 8 AM (22 hrs)",
                     guests: "3 pax",
                     desc: "One villa (up and downstairs) with airconditioned room — perfect for a quick daytime getaway.",
-                    inclusions: ["1 villa up & downstairs (aircon)", "3 persons", "Wi-Fi zone", "Parking", "CCTV secured cameras", "Bring your own towels"]
+                    inclusions: ["1 villa up & downstairs (aircon)", "3 persons", "Wi-Fi zone", "Parking", "CCTV secured cameras", "Bring your own towels"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "Single Villa (Night)",
@@ -393,7 +400,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "4 PM – 8 AM",
                     guests: "3 pax",
                     desc: "Overnight single villa stay with airconditioned room.",
-                    inclusions: ["1 villa up & downstairs (aircon)", "3 persons", "Wi-Fi zone", "Parking", "CCTV secured cameras", "Bring your own towels"]
+                    inclusions: ["1 villa up & downstairs (aircon)", "3 persons", "Wi-Fi zone", "Parking", "CCTV secured cameras", "Bring your own towels"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "Exclusive (Day)",
@@ -401,7 +409,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "10 AM – 8 AM (22 hrs)",
                     guests: "16–20 pax",
                     desc: "Full exclusive resort access with 4 villas, function hall, and all amenities.",
-                    inclusions: ["4 villas (3–4 guests upstairs/room)", "Private CR per villa + aircon", "4 common CR with shower", "3 outdoor showers", "Function Hall with sound system/videoke", "Bring your own towels"]
+                    inclusions: ["4 villas (3–4 guests upstairs/room)", "Private CR per villa + aircon", "4 common CR with shower", "3 outdoor showers", "Function Hall with sound system/videoke", "Bring your own towels"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "Exclusive (Night)",
@@ -409,7 +418,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "5 PM – 8 AM",
                     guests: "16–20 pax",
                     desc: "Exclusive overnight resort access with all 4 villas and function hall.",
-                    inclusions: ["4 villas (3–4 guests upstairs/room)", "Private CR per villa + aircon", "4 common CR with shower", "3 outdoor showers", "Function Hall with sound system/videoke", "Bring your own towels"]
+                    inclusions: ["4 villas (3–4 guests upstairs/room)", "Private CR per villa + aircon", "4 common CR with shower", "3 outdoor showers", "Function Hall with sound system/videoke", "Bring your own towels"],
+                    paymentUrl: "#"
                 }
             ]
         },
@@ -430,7 +440,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "8 AM – 4 PM",
                     guests: "Per person",
                     desc: "Walk-in day swimming rates. Adults (10 yrs & above): ₱140. Kids (4–9 yrs): ₱120. Free Wi-Fi included.",
-                    inclusions: ["Adult: ₱140 (10 yrs old & above)", "Kids: ₱120 (4–9 years old)", "Pool access", "Free Wi-Fi"]
+                    inclusions: ["Adult: ₱140 (10 yrs old & above)", "Kids: ₱120 (4–9 years old)", "Pool access", "Free Wi-Fi"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "Night Swim",
@@ -438,7 +449,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "Evening",
                     guests: "Per person",
                     desc: "Walk-in night swimming rates. Adults (10 yrs & above): ₱150. Kids (4–9 yrs): ₱130. Free Wi-Fi included.",
-                    inclusions: ["Adult: ₱150 (10 yrs old & above)", "Kids: ₱130 (4–9 years old)", "Pool access", "Free Wi-Fi"]
+                    inclusions: ["Adult: ₱150 (10 yrs old & above)", "Kids: ₱130 (4–9 years old)", "Pool access", "Free Wi-Fi"],
+                    paymentUrl: "#"
                 },
                 {
                     name: "Villa & Hall",
@@ -446,7 +458,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     duration: "Per use",
                     guests: "Varies",
                     desc: "Rent individual villas or the function hall for your event or stay.",
-                    inclusions: ["Villa with Aircon (Up & Down): ₱1,200", "Small Villa (Downstairs only): ₱700", "Function Hall: ₱3,000"]
+                    inclusions: ["Villa with Aircon (Up & Down): ₱1,200", "Small Villa (Downstairs only): ₱700", "Function Hall: ₱3,000"],
+                    paymentUrl: "#"
                 }
             ]
         }
@@ -491,6 +504,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 inclEl.appendChild(li);
             });
         }
+        // Update "Book This Package" button href to the package-specific payment URL
+        const bookBtn = document.getElementById("service-modal-book-btn");
+        if (bookBtn) bookBtn.href = pkg.paymentUrl || "#";
     }
 
     function openServiceModal(serviceKey) {
@@ -522,37 +538,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 tabsEl.appendChild(btn);
             });
             if (packages[0]) renderPackage(packages[0]);
-        }
-
-        // Amenities Accordion
-        const amenitiesContainer = document.getElementById("service-modal-amenities");
-        if (amenitiesContainer && data.amenities) {
-            amenitiesContainer.innerHTML = "";
-            data.amenities.forEach((group, index) => {
-                const isActive = index === 0 ? "active" : "";
-                const isExpanded = index === 0 ? "true" : "false";
-                const icon = index === 0 ? "−" : "+";
-
-                let itemsHtml = "";
-                group.items.forEach(item => {
-                    itemsHtml += `<div class="checklist-item"><span class="check-icon">&#10003;</span><span>${item}</span></div>`;
-                });
-
-                const accordionItem = `
-                    <div class="accordion-item ${isActive}">
-                        <button class="accordion-header" aria-expanded="${isExpanded}">
-                            <h3>${group.title}</h3>
-                            <span class="accordion-icon">${icon}</span>
-                        </button>
-                        <div class="accordion-body">
-                            <div class="checklist-grid">
-                                ${itemsHtml}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                amenitiesContainer.insertAdjacentHTML("beforeend", accordionItem);
-            });
         }
 
         modal.classList.add("active");
