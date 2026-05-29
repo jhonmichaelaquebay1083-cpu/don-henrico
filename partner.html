@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner With Us | Don Henrico Resort</title>
+    <meta name="description" content="A new resort experience is coming. Stay tuned for our upcoming partnership opportunities.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="page-sub">
+    <!-- ═══ NAVBAR ═══ -->
+    <header class="navbar scrolled" id="navbar">
+        <a href="index.html" class="logo" aria-label="Don Henrico Resort home">
+            <img src="assets/logo.png" alt="Don Henrico Resort" class="logo-img">
+        </a>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Us</a>
+            <a href="partner.html" class="nav-active">Partner With Us</a>
+        </nav>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- ═══ OVERLAY MENU ═══ -->
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+        <button class="nav-overlay-close" id="nav-close" aria-label="Close menu">✕</button>
+        <nav class="nav-overlay-links">
+            <a href="index.html" class="nav-overlay-link">Home</a>
+            <a href="services.html" class="nav-overlay-link">Services</a>
+            <a href="about.html" class="nav-overlay-link">About Us</a>
+            <a href="partner.html" class="nav-overlay-link">Partner With Us</a>
+        </nav>
+    </div>
+
+    <div class="smooth-wrapper">
+        <main class="main-container">
+
+            <section class="partner-coming-soon">
+                <div class="partner-coming-content">
+                    <span class="section-label center">— Something New Is Coming —</span>
+                    <h1 class="partner-headline">Coming Soon</h1>
+                    <p class="partner-sub">A new resort experience is on the horizon.<br>We're building something worth the wait.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <style>
+        .partner-coming-soon {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light, #faf8f5);
+            text-align: center;
+            padding: 2rem var(--edge, 1.5rem);
+        }
+
+        .partner-coming-content {
+            max-width: 800px;
+        }
+
+        .partner-headline {
+            font-family: var(--font-heading);
+            font-size: clamp(5rem, 18vw, 14rem);
+            font-weight: 300;
+            color: var(--text-dark);
+            line-height: 1;
+            letter-spacing: -2px;
+            margin: 0.25rem 0 1.5rem;
+        }
+
+        .partner-sub {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: #888;
+            line-height: 1.8;
+            font-style: italic;
+        }
+    </style>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
