@@ -504,9 +504,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 inclEl.appendChild(li);
             });
         }
-        // Update "Book This Package" button href to the package-specific payment URL
-        const bookBtn = document.getElementById("service-modal-book-btn");
-        if (bookBtn) bookBtn.href = pkg.paymentUrl || "#";
     }
 
     function openServiceModal(serviceKey) {
