@@ -165,18 +165,55 @@
             </div>
         </section>
 
-        <!-- ═══ THE TRACK RECORD / GALLERY ═══ -->
-        <section class="p-gallery reveal">
+        <!-- ═══ THE TRACK RECORD ═══ -->
+        <section class="p-track reveal">
             <div class="p-wrap">
-                <div class="p-head center"><span class="p-label">— The Track Record —</span><h2 class="p-title">Built by the people behind Don Henrico.</h2></div>
+                <div class="p-head"><span class="p-label">— The Track Record —</span><h2 class="p-title">Not a concept.<br><span class="gold">A proven operation.</span></h2></div>
+                <p class="p-lead" style="max-width:60ch;margin:0 0 3rem;">Before Terrasis, there was Don Henrico. Same team, same standards — three years of real results that show how we operate.</p>
             </div>
-            <div class="p-gallery-grid">
-                <div class="p-gi tall"><img src="assets/gallery1.jpg" alt="Don Henrico Resort" loading="lazy"></div>
-                <div class="p-gi"><img src="assets/gallery2.jpg" alt="Don Henrico Resort" loading="lazy"></div>
-                <div class="p-gi"><img src="assets/wedding.jpg" alt="Celebrations at Don Henrico" loading="lazy"></div>
-                <div class="p-gi"><img src="assets/gallery3.jpg" alt="Don Henrico Resort" loading="lazy"></div>
-                <div class="p-gi"><img src="assets/event.jpg" alt="Events at Don Henrico" loading="lazy"></div>
-                <div class="p-gi tall"><img src="assets/gallery4.jpg" alt="Don Henrico Resort" loading="lazy"></div>
+            <div class="p-track-grid">
+                <div class="p-track-card p-track-featured">
+                    <img src="assets/gallery1.jpg" alt="Don Henrico Resort" loading="lazy">
+                    <div class="p-track-overlay">
+                        <span class="p-track-stat">400+</span>
+                        <span class="p-track-label">Events Hosted</span>
+                    </div>
+                </div>
+                <div class="p-track-card">
+                    <img src="assets/gallery2.jpg" alt="Don Henrico Resort" loading="lazy">
+                    <div class="p-track-overlay">
+                        <span class="p-track-stat">36,000+</span>
+                        <span class="p-track-label">Guests Served</span>
+                    </div>
+                </div>
+                <div class="p-track-card p-track-tall">
+                    <img src="assets/wedding.jpg" alt="Celebrations at Don Henrico" loading="lazy">
+                    <div class="p-track-overlay">
+                        <span class="p-track-stat">Weddings</span>
+                        <span class="p-track-label">Celebrations, baptisms, birthdays</span>
+                    </div>
+                </div>
+                <div class="p-track-card">
+                    <img src="assets/gallery3.jpg" alt="Don Henrico Resort" loading="lazy">
+                    <div class="p-track-overlay">
+                        <span class="p-track-stat">3 Years</span>
+                        <span class="p-track-label">Consistent operations</span>
+                    </div>
+                </div>
+                <div class="p-track-card">
+                    <img src="assets/event.jpg" alt="Events at Don Henrico" loading="lazy">
+                    <div class="p-track-overlay">
+                        <span class="p-track-stat">Overnight</span>
+                        <span class="p-track-label">Guest stays &amp; villa rentals</span>
+                    </div>
+                </div>
+                <div class="p-track-card p-track-wide">
+                    <img src="assets/gallery4.jpg" alt="Don Henrico Resort" loading="lazy">
+                    <div class="p-track-overlay">
+                        <span class="p-track-stat">Premium Venue</span>
+                        <span class="p-track-label">Built for events &amp; gatherings</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -381,12 +418,29 @@
         .p-step h3 { font-family: var(--font-heading); font-size: 1.6rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.6rem; }
         .p-step p { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.7; color: #5a5a5a; margin: 0; }
 
-        /* Track Record / Gallery */
-        .p-gallery { background: var(--ph-dark-2); padding: clamp(5rem, 12vh, 9rem) 0 0; }
-        .p-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 38vw; gap: 6px; margin-top: 3.5rem; }
-        .p-gi { overflow: hidden; }
-        .p-gi img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(.2, .8, .2, 1); }
-        .p-gi:hover img { transform: scale(1.06); }
+        /* Track Record — Bento Showcase */
+        .p-track { background: var(--ph-dark); padding: clamp(5rem, 12vh, 9rem) 0; }
+        .p-track .p-lead { color: rgba(255,255,255,0.7); }
+        .p-track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; max-width: 1400px; margin: 0 auto; padding: 0 var(--edge); }
+        .p-track-card { position: relative; overflow: hidden; border-radius: 10px; aspect-ratio: 4/3; cursor: pointer; isolation: isolate; }
+        .p-track-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(.25, .1, .25, 1); }
+        .p-track-card:hover img { transform: scale(1.08); }
+        .p-track-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(8,10,14,0.85) 0%, rgba(8,10,14,0.08) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s cubic-bezier(.25, .1, .25, 1); }
+        .p-track-card:hover .p-track-overlay { opacity: 1; transform: translateY(0); }
+        .p-track-stat { font-family: var(--font-heading); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 600; color: var(--ph-gold); line-height: 1.1; margin-bottom: 0.2rem; }
+        .p-track-label { font-family: var(--font-body); font-size: 0.82rem; color: rgba(255,255,255,0.75); letter-spacing: 0.3px; }
+        .p-track-featured { grid-column: 1 / -1; aspect-ratio: 16/7; }
+        .p-track-featured .p-track-stat { font-size: clamp(2.6rem, 5vw, 4.2rem); }
+        .p-track-featured .p-track-label { font-size: 1rem; }
+        .p-track-tall { grid-row: span 2; aspect-ratio: auto; }
+        .p-track-wide { grid-column: 1 / -1; aspect-ratio: 12/4; }
+        @media (min-width: 768px) {
+            .p-track-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+            .p-track-featured { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+            .p-track-tall { grid-row: span 2; aspect-ratio: auto; }
+            .p-track-wide { grid-column: span 2; aspect-ratio: auto; }
+            .p-track-overlay { padding: 2rem; }
+        }
 
         /* Why Invest + Trust (feature cards) */
         .p-why { background: #fff; padding: clamp(5rem, 12vh, 9rem) 0; }
@@ -466,8 +520,6 @@
         @media (min-width: 768px) {
             .p-grid-3 { grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
             .p-stats { grid-template-columns: repeat(3, 1fr); }
-            .p-gallery-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 22vw; }
-            .p-gi.tall { grid-row: span 2; }
         }
         @media (min-width: 1024px) {
             .p-grid-4 { grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
@@ -475,7 +527,6 @@
         @media (max-width: 767px) {
             .ph-headline { font-size: clamp(2.2rem, 11vw, 3.2rem); }
             .ph-inner { padding-bottom: clamp(3.5rem, 12vh, 6rem); }
-            .p-gallery-grid { grid-auto-rows: 56vw; }
         }
         @media (prefers-reduced-motion: reduce) {
             .ph-inner > *, .ph-scroll, .reveal { animation: none; opacity: 1; transform: none; transition: none; }
