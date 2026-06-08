@@ -220,7 +220,11 @@
 .services-description { text-align:center; max-width: 650px; margin: 0 auto 5rem; color: var(--text-body); line-height: 1.8; font-size: 1.15rem; font-family: var(--font-heading); }
 
 /* ─── Services Grid V2 ─── */
-.services-grid-v2 { display:grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); }
+.services-grid-v2 { display:grid; grid-template-columns: 1fr; gap: 1rem; max-width: 1200px; margin: 0 auto; padding: 0 var(--edge); }
+@media (min-width: 600px) {
+    .services-grid-v2 { grid-template-columns: repeat(2, 1fr); }
+    .services-grid-v2 .service-card-v2:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: 50%; justify-self: center; }
+}
 .service-card-v2 { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: all 0.4s ease; cursor: pointer; border: 1px solid rgba(0,0,0,0.06); display: flex; flex-direction: column; }
 .service-card-v2:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-color: var(--primary); }
 .service-card-v2 .card-image { height: 120px; overflow: hidden; }
@@ -251,7 +255,7 @@
 .modal-subsection-title { font-family:var(--font-heading); font-size:1.4rem; font-weight:700; color:var(--text-dark); margin:2rem 0 1rem; padding-bottom:0.5rem; border-bottom:1px solid rgba(0,0,0,.08); }
 
 /* Booking Card */
-.venue-booking-card { background:rgba(50,184,184,0.06); border:1px solid rgba(50,184,184,0.15); border-radius:12px; padding:2rem 1.5rem; }
+.venue-booking-card { background:#fff; border:1.5px solid rgba(201,169,110,0.3); border-radius:16px; padding:2rem; position:sticky; top:1rem; }
 .venue-price { display:flex; align-items:baseline; gap:0.3rem; margin-bottom:0.75rem; }
 
 /* ── Package tabs (modal sidebar) ── */
@@ -508,7 +512,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
     .service-card-layout { height:300px; }
     .service-modal-card { max-width:900px; }
     .service-modal-hero { height:350px; }
-    .service-modal-grid { grid-template-columns: 3fr 2fr; gap: 3rem; }
+    .service-modal-grid { grid-template-columns: 2fr 3fr; gap: 3rem; }
     .stats-section { padding:6rem 0; }
     .stat-divider { height:70px; }
     .cta-section { padding:10rem 0; }
@@ -1198,12 +1202,13 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
 <!-- ═══ NAVBAR ═══ -->
     <header class="navbar scrolled" id="navbar">
         <a href="/home-page-372535" class="logo" aria-label="Don Henrico Resort home">
-            <img src="assets/logo.png" alt="Don Henrico Resort" class="logo-img">
+            <img src="https://assets.cdn.filesafe.space/V0W34FacrQ2MdD43iElk/media/6a1ef4686103bdfedd8c112c.png" alt="Don Henrico Resort" class="logo-img">
         </a>
         <nav class="desktop-nav">
             <a href="/home-page-372535">Home</a>
             <a href="/services-page" class="nav-active">Services</a>
             <a href="/about-page">About Us</a>
+            <a href="/partner-page">Partner With Us</a>
         </nav>
         <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
             <span></span>
@@ -1219,6 +1224,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
             <a href="/home-page-372535" class="nav-overlay-link">Home</a>
             <a href="/services-page" class="nav-overlay-link">Services</a>
             <a href="/about-page" class="nav-overlay-link">About Us</a>
+            <a href="/partner-page" class="nav-overlay-link">Partner With Us</a>
         </nav>
     </div>
 
@@ -1262,7 +1268,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                                 <img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499533c3aed7c63c1cadc.jpg" alt="Wedding Venue" loading="lazy">
                             </div>
                             <div class="card-content">
-                                <span class="section-label">— PREMIUM</span>
+                                <span class="section-label">— Premium Venue</span>
                                 <h3>Wedding Venue</h3>
                                 <p>Breathtaking gardens and elegant halls for your love story.</p>
                                 <div class="card-footer">Explore Details</div>
@@ -1275,7 +1281,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                                 <img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487e7c5a2f715a4490.jpg" alt="Birthday Party" loading="lazy">
                             </div>
                             <div class="card-content">
-                                <span class="section-label">— CELEBRATION</span>
+                                <span class="section-label">— Fun & Celebration</span>
                                 <h3>Birthday Party</h3>
                                 <p>Versatile spaces for grand or intimate family gatherings.</p>
                                 <div class="card-footer">Explore Details</div>
@@ -1288,7 +1294,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                                 <img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487c135509c88771c5.jpg" alt="Christening" loading="lazy">
                             </div>
                             <div class="card-content">
-                                <span class="section-label">— SACRED</span>
+                                <span class="section-label">— Sacred Moments</span>
                                 <h3>Christening</h3>
                                 <p>Welcome new life in our serene and peaceful gardens.</p>
                                 <div class="card-footer">Explore Details</div>
@@ -1301,7 +1307,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                                 <img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487c135509c88771c6.jpg" alt="Overnight Stay" loading="lazy">
                             </div>
                             <div class="card-content">
-                                <span class="section-label">— RETREAT</span>
+                                <span class="section-label">— Private Retreat</span>
                                 <h3>Overnight Stay</h3>
                                 <p>Escape the city with exclusive access to resort amenities.</p>
                                 <div class="card-footer">Explore Details</div>
@@ -1314,7 +1320,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                                 <img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a14994b9b6d07a704ae3113.jpg" alt="Entrance & Rental Rates" loading="lazy">
                             </div>
                             <div class="card-content">
-                                <span class="section-label">— RATES</span>
+                                <span class="section-label">— Walk-in Rates</span>
                                 <h3>Entrance & Rental</h3>
                                 <p>Day swim, night swim, villa rentals, and function hall rates.</p>
                                 <div class="card-footer">View Rates</div>
@@ -1341,9 +1347,6 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                                     <span class="section-label" id="service-modal-label"></span>
                                     <h2 id="service-modal-title"></h2>
                                     <p id="service-modal-desc"></p>
-
-                                    <h3 class="modal-subsection-title">Included Amenities</h3>
-                                    <div class="amenities-accordion" id="service-modal-amenities"></div>
                                 </div>
                                 <div class="service-modal-sidebar">
                                     <div class="venue-booking-card">
@@ -1382,9 +1385,9 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                         </div>
                         <div class="step-modal-body">
                             <div class="iframe-wrapper">
-                                <iframe src="https://api.leadconnectorhq.com/widget/form/n1a7Wa3qYWQpgbtksKTg"
+                                <iframe src="https://link.allyvirtual.com/widget/form/jxHxi0fgoknmWhTwHbHO"
                                     style="width:100%;height:100%;border:none;border-radius:8px"
-                                    id="inline-n1a7Wa3qYWQpgbtksKTg"
+                                    id="inline-jxHxi0fgoknmWhTwHbHO"
                                     data-layout="{'id':'INLINE'}"
                                     data-trigger-type="alwaysShow"
                                     data-trigger-value=""
@@ -1392,11 +1395,11 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                                     data-activation-value=""
                                     data-deactivation-type="neverDeactivate"
                                     data-deactivation-value=""
-                                    data-form-name="Form 15"
-                                    data-height="434"
-                                    data-layout-iframe-id="inline-n1a7Wa3qYWQpgbtksKTg"
-                                    data-form-id="n1a7Wa3qYWQpgbtksKTg"
-                                    title="Form 15"></iframe>
+                                    data-form-name="Event Form"
+                                    data-height="700"
+                                    data-layout-iframe-id="inline-jxHxi0fgoknmWhTwHbHO"
+                                    data-form-id="jxHxi0fgoknmWhTwHbHO"
+                                    title="Event Form"></iframe>
                             </div>
                             <!-- "Continue to Payment" button removed —
                                  GHL form's own redirect-after-submit handles the next step. -->
@@ -1458,6 +1461,7 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                 <a href="/home-page-372535">Home</a>
                 <a href="/about-page">About Us</a>
                 <a href="/services-page">Services</a>
+                <a href="/partner-page">Partner With Us</a>
             </div>
             <div class="footer-contact" style="flex: 1;">
                 <h4>Connect</h4>
@@ -1786,7 +1790,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ─── 7. Service Modal ───
-    // ─── 7. Service Modal ───
     const serviceData = {
         wedding: {
             img: "https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499533c3aed7c63c1cadc.jpg",
@@ -2031,37 +2034,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (packages[0]) renderPackage(packages[0]);
         }
 
-        // Amenities Accordion
-        const amenitiesContainer = document.getElementById("service-modal-amenities");
-        if (amenitiesContainer && data.amenities) {
-            amenitiesContainer.innerHTML = "";
-            data.amenities.forEach((group, index) => {
-                const isActive = index === 0 ? "active" : "";
-                const isExpanded = index === 0 ? "true" : "false";
-                const icon = index === 0 ? "−" : "+";
-
-                let itemsHtml = "";
-                group.items.forEach(item => {
-                    itemsHtml += `<div class="checklist-item"><span class="check-icon">&#10003;</span><span>${item}</span></div>`;
-                });
-
-                const accordionItem = `
-                    <div class="accordion-item ${isActive}">
-                        <button class="accordion-header" aria-expanded="${isExpanded}">
-                            <h3>${group.title}</h3>
-                            <span class="accordion-icon">${icon}</span>
-                        </button>
-                        <div class="accordion-body">
-                            <div class="checklist-grid">
-                                ${itemsHtml}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                amenitiesContainer.insertAdjacentHTML("beforeend", accordionItem);
-            });
-        }
-
         modal.classList.add("active");
         modal.setAttribute("aria-hidden", "false");
         __dhEmbedRoot.classList.add("no-scroll");
@@ -2217,5 +2189,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
     <!-- GHL form embed helper (auto-resizes the iframe) -->
-    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+    <script src="https://link.allyvirtual.com/js/form_embed.js"></script>
 </div>
