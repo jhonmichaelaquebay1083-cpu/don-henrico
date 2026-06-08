@@ -169,6 +169,27 @@
 .p-cta-title { font-family: var(--font-heading); font-weight:600; font-size:clamp(2.2rem,6vw,4.2rem); line-height:1.08; margin:0 0 1.2rem; text-shadow:0 2px 22px rgba(0,0,0,0.4); }
 .p-cta-sub { font-family: var(--font-body); font-size:clamp(1rem,1.6vw,1.18rem); line-height:1.7; color:rgba(255,255,255,0.85); max-width:52ch; margin:0 auto 2.2rem; }
 .p-cta .ph-cta { margin:0 auto; }
+.p-disclaimer { font-family: var(--font-body); font-size:0.72rem; line-height:1.6; color:rgba(255,255,255,0.5); max-width:64ch; margin:1.8rem auto 0; }
+
+/* Hero actions */
+.ph-actions { display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+.ph-link { color:#fff; font-family: var(--font-body); font-size:0.9rem; letter-spacing:0.3px; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:2px; transition:color 0.3s, border-color 0.3s; }
+.ph-link:hover { color:#c9a86a; border-color:#c9a86a; }
+
+/* Why Invest (4-up) + Trust */
+.p-grid-4 { display:grid; grid-template-columns:1fr; gap:1.5rem; }
+.p-why.p-trust { background:#f6f2ec; }
+
+/* Investor FAQ */
+.p-faq { background:#fff; padding: clamp(5rem,12vh,9rem) 0; }
+.p-faq-list { max-width:880px; }
+.p-faq-item { border-top:1px solid rgba(0,0,0,0.1); padding:1.8rem 0; }
+.p-faq-item:last-child { border-bottom:1px solid rgba(0,0,0,0.1); }
+.p-faq-item h3 { font-family: var(--font-heading); font-size:1.4rem; font-weight:600; color:#1a1a1a; margin:0 0 0.5rem; }
+.p-faq-item p { font-family: var(--font-body); font-size:0.98rem; line-height:1.7; color:#5a5a5a; margin:0; max-width:70ch; }
+
+@media (min-width:600px) { .p-grid-4 { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1024px) { .p-grid-4 { grid-template-columns:repeat(4,1fr); gap:1.8rem; } }
 
 @media (min-width:768px) {
     .p-grid-3 { grid-template-columns:repeat(3,1fr); gap:1.8rem; }
@@ -254,49 +275,77 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                 <div class="ph-overlay"></div>
                 <div class="ph-inner">
                     <span class="ph-pill">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                        Don Henrico Resort
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18" /><path d="M17 6h6v6" /></svg>
+                        Investment Opportunity
                     </span>
-                    <h1 class="ph-headline">Grow Your Brand<br><span class="gold">Alongside Don Henrico</span></h1>
-                    <p class="ph-sub">Let's build value together — at a destination made for celebrations, getaways, and meaningful gatherings.</p>
-                    <a href="#partner-cta" class="ph-cta">Become a Partner
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                    </a>
+                    <h1 class="ph-headline">Invest in a Resort<br><span class="gold">People Return To</span></h1>
+                    <p class="ph-sub">A proven events and getaway destination with multiple revenue streams and growing demand — now open to investors who want a tangible, income-generating asset.</p>
+                    <div class="ph-actions">
+                        <a href="#invest-cta" class="ph-cta">Request the Investor Brief
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                        </a>
+                        <a href="#how-to-invest" class="ph-link">See how it works →</a>
+                    </div>
                 </div>
                 <div class="ph-scroll" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6" /></svg>
                 </div>
             </section>
 
-            <!-- ═══ INTRO ═══ -->
+            <!-- ═══ THE OPPORTUNITY ═══ -->
             <section class="p-intro">
                 <div class="p-wrap">
-                    <span class="p-label">— Partnership —</span>
-                    <h2 class="p-statement">A destination built for <span class="gold">shared success.</span></h2>
-                    <p class="p-lead">Don Henrico brings together a trusted venue, a loyal community, and a team devoted to memorable experiences. Partner with us and grow alongside a brand people return to.</p>
+                    <span class="p-label">— The Opportunity —</span>
+                    <h2 class="p-statement">A tangible asset in a market that keeps <span class="gold">coming back.</span></h2>
+                    <p class="p-lead">Weddings, celebrations, christenings, and overnight stays keep Don Henrico in demand all year. In just three years the destination has welcomed 36,000+ guests and hosted 400+ events — real, repeatable traction, with room to grow.</p>
                     <div class="p-stats">
                         <div class="p-stat"><span class="p-stat-num">400+</span><span class="p-stat-label">Events Hosted</span></div>
                         <div class="p-stat"><span class="p-stat-num">36,000+</span><span class="p-stat-label">Guests Welcomed</span></div>
-                        <div class="p-stat"><span class="p-stat-num">3</span><span class="p-stat-label">Years of Memories</span></div>
+                        <div class="p-stat"><span class="p-stat-num">3</span><span class="p-stat-label">Years in Operation</span></div>
                     </div>
                 </div>
             </section>
 
-            <!-- ═══ HOW IT WORKS ═══ -->
-            <section class="p-steps" id="how-it-works">
+            <!-- ═══ WHY INVEST ═══ -->
+            <section class="p-why">
                 <div class="p-wrap">
-                    <div class="p-head"><span class="p-label dark">— How It Works —</span><h2 class="p-title dark">Partnering is simple.</h2></div>
-                    <div class="p-grid-3">
-                        <article class="p-step"><span class="p-step-num">01</span><h3>Reach Out</h3><p>Tell us about your goals and the kind of collaboration you have in mind.</p></article>
-                        <article class="p-step"><span class="p-step-num">02</span><h3>Plan Together</h3><p>We shape a partnership that fits your brand, your timeline, and your audience.</p></article>
-                        <article class="p-step"><span class="p-step-num">03</span><h3>Grow Together</h3><p>Launch, host, and scale — backed by a destination made for great moments.</p></article>
+                    <div class="p-head"><span class="p-label dark">— Why Invest —</span><h2 class="p-title dark">An asset, not just an idea.</h2></div>
+                    <div class="p-grid-4">
+                        <article class="p-feature">
+                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18" /><path d="M17 6h6v6" /></svg></div>
+                            <h3>Income-Generating</h3><p>A working venue earning from events, stays, and dining — not a concept on paper.</p>
+                        </article>
+                        <article class="p-feature">
+                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg></div>
+                            <h3>Multiple Revenue Streams</h3><p>Weddings, celebrations, getaways, and rentals spread income across the calendar.</p>
+                        </article>
+                        <article class="p-feature">
+                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M7 15v3" /><path d="M12 10v8" /><path d="M17 6v12" /></svg></div>
+                            <h3>Proven Demand</h3><p>Thousands of guests and hundreds of events point to steady, repeatable bookings.</p>
+                        </article>
+                        <article class="p-feature">
+                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.9" /><path d="M16 3.1A4 4 0 0 1 16 11" /></svg></div>
+                            <h3>Experienced Operator</h3><p>A hands-on team that knows how to fill the calendar and care for guests.</p>
+                        </article>
                     </div>
                 </div>
             </section>
 
-            <!-- ═══ GALLERY ═══ -->
+            <!-- ═══ HOW TO INVEST ═══ -->
+            <section class="p-steps" id="how-to-invest">
+                <div class="p-wrap">
+                    <div class="p-head"><span class="p-label dark">— How to Invest —</span><h2 class="p-title dark">A clear, simple process.</h2></div>
+                    <div class="p-grid-3">
+                        <article class="p-step"><span class="p-step-num">01</span><h3>Express Interest</h3><p>Request the investor brief and tell us what you're looking for.</p></article>
+                        <article class="p-step"><span class="p-step-num">02</span><h3>Review the Details</h3><p>We share the numbers, terms, and projections so you can do your due diligence.</p></article>
+                        <article class="p-step"><span class="p-step-num">03</span><h3>Invest &amp; Grow</h3><p>Come on board and share in the growth of a destination people love.</p></article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══ THE ASSET / GALLERY ═══ -->
             <section class="p-gallery">
-                <div class="p-wrap"><div class="p-head center"><span class="p-label">— The Destination —</span><h2 class="p-title">Where moments happen.</h2></div></div>
+                <div class="p-wrap"><div class="p-head center"><span class="p-label">— The Asset —</span><h2 class="p-title">See where the value lives.</h2></div></div>
                 <div class="p-gallery-grid">
                     <div class="p-gi tall"><img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499533c3aed7c63c1cadc.jpg" alt="Don Henrico Resort" loading="lazy"></div>
                     <div class="p-gi"><img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499487e7c5a2f715a4490.jpg" alt="Don Henrico Resort" loading="lazy"></div>
@@ -307,38 +356,52 @@ footer { background:#1a1a1a; color:#fff; padding:3rem 0 0; }
                 </div>
             </section>
 
-            <!-- ═══ WHY / TRUST ═══ -->
-            <section class="p-why" id="legal-trust">
+            <!-- ═══ TRUST & TRANSPARENCY ═══ -->
+            <section class="p-why p-trust" id="legal-trust">
                 <div class="p-wrap">
-                    <div class="p-head"><span class="p-label dark">— Why Don Henrico —</span><h2 class="p-title dark">Built on trust.</h2></div>
+                    <div class="p-head"><span class="p-label dark">— Trust &amp; Transparency —</span><h2 class="p-title dark">Built to earn your confidence.</h2></div>
                     <div class="p-grid-3">
                         <article class="p-feature">
-                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6z" /><path d="M9 12l2 2 4-4" /></svg></div>
-                            <h3>Transparent</h3><p>Clear terms and open communication at every step of the partnership.</p>
+                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></div>
+                            <h3>Transparent Reporting</h3><p>Clear numbers and regular updates — you always know how the asset is performing.</p>
                         </article>
                         <article class="p-feature">
-                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.9H21l-5.5 4.1 2.1 7L12 16l-5.6 4 2.1-7L3 8.9h6.6z" /></svg></div>
-                            <h3>Proven</h3><p>A venue trusted for weddings, events, christenings, and getaways.</p>
+                            <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></div>
+                            <h3>Secure &amp; Structured</h3><p>A clear agreement and structure protect your interest from day one.</p>
                         </article>
                         <article class="p-feature">
                             <div class="p-feature-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.9" /><path d="M16 3.1A4 4 0 0 1 16 11" /></svg></div>
-                            <h3>Supported</h3><p>A dedicated team helping your partnership grow and thrive.</p>
+                            <h3>Experienced Stewardship</h3><p>A dedicated operator managing the venue, the bookings, and the guest experience.</p>
                         </article>
                     </div>
                 </div>
             </section>
 
+            <!-- ═══ INVESTOR FAQ ═══ -->
+            <section class="p-faq">
+                <div class="p-wrap">
+                    <div class="p-head"><span class="p-label dark">— Investor FAQ —</span><h2 class="p-title dark">Good questions, clear answers.</h2></div>
+                    <div class="p-faq-list">
+                        <div class="p-faq-item"><h3>What's the minimum investment?</h3><p>Investment levels and terms are laid out in the investor brief — request it to see what fits you.</p></div>
+                        <div class="p-faq-item"><h3>How are returns generated?</h3><p>From the venue's revenue across events, overnight stays, dining, and rentals. Full projections are detailed in the brief.</p></div>
+                        <div class="p-faq-item"><h3>How involved do I need to be?</h3><p>As hands-off as you like — an experienced team handles day-to-day operations.</p></div>
+                        <div class="p-faq-item"><h3>How do I get started?</h3><p>Request the investor brief or schedule a call, and we'll walk you through every detail.</p></div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ═══ CLOSING CTA ═══ -->
-            <section class="p-cta" id="partner-cta">
+            <section class="p-cta" id="invest-cta">
                 <div class="p-cta-bg"><img src="https://assets.cdn.filesafe.space/raNrpm2VM5nDQSCKZYNE/media/6a1499507e7c5a2f715a4544.png" alt="Don Henrico Resort" loading="lazy"></div>
                 <div class="p-cta-overlay"></div>
                 <div class="p-cta-inner">
                     <span class="p-label">— Let's Talk —</span>
-                    <h2 class="p-cta-title">Let's build something<br><span class="gold">memorable together.</span></h2>
-                    <p class="p-cta-sub">Start the conversation today and discover how a partnership with Don Henrico can grow your brand.</p>
-                    <a href="https://www.facebook.com/donhresort" target="_blank" rel="noopener" class="ph-cta">Become a Partner
+                    <h2 class="p-cta-title">Ready to invest in something <span class="gold">real?</span></h2>
+                    <p class="p-cta-sub">Request the investor brief or schedule a call. Let's explore whether Don Henrico is the right opportunity for you.</p>
+                    <a href="https://www.facebook.com/donhresort" target="_blank" rel="noopener" class="ph-cta">Request the Investor Brief
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                     </a>
+                    <p class="p-disclaimer">For information only. This page is not an offer to sell or a solicitation to buy any security. Figures reflect operating history; projected returns and terms are detailed in the investor brief.</p>
                 </div>
             </section>
 
